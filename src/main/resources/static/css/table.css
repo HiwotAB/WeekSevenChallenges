@@ -1,0 +1,33 @@
+table {
+    width: 900px;
+    border-collapse: collapse;
+    margin:50px auto;
+}
+
+th {
+    background: #488a3d;
+    color: black;
+    font-weight: bold;
+}
+
+td, th {
+    padding: 10px;
+    border: 5px solid #ccc;
+    text-align: left;
+    font-size: 14px;
+}
+
+.labels tr td {
+    background-color: #488a3d;
+    font-weight: bold;
+    color: #333;
+}
+
+.label tr td label {
+    display: block;
+}
+
+
+[data-toggle="toggle"] {
+    display: none;
+}

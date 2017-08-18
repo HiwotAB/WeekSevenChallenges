@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="base :: header">
+    <title>Display Work Experience Info</title>
+
+</head>
+
+<body>
+
+<!-- Header -->
+<div th:replace="base :: navlinks"></div>
+<header id="top" class="header">
+    <div class="text-vertical-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-7">
+                    <div class="header-content">
+                        <div class="header-content-inner">
+                            <div class="container">
+                                <form class="well form-horizontal" th:action="@{/dispWorkExpInfo}" th:object="${newWork}" method="">
+
+                                    <fieldset>
+
+                                        <!-- Form Name -->
+                                        <legend align="Center">Your Work Experience Information:</legend>
+
+                                        <!-- Text input-->
+
+
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label">Professional Name</label>
+                                            <div class="col-md-4 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-education"></i></span>
+                                                    <p th:text="${newWork.profName}" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label">Professional Level</label>
+                                            <div class="col-md-4 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-level-up"></i></span>
+                                                    <p th:text="${newWork.ProfLevel}" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Text input-->
+
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label">Organization Name </label>
+                                            <div class="col-md-4 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
+                                                    <p th:text="${newWork.orgName}" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Text input-->
+
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label">Duty </label>
+                                            <div class="col-md-4 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-question-sign"></i></span>
+                                                    <p th:text="${newWork.duty}" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Text input-->
+
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label">Start Date</label>
+                                            <div class="col-md-4 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
+                                                    <p th:text="${newWork.startDate}" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Text input-->
+
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label">End Date </label>
+                                            <div class="col-md-4 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
+                                                    <p th:text="${newWork.endDate}" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Button -->
+                                        <div class="form-group"align="center">
+                                            <div class="col-md-4" align="center">
+                                                <p><a href="listExpInfo"><strong>Display Work Experience Information</strong></a></p>
+                                                <p><a href="addWorkExpInfo"><strong>More Work Experience Information</strong></a></p>
+                                                <p><a href="ResultResumeInfo"><strong>Your Resume Application Information</strong></a></p>
+                                            </div>
+                                        </div>
+
+                                    </fieldset>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</header>
+
+</body>
+
+</html>

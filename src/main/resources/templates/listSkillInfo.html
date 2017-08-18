@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th=http://www.thymeleaf.org">
+<head th:replace="base :: header">
+
+    <title>List All Skills Info</title>
+
+</head>
+<body>
+<!-- Header -->
+<div th:replace="base :: navlinks"></div>
+<header id="top" class="header">
+    <div class="text-vertical-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-7">
+                    <div class="header-content">
+                        <div class="header-content-inner">
+                            <div class="container">
+                                <div class="bs-callout bs-callout-success">
+                                    <table class="table table-striped" >
+
+                                        <caption><h4><b>Your Skills Information</b></h4></caption>
+                                        <thead>
+                                        <tr>
+                                            <th>Skill</th>
+                                            <th>Rate</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr th:each="skilllist : ${searchSkill}">
+                                            <td th:text="${skilllist.skill}"></td>
+                                            <td th:text="${skilllist.rate}"></td>
+                                            <td>
+                                                <a th:href="@{/updateSkillInfo/{id}(id=${skilllist.id})}">Update</a>-
+                                                <a th:href="@{/deleteSkillInfo/{id}(id=${skilllist.id})}">Delete</a>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="form-group"align="center">
+                                <div class="col-md-4" align="center">
+                                    <p><a href="addSkillInfo"><strong>Add Your Skill Information</strong></a></p>
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+</body>
+</html>

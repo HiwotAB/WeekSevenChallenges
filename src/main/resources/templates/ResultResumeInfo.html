@@ -1,0 +1,169 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th=http://www.thymeleaf.org">
+<head th:replace="base :: header">
+
+    <title>Display Resume Info</title>
+
+</head>
+<body>
+<!-- Header -->
+<div th:replace="base :: navlinks"></div>
+<header id="top" class="header">
+    <div class="text-vertical-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-7">
+                    <div class="header-content">
+                        <div class="header-content-inner">
+                            <div class="container">
+                                <form class="well form-horizontal" th:action="@{/ResultResumeInfo}" th:object="${searchUser}" method="">
+                                    <fieldset>
+                                        <!-- Form Name -->
+                                        <legend align="Center"><h3><strong>Resume Application Result</strong></h3></legend>
+                                        <!-- Text input-->
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label">First Name</label>
+                                            <div class="col-md-4 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                                    <p th:text="${searchUser.firstname}" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label">Last Name</label>
+                                            <div class="col-md-4 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                                    <p th:text="${searchUser.lastname}" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Text input-->
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label">E-Mail</label>
+                                            <div class="col-md-4 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                                                    <p th:text="${searchUser.email}" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a th:href="@{/updateUserInfo/{id}(id=${searchUser.id})}">Update</a>
+                                    </fieldset>
+                                </form>
+                                <div class="container">
+                                    <div class="bs-callout bs-callout-success">
+                                        <table class="table table-striped">
+
+                                                <caption> <h4><b>Your Education Achievement Information</b></h4></caption>
+                                                    <thead>
+                                                    <tr>
+                                                        <th>Education Filed</th>
+                                                        <th>Univ/College Name</th>
+                                                        <th>Year Graduate</th>
+                                                        <th>Actions</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody class="labels">
+                                                    <tr>
+                                                        <td colspan="5">
+                                                            <label for="accounting"><strong>Education Achievement Information</strong></label>
+                                                            <input type="checkbox" name="accounting" id="accounting" data-toggle="toggle">
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                    <tbody class="hide">
+                                                    <tr th:each="userlist : ${searchUser.eduAchieve}">
+                                                        <td th:text="${userlist.eduType}"></td>
+                                                        <td th:text="${userlist.uniName}" ></td>
+                                                        <td th:text="${userlist.grdYear}"></td>
+                                                        <td>
+                                                            <a th:href="@{/updateEduInfo/{id}(id=${userlist.id})}">Update</a> -
+                                                            <a th:href="@{/deleteEduInfo/{id}(id=${userlist.id})}">Delete</a>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+
+
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="container">
+                                            <div class="bs-callout bs-callout-success">
+                                                <table class="table table-striped" >
+
+                                                        <caption><h4><b>Your Skills Information</b></h4></caption>
+                                                        <thead>
+                                                        <tr>
+                                                            <th>Skill</th>
+                                                            <th>Rate</th>
+                                                            <th>Actions</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr th:each="userlist : ${searchUser.skils}">
+                                                            <td th:text="${userlist.skill}"></td>
+                                                            <td th:text="${userlist.rate}"></td>
+                                                            <td>
+                                                                <a th:href="@{/updateSkillInfo/{id}(id=${userlist.id})}">Update</a> -
+                                                                <a th:href="@{/deleteSkillInfo/{id}(id=${userlist.id})}">Delete</a>
+                                                            </td>
+                                                        </tr>
+                                                        </tbody>
+
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="container">
+                                            <div class="bs-callout bs-callout-success">
+                                                <table class="table table-striped">
+                                                    <caption> <h4><b>Your Work Experience Information</b></h4></caption>
+                                                    <thead>
+                                                    <tr>
+                                                        <th>Professional Name</th>
+                                                        <th>Professional Level</th>
+                                                        <th>Organization Name</th>
+                                                        <th>Duty</th>
+                                                        <th>Start Date</th>
+                                                        <th>End Date</th>
+                                                        <th>Actions</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr th:each="userlist : ${searchUser.workExp}">
+                                                        <td th:text="${userlist.profName}"></td>
+                                                        <td th:text="${userlist.ProfLevel}" ></td>
+                                                        <td th:text="${userlist.orgName}"></td>
+                                                        <td th:text="${userlist.duty}"></td>
+                                                        <td th:text="${userlist.startDate}"></td>
+                                                        <td th:text="${userlist.endDate}"></td>
+                                                        <td>
+                                                            <a th:href="@{/updateExpInfo/{id}(id=${userlist.id})}">Update</a>-
+                                                            <a th:href="@{/deleteExpInfo/{id}(id=${userlist.id})}">Delete</a>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="form-group"align="center">
+                                            <div class="col-md-4" align="center">
+                                                <p><a href="addEduInfo"><strong>More Education Achievement Information</strong></a></p>
+                                                <p><a href="addSkillInfo"><strong>Add Your Skill Information</strong></a></p>
+                                                <p><a href="addWorkExpInfo"><strong>Most Recent Work Experience Information</strong></a></p>
+                                            </div>
+                                        </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="base :: header">
+
+    <title>Add Skill Info</title>
+</head>
+
+<body>
+<!-- Header -->
+<div th:replace="base :: navlinks"></div>
+<header id="top" class="header">
+    <div class="text-vertical-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-7">
+                    <div class="header-content">
+                        <div class="header-content-inner">
+                            <div class="container">
+                                <form class="well form-horizontal" th:action="@{/addSkillInfo}" th:object="${newSkill}" method="post">
+
+                                    <fieldset>
+
+                                        <!-- Form Name -->
+                                        <legend align="Center">Enter Your Skill Information</legend>
+                                        <input type="hidden" th:field="*{id}" />
+                                        <!-- Text input-->
+                                        <div  th:if="${#fields.hasErrors('skill')}" th:errors="*{skill}" class="well alert alert-danger" role="alert">You Must enter a valid Skill!</div>
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label">Skill</label>
+                                            <div class="col-md-4 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-certificate"></i></span>
+                                                    <input  th:field="*{skill}" name="skill" placeholder="Enter Skill" class="form-control"  type="text">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div  th:if="${#fields.hasErrors('rate')}" th:errors="*{skill}" class="well alert alert-danger" role="alert">You Must enter a valid Name!</div>
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label">Rate</label>
+                                            <div class="col-md-4 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                                    <input  th:field="*{rate}" name="rate" placeholder="Enter Rate" class="form-control"  type="text">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Button -->
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label"></label>
+                                            <div class="col-md-4">
+                                                <button type="submit" class="btn btn-success" >Submit<span class="glyphicon glyphicon-save"></span></button>
+                                                <button type="reset" class="btn btn-warning" >Reset<span class="glyphicon glyphicon-remove-circle"></span></button>
+                                            </div>
+                                        </div>
+
+                                    </fieldset>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</header>
+
+</body>
+</html>

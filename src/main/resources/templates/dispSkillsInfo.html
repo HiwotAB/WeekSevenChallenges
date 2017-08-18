@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="base :: header">
+    <title>Display Skills Info</title>
+
+</head>
+
+<body>
+
+<!-- Header -->
+<div th:replace="base :: navlinks"></div>
+<header id="top" class="header">
+    <div class="text-vertical-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-7">
+                    <div class="header-content">
+                        <div class="header-content-inner">
+                            <div class="container">
+                                <form class="well form-horizontal" th:action="@{/dispSkillsInfo}" th:object="${newSkill}" method="">
+
+                                    <fieldset>
+
+                                        <!-- Form Name -->
+                                        <legend align="Center">Your Skill Information:</legend>
+
+                                        <!-- Text input-->
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label">Skill</label>
+                                            <div class="col-md-4 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-certificate"></i></span>
+                                                    <p th:text="${newSkill.skill}" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label">Rate</label>
+                                            <div class="col-md-4 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                                    <p th:text="${newSkill.rate}" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <!-- Button -->
+                                        <div class="form-group"align="center">
+                                            <div class="col-md-4" align="center">
+                                                <p><a href="listSkillInfo"><strong>Display Skill Information</strong></a></p>
+                                                <p><a href="addSkillInfo"><strong>More Skill Information</strong></a></p>
+                                                <p><a href="addWorkExpInfo"><strong>Most Recent Work Experience Information</strong></a></p>
+                                            </div>
+                                        </div>
+
+                                    </fieldset>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</header>
+
+</body>
+
+</html>

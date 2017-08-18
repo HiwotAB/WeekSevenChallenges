@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th=http://www.thymeleaf.org">
+<head th:replace="base :: header">
+    <title>List All Work Expericence Info</title>
+</head>
+<body>
+<!-- Header -->
+<div th:replace="base :: navlinks"></div>
+<header id="top" class="header">
+    <div class="text-vertical-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-7">
+                    <div class="header-content">
+                        <div class="header-content-inner">
+                            <div class="container">
+
+                                    <div class="bs-callout bs-callout-success">
+                                        <table class="table table-striped">
+                                            <caption> <h4><b>Your Work Experience Information</b></h4></caption>
+                                            <thead>
+                                            <tr>
+                                                <th>Professional Name</th>
+                                                <th>Professional Level</th>
+                                                <th>Organization Name</th>
+                                                <th>Duty</th>
+                                                <th>Start Date</th>
+                                                <th>End Date</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr th:each="explist : ${searchExp}">
+                                                <td th:text="${explist.profName}"></td>
+                                                <td th:text="${explist.ProfLevel}" ></td>
+                                                <td th:text="${explist.orgName}"></td>
+                                                <td th:text="${explist.duty}"></td>
+                                                <td th:text="${explist.startDate}"></td>
+                                                <td th:text="${explist.endDate}"></td>
+                                                <td>
+                                                    <a th:href="@{/updateExpInfo/{id}(id=${explist.id})}">Update</a>-
+                                                    <a th:href="@{/deleteExpInfo/{id}(id=${explist.id})}">Delete</a>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="form-group"align="center">
+                                    <div class="col-md-4" align="center">
+                                        <p><a href="addWorkExpInfo"><strong>Most Recent Work Experience Information</strong></a></p>
+                                    </div>
+
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+</body>
+</html>

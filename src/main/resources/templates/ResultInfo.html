@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th=http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Add User Resume Info</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/result.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+
+<body>
+<!-- Header -->
+<header id="top" class="header">
+    <div class="text-vertical-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-7">
+                    <div class="header-content">
+                        <div class="header-content-inner">
+                            <div class="container">
+                                <form class="well form-horizontal" th:action="@{/ResultResumeInfo}" th:object="${searchUser}" method="">
+                                    <fieldset>
+                                        <!-- Form Name -->
+                                        <legend align="Center"><h2><strong>Resume Application</strong></h2></legend>
+                                        <!-- Text input-->
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label">First Name</label>
+                                            <div class="col-md-4 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <p th:text="${searchUser.firstname}" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label">Last Name</label>
+                                            <div class="col-md-4 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <p th:text="${searchUser.lastname}" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Text input-->
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label">E-Mail</label>
+                                            <div class="col-md-4 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <p th:text="${searchUser.email}" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="container">
+                                            <div id="accordion" role="tablist" aria-multiselectable="true">
+                                                <div class="card">
+                                                    <div class="card-header" role="tab" id="headingOne">
+                                                        <h5 class="mb-0">
+                                                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                                <b>Education Achievement Information</b>
+                                                            </a>
+                                                        </h5>
+                                                    </div>
+                                                    <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                                        <div class="card-block">
+                                                            <div class="bs-callout bs-callout-success">
+
+                                                                <table class="table table-striped" >
+                                                                    <!-- <caption> <h4><b>Your Education Achievement Information</b></h4></caption>-->
+                                                                    <thead>
+                                                                    <tr>
+                                                                        <th>Education Filed</th>
+                                                                        <th>Univ/College Name</th>
+                                                                        <th>Year Graduate</th>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody align="left">
+                                                                    <tr th:each="userlist : ${searchUser.eduAchieve}">
+                                                                        <td th:text="${userlist.eduType}"></td>
+                                                                        <td th:text="${userlist.uniName}" ></td>
+                                                                        <td th:text="${userlist.grdYear}"></td>
+                                                                    </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="container">
+                                            <div id="accordion" role="tablist" aria-multiselectable="true">
+                                                <div class="card">
+                                                    <div class="card-header" role="tab" id="headingOne">
+                                                        <h5 class="mb-0">
+                                                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                                <b>Skills Information</b>
+                                                            </a>
+                                                        </h5>
+                                                    </div>
+                                                    <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                                        <div class="card-block">
+                                                            <div class="bs-callout bs-callout-success">
+
+                                                                <table class="table table-striped"align="left">
+
+                                                                    <thead>
+                                                                    <tr>
+                                                                        <th>Skill</th>
+                                                                        <th>Rate</th>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                    <tr th:each="userlist : ${searchUser.skils}">
+                                                                        <td th:text="${userlist.skill}"></td>
+                                                                        <td th:text="${userlist.rate}"></td>
+                                                                    </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="container">
+                                            <div id="accordion" role="tablist" aria-multiselectable="true">
+                                                <div class="card">
+                                                    <div class="card-header" role="tab" id="headingOne">
+                                                        <h5 class="mb-0">
+                                                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                                <b>Work Experience Information</b>
+                                                            </a>
+                                                        </h5>
+                                                    </div>
+                                                    <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                                        <div class="card-block">
+                                                            <div class="bs-callout bs-callout-success">
+
+                                                                <table class="table table-striped">
+
+                                                                    <thead>
+                                                                    <tr>
+                                                                        <th>Professional Name</th>
+                                                                        <th>Professional Level</th>
+                                                                        <th>Organization Name</th>
+                                                                        <th>Duty</th>
+                                                                        <th>Start Date</th>
+                                                                        <th>End Date</th>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                    <tr th:each="userlist : ${searchUser.workExp}">
+                                                                        <td th:text="${userlist.profName}"></td>
+                                                                        <td th:text="${userlist.ProfLevel}" ></td>
+                                                                        <td th:text="${userlist.orgName}"></td>
+                                                                        <td th:text="${userlist.duty}"></td>
+                                                                        <td th:text="${userlist.startDate}"></td>
+                                                                        <td th:text="${userlist.endDate}"></td>
+                                                                    </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group"align="center">
+                                            <div class="col-md-4" align="center">
+                                                <p><a href="addEduInfo"><strong>More Education Achievement Information</strong></a></p>
+                                                <p><a href="addSkillInfo"><strong>Add Your Skill Information</strong></a></p>
+                                                <p><a href="addWorkExpInfo"><strong>Most Recent Work Experience Information</strong></a></p>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+</body>
+
+</html>

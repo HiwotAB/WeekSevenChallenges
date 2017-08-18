@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th=http://www.thymeleaf.org">
+<head th:replace="base :: header">
+
+    <title>List All User Resume Info</title>
+
+</head>
+<body>
+<!-- Header -->
+<div th:replace="base :: navlinks"></div>
+<header id="top" class="header">
+    <div class="text-vertical-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-7">
+                    <div class="header-content">
+                        <div class="header-content-inner">
+                            <div class="container">
+
+                                <div class="bs-callout bs-callout-success">
+                                    <table class="table table-striped">
+                                        <caption> <h4><b>Your Information</b></h4></caption>
+                                        <thead>
+                                        <tr>
+                                            <th>First Name</th>
+                                            <th>Last Name</th>
+                                            <th>E-Mail</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody align="left">
+                                        <tr th:each="search : ${searchUser}">
+                                            <td th:text="${search.firstname}"></td>
+                                            <td th:text="${search.lastname}"></td>
+                                            <td th:text="${search.email}"></td>
+                                            <td>
+                                                <a th:href="@{/updateUserInfo/{id}(id=${search.id})}">Update</a>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-4">
+                                        <p><a href="addEduInfo"><strong>Most Recent Education Achievement Information</strong></a></p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+</body>
+</html>
+
+

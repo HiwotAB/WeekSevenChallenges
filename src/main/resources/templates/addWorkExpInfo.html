@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="base :: header">
+    <title>Add Work Experience Info</title>
+</head>
+<body>
+<!-- Header -->
+<div th:replace="base :: navlinks"></div>
+<header id="top" class="header">
+    <div class="text-vertical-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-7">
+                    <div class="header-content">
+                        <div class="header-content-inner">
+                            <div class="container">
+                                <form class="well form-horizontal" th:action="@{/addWorkExpInfo}" th:object="${newWork}" method="post">
+
+                                    <fieldset>
+
+                                        <!-- Form Name -->
+                                        <legend align="Center">Enter Your Work Experience Info.</legend>
+                                        <input type="hidden" th:field="*{id}" />
+                                        <!-- Text input-->
+                                        <div  th:if="${#fields.hasErrors('profName')}" th:errors="*{profName}" class="well alert alert-danger" role="alert">You Must enter a valid Professional Name!</div>
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label">Professional Name</label>
+                                            <div class="col-md-4 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-education"></i></span>
+                                                    <input  th:field="*{profName}" name="profName" placeholder="Enter Professional Name" class="form-control"  type="text">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div  th:if="${#fields.hasErrors('ProfLevel')}" th:errors="*{ProfLevel}" class="well alert alert-danger" role="alert">You Must enter a Professional Level!</div>
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label">Professional Level</label>
+                                            <div class="col-md-4 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-level-up"></i></span>
+                                                    <input  th:field="*{ProfLevel}" name="ProfLevel" placeholder="Enter Professional Level" class="form-control"  type="text">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Text input-->
+                                        <div  th:if="${#fields.hasErrors('orgName')}" th:errors="*{orgName}" class="well alert alert-danger" role="alert">You Must enter a valid Organization Name!</div>
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label">Organization Name </label>
+                                            <div class="col-md-4 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
+                                                    <input  th:field="*{orgName}" name="orgName" placeholder="Enter Organization Name" class="form-control"  type="text">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div  th:if="${#fields.hasErrors('duty')}" th:errors="*{duty}" class="well alert alert-danger" role="alert">You Must enter a valid Duty you have!</div>
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label">Duty</label>
+                                            <div class="col-md-4 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-question-sign"></i></span>
+                                                    <input  th:field="*{duty}" name="duty" placeholder="Enter Your Duty" class="form-control"  type="text">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div  th:if="${#fields.hasErrors('startDate')}" th:errors="*{startDate}" class="well alert alert-danger" role="alert">You Must enter a valid Start Date!</div>
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label">Start Date</label>
+                                            <div class="col-md-4 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
+                                                    <input  th:field="*{startDate}" name="startDate" placeholder="Enter Start Date" class="form-control"  type="text">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div  th:if="${#fields.hasErrors('endDate')}" th:errors="*{endDate}" class="well alert alert-danger" role="alert">You Must enter a valid End Date!</div>
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label">End Date</label>
+                                            <div class="col-md-4 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
+                                                    <input  th:field="*{endDate}" name="endDate" placeholder="Enter Organization Name" class="form-control"  type="text">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Button -->
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label"></label>
+                                            <div class="col-md-4">
+                                                <button type="submit" class="btn btn-success" >Submit<span class="glyphicon glyphicon-save"></span></button>
+                                                <button type="reset" class="btn btn-warning" >Reset<span class="glyphicon glyphicon-remove-circle"></span></button>
+                                            </div>
+                                        </div>
+
+                                    </fieldset>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</header>
+
+</body>
+
+</html>

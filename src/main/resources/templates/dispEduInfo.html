@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="base :: header">
+    <title>Display Education Info</title>
+</head>
+<body>
+<!-- Header -->
+<div th:replace="base :: navlinks"></div>
+<header id="top" class="header">
+    <div class="text-vertical-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-7">
+                    <div class="header-content">
+                        <div class="header-content-inner">
+                            <div class="container">
+                                <form class="well form-horizontal" th:action="@{/dispEduInfo}" th:object="${newEduInfo}" method="">
+
+                                    <fieldset>
+
+                                        <!-- Form Name -->
+                                        <legend align="Center">Your Education Achievement Information:</legend>
+
+                                        <!-- Text input-->
+
+
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label">Education Type</label>
+                                            <div class="col-md-4 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-education"></i></span>
+                                                    <p th:text="${newEduInfo.eduType}" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label">Univ/College Name</label>
+                                            <div class="col-md-4 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-certificate"></i></span>
+                                                    <p th:text="${newEduInfo.uniName}" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Text input-->
+
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label">Year Graduate</label>
+                                            <div class="col-md-4 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                                                    <p th:text="${newEduInfo.grdYear}" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Button -->
+                                        <div class="form-group"align="center">
+                                            <div class="col-md-4" align="center">
+                                                <p><a href="listEduInfo"><strong>Display Education Achievement Information</strong></a></p>
+                                                <p><a href="addEduInfo"><strong>More Education Achievement Information</strong></a></p>
+                                                <p><a href="addSkillInfo"><strong>Add Your Skill Information</strong></a></p>
+
+                                            </div>
+                                        </div>
+
+                                    </fieldset>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</header>
+
+</body>
+
+</html>
