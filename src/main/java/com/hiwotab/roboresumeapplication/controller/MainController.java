@@ -47,7 +47,6 @@ public class MainController {
         /*Here as we consider that we have only one person information so if more than one person tries
 	       to enter his if then the submit button will get
 	        disable so that they cannot enter more than ten information*/
-
         model.addAttribute("rowNumber", resumeRepostory.count());
         model.addAttribute("newUser", new Resume());
         model.addAttribute("disSubmit", resumeRepostory.count() >= 1);
