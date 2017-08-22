@@ -16,11 +16,9 @@
                         <div class="header-content-inner">
                             <div class="container">
                                 <form class="well form-horizontal" th:action="@{/addWorkExpInfo}" th:object="${newWork}" method="post">
-
                                     <fieldset>
-
                                         <!-- Form Name -->
-                                        <legend align="Center">Enter Your Work Experience Info.</legend>
+                                        <legend align="Center">Please Enter Your Work Experience Info.</legend>
                                         <input type="hidden" th:field="*{id}" />
                                         <!-- Text input-->
                                         <div  th:if="${#fields.hasErrors('profName')}" th:errors="*{profName}" class="well alert alert-danger" role="alert">You Must enter a valid Professional Name!</div>
@@ -33,6 +31,7 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <!-- Text input-->
                                         <div  th:if="${#fields.hasErrors('ProfLevel')}" th:errors="*{ProfLevel}" class="well alert alert-danger" role="alert">You Must enter a Professional Level!</div>
                                         <div class="form-group">
                                             <label class="col-md-4 control-label">Professional Level</label>
@@ -54,6 +53,7 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <!-- Text input-->
                                         <div  th:if="${#fields.hasErrors('duty')}" th:errors="*{duty}" class="well alert alert-danger" role="alert">You Must enter a valid Duty you have!</div>
                                         <div class="form-group">
                                             <label class="col-md-4 control-label">Duty</label>
@@ -64,7 +64,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div  th:if="${#fields.hasErrors('startDate')}" th:errors="*{startDate}" class="well alert alert-danger" role="alert">You Must enter a valid Start Date!</div>
+                                        <!-- Text input-->
+                                        <div  th:if="${#fields.hasErrors('startDate')}" th:errors="*{startDate}" class="well alert alert-danger" role="alert">Invalid date format and its format like: MM/dd/YYYY</div>
                                         <div class="form-group">
                                             <label class="col-md-4 control-label">Start Date</label>
                                             <div class="col-md-4 inputGroupContainer">
@@ -74,7 +75,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div  th:if="${#fields.hasErrors('endDate')}" th:errors="*{endDate}" class="well alert alert-danger" role="alert">You Must enter a valid End Date!</div>
+                                        <!-- Text input-->
+                                        <div  th:if="${#fields.hasErrors('endDate')}" th:errors="*{endDate}" class="well alert alert-danger" role="alert">Invalid date format and its format like: MM/dd/YYYY</div>
                                         <div class="form-group">
                                             <label class="col-md-4 control-label">End Date</label>
                                             <div class="col-md-4 inputGroupContainer">
@@ -84,29 +86,26 @@
                                                 </div>
                                             </div>
                                         </div>
-
                                         <!-- Button -->
                                         <div class="form-group">
                                             <label class="col-md-4 control-label"></label>
                                             <div class="col-md-4">
-                                                <button type="submit" class="btn btn-success" >Submit<span class="glyphicon glyphicon-save"></span></button>
-                                                <button type="reset" class="btn btn-warning" >Reset<span class="glyphicon glyphicon-remove-circle"></span></button>
+                                                <input th:disabled="${disSubmit}" class="btn btn-success" type="submit" value="Submit">
+                                                <!--<button type="submit" class="btn btn-success" >Submit<span class="glyphicon glyphicon-save" ></span></button>-->
+                                                <button type="reset" class="btn btn-warning">Reset</button>
                                             </div>
                                         </div>
-
                                     </fieldset>
                                 </form>
                             </div>
-
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
-
     </div>
 </header>
+<!--<div th:replace="base :: javaScript"></div>-->
 
 </body>
 

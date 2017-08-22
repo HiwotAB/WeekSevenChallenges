@@ -15,37 +15,37 @@
                         <div class="header-content-inner">
                             <div class="container">
                                 <div class="bs-callout bs-callout-success">
-                                        <table class="table table-striped">
-                                            <caption><h4><b>Your Education Achievement Information</b></h4></caption>
-                                            <thead>
-                                            <tr>
-                                                <th>Education Filed</th>
-                                                <th>Univ/College Name</th>
-                                                <th>Year Graduate</th>
-                                                <th>Actions</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody align="left">
-                                            <tr th:each="eduList : ${searchEdu}">
-                                                <td th:text="${eduList.eduType}"></td>
-                                                <td th:text="${eduList.uniName}" ></td>
-                                                <td th:text="${eduList.grdYear}"></td>
-                                                <td>
-                                                    <a th:href="@{/updateEduInfo/{id}(id=${eduList.id})}">Update</a>-
-                                                    <a th:href="@{/deleteEduInfo/{id}(id=${eduList.id})}">Delete</a>
-                                                </td>
-                                            </tr>
-                                            </tbody>
+                                    <table class="table table-striped">
 
+                                        <caption align="center"><h4><b>Your Education Achievement Information</b></h4></caption>
+                                        <thead>
+                                        <tr>
+                                            <th>Education Filed</th>
+                                            <th>Univ/College Name</th>
+                                            <th>Year Graduate</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody align="left">
+                                        <tr th:each="eduList : ${searchEdu}">
+                                            <td th:text="${eduList.eduType}"></td>
+                                            <td th:text="${eduList.uniName}" ></td>
+                                            <td th:text="${eduList.grdYear}"></td>
+                                            <td>
+                                                <a th:href="@{/updateEduInfo/{id}(id=${eduList.id})}">Update</a>-
+                                                <a th:href="@{/deleteEduInfo/{id}(id=${eduList.id})}">Delete</a>
+                                            </td>
+                                        </tr>
+                                        </tbody>
 
-                                        </table>
+                                    </table>
 
-                                        </div>
-                                        <div class="form-group"align="center">
-                                            <div class="col-md-4" align="center">
-                                                <p><a href="addEduInfo"><strong>More Education Achievement Information</strong></a></p>
-                                            </div>
-                                        </div>
+                                </div>
+                                <div class="form-group"align="center">
+                                    <div class="col-md-4" align="center">
+                                        <p><a href="addEduInfo"><strong>More Education Achievement Info</strong></a></p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -54,5 +54,7 @@
         </div>
     </div>
 </header>
+<!--<div th:replace="base :: javaScript"></div>-->
+
 </body>
 </html>

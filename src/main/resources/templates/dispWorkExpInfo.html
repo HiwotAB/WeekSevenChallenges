@@ -26,8 +26,6 @@
                                         <legend align="Center">Your Work Experience Information:</legend>
 
                                         <!-- Text input-->
-
-
                                         <div class="form-group">
                                             <label class="col-md-4 control-label">Professional Name</label>
                                             <div class="col-md-4 inputGroupContainer">
@@ -37,7 +35,7 @@
                                                 </div>
                                             </div>
                                         </div>
-
+                                        <!-- Text input-->
                                         <div class="form-group">
                                             <label class="col-md-4 control-label">Professional Level</label>
                                             <div class="col-md-4 inputGroupContainer">
@@ -59,7 +57,6 @@
                                             </div>
                                         </div>
                                         <!-- Text input-->
-
                                         <div class="form-group">
                                             <label class="col-md-4 control-label">Duty </label>
                                             <div class="col-md-4 inputGroupContainer">
@@ -70,18 +67,17 @@
                                             </div>
                                         </div>
                                         <!-- Text input-->
-
                                         <div class="form-group">
                                             <label class="col-md-4 control-label">Start Date</label>
                                             <div class="col-md-4 inputGroupContainer">
                                                 <div class="input-group">
                                                     <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
                                                     <p th:text="${newWork.startDate}" />
+
                                                 </div>
                                             </div>
                                         </div>
                                         <!-- Text input-->
-
                                         <div class="form-group">
                                             <label class="col-md-4 control-label">End Date </label>
                                             <div class="col-md-4 inputGroupContainer">
@@ -91,7 +87,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- Button -->
+                                        <!-- Links-->
                                         <div class="form-group"align="center">
                                             <div class="col-md-4" align="center">
                                                 <p><a href="listExpInfo"><strong>Display Work Experience Information</strong></a></p>
@@ -113,6 +109,7 @@
 
     </div>
 </header>
+<!--<div th:replace="base :: javaScript"></div>-->
 
 </body>
 

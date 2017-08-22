@@ -22,7 +22,7 @@
                                     <fieldset>
 
                                         <!-- Form Name -->
-                                        <legend align="Center">Enter Your Skill Information</legend>
+                                        <legend align="Center">Please Enter Your Skill Information</legend>
                                         <input type="hidden" th:field="*{id}" />
                                         <!-- Text input-->
                                         <div  th:if="${#fields.hasErrors('skill')}" th:errors="*{skill}" class="well alert alert-danger" role="alert">You Must enter a valid Skill!</div>
@@ -35,7 +35,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div  th:if="${#fields.hasErrors('rate')}" th:errors="*{skill}" class="well alert alert-danger" role="alert">You Must enter a valid Name!</div>
+                                        <!-- Text input-->
+                                        <div  th:if="${#fields.hasErrors('rate')}" th:errors="*{skill}" class="well alert alert-danger" role="alert">You Must enter a valid rate info!</div>
                                         <div class="form-group">
                                             <label class="col-md-4 control-label">Rate</label>
                                             <div class="col-md-4 inputGroupContainer">
@@ -50,8 +51,9 @@
                                         <div class="form-group">
                                             <label class="col-md-4 control-label"></label>
                                             <div class="col-md-4">
-                                                <button type="submit" class="btn btn-success" >Submit<span class="glyphicon glyphicon-save"></span></button>
-                                                <button type="reset" class="btn btn-warning" >Reset<span class="glyphicon glyphicon-remove-circle"></span></button>
+                                                <input th:disabled="${disSubmit}" class="btn btn-success" type="submit" value="Submit">
+                                                <!--<button type="submit" class="btn btn-success" >Submit<span class="glyphicon glyphicon-save" ></span></button>-->
+                                                <button type="reset" class="btn btn-warning">Reset</button>
                                             </div>
                                         </div>
 
@@ -68,6 +70,7 @@
 
     </div>
 </header>
+<!--<div th:replace="base :: javaScript"></div>-->
 
 </body>
 </html>

@@ -24,7 +24,8 @@ public class EduAchievements {
     @Size(min=4)
     private String uniName;
     @NotNull
-    private int grdYear;
+    @NotEmpty
+    private String grdYear;
 
     public long getId() {
         return id;
@@ -48,11 +49,11 @@ public class EduAchievements {
         this.uniName = uniName;
     }
 
-    public int getGrdYear() {
+    public String getGrdYear() {
         return grdYear;
     }
 
-    public void setGrdYear(int grdYear) {
+    public void setGrdYear(String grdYear) {
         this.grdYear = grdYear;
     }
 }

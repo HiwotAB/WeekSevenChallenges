@@ -24,7 +24,7 @@
                                     <fieldset>
 
                                         <!-- Form Name -->
-                                        <legend align="Center">Enter Your Education Achievement Information</legend>
+                                        <legend align="Center">Please Enter Your Education Achievement Information</legend>
                                         <input type="hidden" th:field="*{id}" />
                                         <!-- Text input-->
 
@@ -38,6 +38,7 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <!-- Text input-->
                                         <div  th:if="${#fields.hasErrors('uniName')}" th:errors="*{uniName}" class="well alert alert-danger" role="alert">You Must enter a valid Univ/College Name!</div>
                                         <div class="form-group">
                                             <label class="col-md-4 control-label">Univ/College Name</label>
@@ -55,7 +56,7 @@
                                             <div class="col-md-4 inputGroupContainer">
                                                 <div class="input-group">
                                                     <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
-                                                    <input  th:field="*{grdYear}" name="grdYear" placeholder="Enter Year Graduate" class="form-control"  type="text">
+                                                    <input  th:field="*{grdYear}" name="grdYear" placeholder="Enter Year Graduate" class="form-control"   type="text">
                                                 </div>
                                             </div>
                                         </div>
@@ -64,8 +65,9 @@
                                         <div class="form-group">
                                             <label class="col-md-4 control-label"></label>
                                             <div class="col-md-4">
-                                                <button type="submit" class="btn btn-success" >Submit<span class="glyphicon glyphicon-save"></span></button>
-                                                <button type="reset" class="btn btn-warning" >Reset<span class="glyphicon glyphicon-remove-circle"></span></button>
+                                                <input th:disabled="${disSubmit}" class="btn btn-success" type="submit" value="Submit">
+                                                <!--<button type="submit" class="btn btn-success" >Submit<span class="glyphicon glyphicon-save" ></span></button>-->
+                                                <button type="reset" class="btn btn-warning">Reset</button>
                                             </div>
                                         </div>
 
@@ -82,7 +84,7 @@
 
     </div>
 </header>
-
+<!--<div th:replace="base :: javaScript"></div>-->
 </body>
 
 </html>

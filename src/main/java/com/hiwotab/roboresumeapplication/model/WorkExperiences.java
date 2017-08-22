@@ -34,11 +34,11 @@ public class WorkExperiences {
     @Size(min=2)
     private String duty;
     @NotNull
-   // @Temporal(TemporalType.Date)
+
     @DateTimeFormat(pattern = "MM/dd/YYYY")
     private Date startDate;
     @NotNull
-   // @Temporal(TemporalType.Date)
+
     @DateTimeFormat(pattern = "MM/dd/YYYY")
     private Date endDate;
 
