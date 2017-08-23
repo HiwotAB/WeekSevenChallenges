@@ -37,11 +37,8 @@
                                             <td th:text="${explist.ProfLevel}" ></td>
                                             <td th:text="${explist.orgName}"></td>
                                             <td th:text="${explist.duty}"></td>
-                                            <!--<td th:text="${#dates.format(explist.startDate, 'MM/dd/YYYY')}"></td>
-                                            <td th:text="${#dates.format(explist.endDate, 'MM/dd/YYYY')}"></td>-->
-
-                                            <td th:text="${explist.startDate}"></td>
-                                            <td th:text="${explist.endDate}"></td>
+                                            <td th:text="${{explist.startDate}}"></td>
+                                            <td th:text="${{explist.endDate}}"></td>
                                             <td>
                                                 <a th:href="@{/updateExpInfo/{id}(id=${explist.id})}">Update</a>-
                                                 <a th:href="@{/deleteExpInfo/{id}(id=${explist.id})}">Delete</a>

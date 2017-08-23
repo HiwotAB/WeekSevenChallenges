@@ -12,19 +12,19 @@ import java.util.ArrayList;
 
 @Entity
 public class Resume {
-    @NotNull
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @NotNull
+
     @NotEmpty
-    @Size(min=2)
+    @Size(min=2, max = 30)
     private String firstname;
-    @NotNull
+
     @NotEmpty
-    @Size(min=2)
+    @Size(min=2, max = 30)
     private String lastname;
-    @NotNull
+
     @NotEmpty
     @Email
     private String email;

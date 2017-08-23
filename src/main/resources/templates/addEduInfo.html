@@ -5,7 +5,6 @@
     <title>Add Education Achievement Info</title>
 
 </head>
-
 <body>
 
 <!-- Header -->
@@ -28,7 +27,7 @@
                                         <input type="hidden" th:field="*{id}" />
                                         <!-- Text input-->
 
-                                        <div  th:if="${#fields.hasErrors('eduType')}" th:errors="*{eduType}" class="well alert alert-danger" role="alert">Please enter a valid Education Information!</div>
+                                        <div  th:if="${#fields.hasErrors('eduType')}" th:errors="*{eduType}" class="well alert alert-danger" role="alert"></div>
                                         <div class="form-group">
                                             <label class="col-md-4 control-label">Education Filed</label>
                                             <div class="col-md-4 inputGroupContainer">
@@ -39,7 +38,7 @@
                                             </div>
                                         </div>
                                         <!-- Text input-->
-                                        <div  th:if="${#fields.hasErrors('uniName')}" th:errors="*{uniName}" class="well alert alert-danger" role="alert">You Must enter a valid Univ/College Name!</div>
+                                        <div  th:if="${#fields.hasErrors('uniName')}" th:errors="*{uniName}" class="well alert alert-danger" role="alert"></div>
                                         <div class="form-group">
                                             <label class="col-md-4 control-label">Univ/College Name</label>
                                             <div class="col-md-4 inputGroupContainer">
@@ -50,13 +49,13 @@
                                             </div>
                                         </div>
                                         <!-- Text input-->
-                                        <div  th:if="${#fields.hasErrors('grdYear')}" th:errors="*{grdYear}" class="well alert alert-danger" role="alert">You Must enter a valid Graduate Year!</div>
+                                        <div  th:if="${#fields.hasErrors('grdYear')}" th:errors="*{grdYear}" class="well alert alert-danger" role="alert"></div>
                                         <div class="form-group">
                                             <label class="col-md-4 control-label">Year Graduate</label>
                                             <div class="col-md-4 inputGroupContainer">
                                                 <div class="input-group">
                                                     <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
-                                                    <input  th:field="*{grdYear}" name="grdYear" placeholder="Enter Year Graduate" class="form-control"   type="text">
+                                                    <input  th:field="*{grdYear}" name="grdYear" placeholder="Enter Year Graduate" class="form-control" type="text">
                                                 </div>
                                             </div>
                                         </div>

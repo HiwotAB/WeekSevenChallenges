@@ -34,7 +34,7 @@
                             <hr/>
                             <th:block th:each="userlist : ${searchUser.eduAchieve}">
                                 <p th:text="${userlist.eduType}"></p>
-                                <p th:text="${userlist.uniName} +', ' + ${userlist.grdYear}"></p>
+                                <p th:text="${userlist.uniName} +', ' + ${{userlist.grdYear}}"></p>
                                 <br/>
                             </th:block>
                             <br/>
@@ -54,7 +54,7 @@
                             <hr/>
                             <th:block th:each="userlist : ${searchUser.workExp}">
                                 <p  th:text="${userlist.profName}+ ' ' + ${userlist.ProfLevel}"></p>
-                                <p th:text="${userlist.orgName} + ', ' + ${userlist.startDate} + ' to ' + ${userlist.endDate}"></p>
+                                <p th:text="${userlist.orgName} + ', ' + ${{userlist.startDate}} + ' to ' + ${{userlist.endDate}}"></p>
                                 <p th:text="${userlist.duty}"></p>
                                 <br/>
                             </th:block>

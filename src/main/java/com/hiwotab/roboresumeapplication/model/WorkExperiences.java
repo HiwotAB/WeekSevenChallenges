@@ -13,33 +13,29 @@ import java.util.Date;
 
 @Entity
 public class WorkExperiences {
-    @NotNull
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @NotNull
-    @NotEmpty
+
     @Size(min=4)
     private String orgName;
-    @NotNull
-    @NotEmpty
+
     @Size(min=2)
     private String profName;
-    @NotNull
-    @NotEmpty
+
     @Size(min=1)
     private String ProfLevel;
-    @NotNull
-    @NotEmpty
+
     @Size(min=2)
     private String duty;
-    @NotNull
 
-    @DateTimeFormat(pattern = "MM/dd/YYYY")
+
+    @DateTimeFormat(pattern = "MM/dd/yyyy")
     private Date startDate;
-    @NotNull
 
-    @DateTimeFormat(pattern = "MM/dd/YYYY")
+
+    @DateTimeFormat(pattern = "MM/dd/yyyy")
     private Date endDate;
 
     public long getId() {

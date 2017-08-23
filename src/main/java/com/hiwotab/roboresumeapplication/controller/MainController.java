@@ -16,8 +16,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
-import java.util.regex.Pattern;
-
 @Controller
 public class MainController {
 
@@ -49,17 +47,19 @@ public class MainController {
 	        disable so that they cannot enter more than ten information*/
         model.addAttribute("rowNumber", resumeRepostory.count());
         model.addAttribute("newUser", new Resume());
-        model.addAttribute("disSubmit", resumeRepostory.count() >= 1);
+
         return "addUser";
     }
     /*This method is used to check the validation for each values has been entered and if it is valid data then it will save it to resume(user )table
     * also store and check  the record of the row number in data base table*/
     @PostMapping("/addUser")
-    public String addUserInfo(@Valid @ModelAttribute("newUser") Resume resume, Model model,BindingResult bindingResult){
-        model.addAttribute("rowNumber", resumeRepostory.count());
+    public String addUserInfo(@Valid @ModelAttribute("newUser") Resume resume, BindingResult bindingResult,Model model){
+
         if (bindingResult.hasErrors()) {
+
             return "addUser";
         }
+        model.addAttribute("disSubmit", resumeRepostory.count() >= 1);
         resumeRepostory.save(resume);
         return "dispUserInfo";
     }
@@ -88,7 +88,7 @@ public class MainController {
          /*Here we allow the user only has to enter 10 most recent education achivement information and
 	    if the user or person tries to enter more than 10 information then submit button will get
 	    disable so that they cannot enter more than ten information*/
-        model.addAttribute("disSubmit", eduAchievementsRepostory.count() >= 10);
+
         model.addAttribute("rowNumber", eduAchievementsRepostory.count());
         model.addAttribute("newEduInfo", new EduAchievements());
         return "addEduInfo";
@@ -103,6 +103,7 @@ public class MainController {
             model.addAttribute("rowNumber", eduAchievementsRepostory.count());
             return "addEduInfo";
         }
+        model.addAttribute("disSubmit", eduAchievementsRepostory.count() >= 10);
         eduAchievementsRepostory.save(eduAchievements);
         model.addAttribute("rowNumber", eduAchievementsRepostory.count());
         return "dispEduInfo";
@@ -135,7 +136,7 @@ public class MainController {
          /*Here we allow the user only has to enter 10 most recent work experiences information and
 	    if the user or person tries to enter more than 10 information then submit button will get
 	    disable so that they cannot enter more than ten information*/
-        model.addAttribute("disSubmit", workExperiencesRepostory.count() >= 10);
+
         model.addAttribute("rowNumber", workExperiencesRepostory.count());
         model.addAttribute("newWork", new WorkExperiences());
         return "addWorkExpInfo";
@@ -149,7 +150,7 @@ public class MainController {
         if (bindingResult.hasErrors()) {
             return "addWorkExpInfo";
         }
-
+        model.addAttribute("disSubmit", workExperiencesRepostory.count() >= 10);
         workExperiencesRepostory.save(workExperiences);
         model.addAttribute("rowNumber", workExperiencesRepostory.count());
         return "dispWorkExpInfo";
@@ -181,7 +182,7 @@ public class MainController {
         /*Here we allow the user only has to enter 20 skills information and
 	    if the user or person tries to enter more than 20 information then submit button will get
 	    disable so that they cannot enter more than ten information*/
-        model.addAttribute("disSubmit", skillsRepostory.count() >= 20);
+
         model.addAttribute("rowNumber", skillsRepostory.count());
         model.addAttribute("newSkill", new Skills());
         return "addSkillInfo";
@@ -195,7 +196,7 @@ public class MainController {
             model.addAttribute("rowNumber", skillsRepostory.count());
             return "addSkillInfo";
         }
-
+        model.addAttribute("disSubmit", skillsRepostory.count() >= 20);
         skillsRepostory.save(skills);
         model.addAttribute("rowNumber", skillsRepostory.count());
         return "dispSkillsInfo";

@@ -30,7 +30,7 @@
                                         <tr th:each="eduList : ${searchEdu}">
                                             <td th:text="${eduList.eduType}"></td>
                                             <td th:text="${eduList.uniName}" ></td>
-                                            <td th:text="${eduList.grdYear}"></td>
+                                            <td th:text="${{eduList.grdYear}}"></td>
                                             <td>
                                                 <a th:href="@{/updateEduInfo/{id}(id=${eduList.id})}">Update</a>-
                                                 <a th:href="@{/deleteEduInfo/{id}(id=${eduList.id})}">Delete</a>

@@ -11,15 +11,15 @@ import javax.validation.constraints.Size;
 
 @Entity
 public class Skills {
-    @NotNull
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @NotNull
+
     @NotEmpty
     @Size(min=1)
     private String skill;
-    @NotNull
+
     @NotEmpty
     @Size(min=2)
     private String rate;

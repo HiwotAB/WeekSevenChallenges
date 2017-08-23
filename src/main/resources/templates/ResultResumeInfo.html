@@ -71,7 +71,7 @@
                                             <tr th:each="userlist : ${searchUser.eduAchieve}">
                                                 <td th:text="${userlist.eduType}"></td>
                                                 <td th:text="${userlist.uniName}" ></td>
-                                                <td th:text="${userlist.grdYear}"></td>
+                                                <td th:text="${{userlist.grdYear}}"></td>
                                                 <td>
                                                     <a th:href="@{/updateEduInfo/{id}(id=${userlist.id})}">Update</a> -
                                                     <a th:href="@{/deleteEduInfo/{id}(id=${userlist.id})}">Delete</a>
@@ -131,12 +131,8 @@
                                                 <td th:text="${userlist.ProfLevel}" ></td>
                                                 <td th:text="${userlist.orgName}"></td>
                                                 <td th:text="${userlist.duty}"></td>
-
-                                                <!--<td th:text="${#dates.format(explist.startDate, 'MM/dd/YYYY')}"></td>
-                                                 <td th:text="${#dates.format(explist.endDate, 'MM/dd/YYYY')}"></td>-->
-
-                                                <td th:text="${userlist.startDate}"></td>
-                                                <td th:text="${userlist.endDate}"></td>
+                                                <td th:text="${{userlist.startDate}}"></td>
+                                                <td th:text="${{userlist.endDate}}"></td>
                                                 <td>
                                                     <a th:href="@{/updateExpInfo/{id}(id=${userlist.id})}">Update</a>-
                                                     <a th:href="@{/deleteExpInfo/{id}(id=${userlist.id})}">Delete</a>

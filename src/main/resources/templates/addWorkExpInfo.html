@@ -21,7 +21,7 @@
                                         <legend align="Center">Please Enter Your Work Experience Info.</legend>
                                         <input type="hidden" th:field="*{id}" />
                                         <!-- Text input-->
-                                        <div  th:if="${#fields.hasErrors('profName')}" th:errors="*{profName}" class="well alert alert-danger" role="alert">You Must enter a valid Professional Name!</div>
+                                        <div  th:if="${#fields.hasErrors('profName')}" th:errors="*{profName}" class="well alert alert-danger" role="alert"></div>
                                         <div class="form-group">
                                             <label class="col-md-4 control-label">Professional Name</label>
                                             <div class="col-md-4 inputGroupContainer">
@@ -32,7 +32,7 @@
                                             </div>
                                         </div>
                                         <!-- Text input-->
-                                        <div  th:if="${#fields.hasErrors('ProfLevel')}" th:errors="*{ProfLevel}" class="well alert alert-danger" role="alert">You Must enter a Professional Level!</div>
+                                        <div  th:if="${#fields.hasErrors('ProfLevel')}" th:errors="*{ProfLevel}" class="well alert alert-danger" role="alert"></div>
                                         <div class="form-group">
                                             <label class="col-md-4 control-label">Professional Level</label>
                                             <div class="col-md-4 inputGroupContainer">
@@ -43,7 +43,7 @@
                                             </div>
                                         </div>
                                         <!-- Text input-->
-                                        <div  th:if="${#fields.hasErrors('orgName')}" th:errors="*{orgName}" class="well alert alert-danger" role="alert">You Must enter a valid Organization Name!</div>
+                                        <div  th:if="${#fields.hasErrors('orgName')}" th:errors="*{orgName}" class="well alert alert-danger" role="alert"></div>
                                         <div class="form-group">
                                             <label class="col-md-4 control-label">Organization Name </label>
                                             <div class="col-md-4 inputGroupContainer">
@@ -54,7 +54,7 @@
                                             </div>
                                         </div>
                                         <!-- Text input-->
-                                        <div  th:if="${#fields.hasErrors('duty')}" th:errors="*{duty}" class="well alert alert-danger" role="alert">You Must enter a valid Duty you have!</div>
+                                        <div  th:if="${#fields.hasErrors('duty')}" th:errors="*{duty}" class="well alert alert-danger" role="alert"></div>
                                         <div class="form-group">
                                             <label class="col-md-4 control-label">Duty</label>
                                             <div class="col-md-4 inputGroupContainer">
@@ -65,7 +65,7 @@
                                             </div>
                                         </div>
                                         <!-- Text input-->
-                                        <div  th:if="${#fields.hasErrors('startDate')}" th:errors="*{startDate}" class="well alert alert-danger" role="alert">Invalid date format and its format like: MM/dd/YYYY</div>
+                                        <div  th:if="${#fields.hasErrors('startDate')}" th:errors="*{startDate}" class="well alert alert-danger" role="alert"></div>
                                         <div class="form-group">
                                             <label class="col-md-4 control-label">Start Date</label>
                                             <div class="col-md-4 inputGroupContainer">
@@ -76,7 +76,7 @@
                                             </div>
                                         </div>
                                         <!-- Text input-->
-                                        <div  th:if="${#fields.hasErrors('endDate')}" th:errors="*{endDate}" class="well alert alert-danger" role="alert">Invalid date format and its format like: MM/dd/YYYY</div>
+                                        <div  th:if="${#fields.hasErrors('endDate')}" th:errors="*{endDate}" class="well alert alert-danger" role="alert"></div>
                                         <div class="form-group">
                                             <label class="col-md-4 control-label">End Date</label>
                                             <div class="col-md-4 inputGroupContainer">
