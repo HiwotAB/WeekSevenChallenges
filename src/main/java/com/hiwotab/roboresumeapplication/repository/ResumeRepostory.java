@@ -5,7 +5,5 @@ import org.springframework.data.repository.CrudRepository;
 
 
 public interface ResumeRepostory extends CrudRepository<Resume,Long> {
-
-
 }
 

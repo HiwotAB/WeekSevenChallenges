@@ -22,15 +22,8 @@
             <div class="panel-group" id="accordion">
                 <div class="panel panel-default active">
                     <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                                <i class="fa fa-caret-right"></i> <caption> <h4><b>Education Achievement</b></h4></caption>
-                            </a>
-                        </h4>
+                       <i class="fa fa-caret-right"></i> <caption> <h4><b>Education Achievement</b></h4></caption>
                     </div>
-                    <div id="collapseOne" class="panel-collapse collapse in">
-                        <div class="panel-body">
-
                             <hr/>
                             <th:block th:each="userlist : ${searchUser.eduAchieve}">
                                 <p th:text="${userlist.eduType}"></p>
@@ -38,19 +31,13 @@
                                 <br/>
                             </th:block>
                             <br/>
-                        </div>
-                    </div>
+
                 </div>
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-                                <i class="fa fa-caret-right"></i> <caption> <h4><b>Work Experience</b></h4></caption>
-                            </a>
-                        </h4>
+                         <i class="fa fa-caret-right"></i> <caption> <h4><b>Work Experience</b></h4></caption>
+
                     </div>
-                    <div id="collapseTwo" class="panel-collapse collapse">
-                        <div class="panel-body">
                             <hr/>
                             <th:block th:each="userlist : ${searchUser.workExp}">
                                 <p  th:text="${userlist.profName}+ ' ' + ${userlist.ProfLevel}"></p>
@@ -59,32 +46,23 @@
                                 <br/>
                             </th:block>
                             <br/>
-                        </div>
-                    </div>
+
                 </div>
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
                                 <i class="fa fa-caret-right"></i> <caption> <h4><b>Skills</b></h4></caption>
-                            </a>
-                        </h4>
-                    </div>
-                    <div id="collapseThree" class="panel-collapse collapse">
-                        <div class="panel-body">
+                     </div>
                             <hr/>
                             <th:block th:each="userlist : ${searchUser.skils}">
                                 <p th:text="${userlist.skill} + ', ' + ${userlist.rate}"></p>
                                 <br/>
                             </th:block>
                             <br/>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
 </header>
-<div th:replace="base :: javaScript"></div>
+<!--<div th:replace="base :: javaScript"></div>-->
 </body>
 </html>

@@ -19,11 +19,11 @@ public class EduAchievements {
     private long id;
 
     @NotEmpty
-    @Size(min=4)
+    @Size(min=2,max=100)
     private String eduType;
 
     @NotEmpty
-    @Size(min=4)
+    @Size(min=2,max=50)
     private String uniName;
 
     @NotNull

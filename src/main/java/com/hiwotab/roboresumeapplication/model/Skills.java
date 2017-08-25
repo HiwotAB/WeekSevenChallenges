@@ -17,11 +17,11 @@ public class Skills {
     private long id;
 
     @NotEmpty
-    @Size(min=1)
+    @Size(min=1,max=50)
     private String skill;
 
     @NotEmpty
-    @Size(min=2)
+    @Size(min=1,max=30)
     private String rate;
 
     public long getId() {

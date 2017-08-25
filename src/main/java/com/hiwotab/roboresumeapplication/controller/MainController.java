@@ -28,10 +28,17 @@ public class MainController {
     @Autowired
     SkillsRepostory skillsRepostory;
     /*******************************home Page and default home page*************************************************/
-    @GetMapping("/")
+
+    @RequestMapping("/")
     public String showHomePages() {
         return "index";
     }
+
+    @RequestMapping("/login")
+    public String login() {
+        return "login";
+    }
+
     @GetMapping("/homePage")
     public String showHomePage() {
         return "index";
@@ -45,6 +52,7 @@ public class MainController {
         /*Here as we consider that we have only one person information so if more than one person tries
 	       to enter his if then the submit button will get
 	        disable so that they cannot enter more than ten information*/
+        model.addAttribute("disSubmit", resumeRepostory.count() >= 1);
         model.addAttribute("rowNumber", resumeRepostory.count());
         model.addAttribute("newUser", new Resume());
 
@@ -59,7 +67,6 @@ public class MainController {
 
             return "addUser";
         }
-        model.addAttribute("disSubmit", resumeRepostory.count() >= 1);
         resumeRepostory.save(resume);
         return "dispUserInfo";
     }
@@ -88,7 +95,7 @@ public class MainController {
          /*Here we allow the user only has to enter 10 most recent education achivement information and
 	    if the user or person tries to enter more than 10 information then submit button will get
 	    disable so that they cannot enter more than ten information*/
-
+        model.addAttribute("disSubmit", eduAchievementsRepostory.count() >= 10);
         model.addAttribute("rowNumber", eduAchievementsRepostory.count());
         model.addAttribute("newEduInfo", new EduAchievements());
         return "addEduInfo";
@@ -97,13 +104,14 @@ public class MainController {
     /*This method is used to check the validation for each values has been entered and if it is valid data then it will save it to data base table
    * also store and check  the record of the rows in data base table*/
     @PostMapping("/addEduInfo")
-    public String addEducationInfo(@Valid @ModelAttribute("newEduInfo") EduAchievements eduAchievements,Model model, BindingResult bindingResult) {
+    public String addEducationInfo(@Valid @ModelAttribute("newEduInfo") EduAchievements eduAchievements,BindingResult bindingResult,Model model) {
+
         if (bindingResult.hasErrors()) {
             // expect at least one educational info
             model.addAttribute("rowNumber", eduAchievementsRepostory.count());
             return "addEduInfo";
         }
-        model.addAttribute("disSubmit", eduAchievementsRepostory.count() >= 10);
+
         eduAchievementsRepostory.save(eduAchievements);
         model.addAttribute("rowNumber", eduAchievementsRepostory.count());
         return "dispEduInfo";
@@ -136,7 +144,7 @@ public class MainController {
          /*Here we allow the user only has to enter 10 most recent work experiences information and
 	    if the user or person tries to enter more than 10 information then submit button will get
 	    disable so that they cannot enter more than ten information*/
-
+        model.addAttribute("disSubmit", workExperiencesRepostory.count() >= 10);
         model.addAttribute("rowNumber", workExperiencesRepostory.count());
         model.addAttribute("newWork", new WorkExperiences());
         return "addWorkExpInfo";
@@ -150,7 +158,7 @@ public class MainController {
         if (bindingResult.hasErrors()) {
             return "addWorkExpInfo";
         }
-        model.addAttribute("disSubmit", workExperiencesRepostory.count() >= 10);
+
         workExperiencesRepostory.save(workExperiences);
         model.addAttribute("rowNumber", workExperiencesRepostory.count());
         return "dispWorkExpInfo";
@@ -182,7 +190,7 @@ public class MainController {
         /*Here we allow the user only has to enter 20 skills information and
 	    if the user or person tries to enter more than 20 information then submit button will get
 	    disable so that they cannot enter more than ten information*/
-
+        model.addAttribute("disSubmit", skillsRepostory.count() >= 20);
         model.addAttribute("rowNumber", skillsRepostory.count());
         model.addAttribute("newSkill", new Skills());
         return "addSkillInfo";
@@ -190,13 +198,13 @@ public class MainController {
     /*This method is used to check the validation for each values has been entered and if it is valid data then it will save it to data base table
      * also store and check  the record of the rows in data base table*/
     @PostMapping("/addSkillInfo")
-    public String addSkilsInfo(@Valid @ModelAttribute("newSkill") Skills skills, Model model,BindingResult bindingResult) {
+    public String addSkilsInfo(@Valid @ModelAttribute("newSkill") Skills skills,BindingResult bindingResult, Model model) {
 
         if (bindingResult.hasErrors()) {
             model.addAttribute("rowNumber", skillsRepostory.count());
             return "addSkillInfo";
         }
-        model.addAttribute("disSubmit", skillsRepostory.count() >= 20);
+
         skillsRepostory.save(skills);
         model.addAttribute("rowNumber", skillsRepostory.count());
         return "dispSkillsInfo";

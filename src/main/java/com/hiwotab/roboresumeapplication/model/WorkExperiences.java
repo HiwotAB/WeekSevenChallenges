@@ -17,25 +17,13 @@ public class WorkExperiences {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-
-    @Size(min=4)
     private String orgName;
-
-    @Size(min=2)
     private String profName;
-
-    @Size(min=1)
     private String ProfLevel;
-
-    @Size(min=2)
     private String duty;
-
-
-    @DateTimeFormat(pattern = "MM/dd/yyyy")
+    @DateTimeFormat(pattern ="MMM,yyyy")
     private Date startDate;
-
-
-    @DateTimeFormat(pattern = "MM/dd/yyyy")
+    @DateTimeFormat(pattern ="MMM,yyyy")
     private Date endDate;
 
     public long getId() {
