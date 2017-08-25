@@ -1,8 +1,8 @@
 html { height: 100% }
 
 .login {
-    background: #218080;
-    border: 2px solid #436361;
+    background: rgba(162, 157, 61, 0.7);
+    border: 2px solid rgba(83, 121, 50, 0.73);
     border-radius: 6px;
     height: 350px;
     margin: 20px auto 0;
@@ -10,25 +10,25 @@ html { height: 100% }
 }
 .login h1 {
     background-image: linear-gradient(top, #129898, #d4dae0);
-    border-bottom: 2px solid #4da29b;
+    border-bottom: 2px solid #5c8e13;
     border-radius: 6px 6px 0 0;
     box-sizing: border-box;
-    color: #a2adb3;
+    color: rgba(153, 167, 59, 0.98);
     display: block;
     height: 80px;
     font: 600 px/1 'Open Sans', sans-serif;
     padding-top: 14px;
     margin: 0;
     text-align: center;
-    text-shadow: 0 -2px 0 rgba(0,0,0,0.2), 0 2px 0 #f1f3f3;
+    text-shadow: 0 -2px 0 #5c8e13, 0 2px 0 #b5cac8;
 }
 input[type="password"], input[type="text"] {
     background: url('http://i.minus.com/ibhqW9Buanohx2.png') center left no-repeat, linear-gradient(top, #d6d7d7, #dee0e0);
-    border: 2px solid #157171;
+    border: 2px solid rgba(52, 142, 31, 0.9);
     border-radius: 4px;
-    box-shadow: 0 1px #b5cac8;
+    box-shadow: 0 1px rgba(189, 226, 47, 0.73);
     box-sizing: border-box;
-    color: #31524d;
+    color: #0d5825;
     height: 39px;
     margin: 31px 0 0 29px;
     padding-left: 37px;
@@ -82,25 +82,25 @@ input[type="submit"] {
     height:35px;
     display:block;
     font-family:Arial, "Helvetica", sans-serif;
-    font-size:20px;
+    font-size: 26px;
     font-weight:bold;
-    color:#4b5a5a;
+    color: #0d5825;
     text-decoration:none;
     text-transform:uppercase;
     text-align:center;
-    text-shadow:2px 2px 0px #a1a3a3;
+    text-shadow: 2px 2px 0px #a1a3a1;
     padding-top:6px;
     margin: 29px 0 0 29px;
     position:relative;
     cursor:pointer;
     border: none;
-    background-color: #37a69b;
+    background-color: rgba(130, 123, 29, 0.84);
     background-image: linear-gradient(top,#2b5855,#3111);
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
     border-bottom-left-radius:5px;
-    box-shadow: inset 0px 1px 0px #146760, 0px 5px 0px 0px #497a78, 0px 10px 5px #999;
+    box-shadow: inset 0px 1px 0px #295611, 0px 5px 0px 0px #497a78, 0px 10px 5px #999;
 }
 
 .shadow {

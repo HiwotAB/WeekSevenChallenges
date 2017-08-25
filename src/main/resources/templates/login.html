@@ -5,11 +5,12 @@
         <meta charset="UTF-8"/>
         <title>Login Page</title>
         <link rel="stylesheet" href="../css/login.css"/>
-
+        <link rel="stylesheet" href="../css/forms.css"/>
 
     </head>
     <body>
-
+    <header id="top" class="header">
+        <div class="text-vertical-center">
        <div th:if="${param.error}">
             Invalid Username and Password!
         </div>
@@ -25,6 +26,8 @@
             </form>
         </div>
         <div class="shadow"></div>
+        </div>
+    </header>
     </body>
 
 </html>
