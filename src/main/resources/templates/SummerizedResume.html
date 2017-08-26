@@ -19,50 +19,51 @@
                     </div>
                 </div>
             </div>
-            <div class="panel-group" id="accordion">
-                <div class="panel panel-default active">
-                    <div class="panel-heading">
-                       <i class="fa fa-caret-right"></i> <caption> <h4><b>Education Achievement</b></h4></caption>
-                    </div>
-                            <hr/>
-                            <th:block th:each="userlist : ${searchUser.eduAchieve}">
-                                <p th:text="${userlist.eduType}"></p>
-                                <p th:text="${userlist.uniName} +', ' + ${{userlist.grdYear}}"></p>
-                                <br/>
-                            </th:block>
-                            <br/>
 
+            <div class="panel panel-default active">
+                <div class="panel-heading">
+                    <i class="fa fa-caret-right"></i> <caption> <h4><b>Education Achievement</b></h4></caption>
                 </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                         <i class="fa fa-caret-right"></i> <caption> <h4><b>Work Experience</b></h4></caption>
+                <hr/>
+                    <th:block th:each="userlist : ${searchUser.eduAchieve}">
+                        <p th:text="${userlist.eduType}"></p>
+                        <p th:text="${userlist.uniName} +', ' + ${{userlist.grdYear}}"></p>
+                        <br/>
+                    </th:block>
+                    <br/>
 
-                    </div>
-                            <hr/>
-                            <th:block th:each="userlist : ${searchUser.workExp}">
-                                <p  th:text="${userlist.profName}+ ' ' + ${userlist.ProfLevel}"></p>
-                                <p th:text="${userlist.orgName} + ', ' + ${{userlist.startDate}} + ' to ' + ${{userlist.endDate}}"></p>
-                                <p th:text="${userlist.duty}"></p>
-                                <br/>
-                            </th:block>
-                            <br/>
-
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                                <i class="fa fa-caret-right"></i> <caption> <h4><b>Skills</b></h4></caption>
-                     </div>
-                            <hr/>
-                            <th:block th:each="userlist : ${searchUser.skils}">
-                                <p th:text="${userlist.skill} + ', ' + ${userlist.rate}"></p>
-                                <br/>
-                            </th:block>
-                            <br/>
-                </div>
             </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-caret-right"></i> <caption> <h4><b>Work Experience</b></h4></caption>
+
+                </div>
+                <hr/>
+                <th:block th:each="userlist : ${searchUser.workExp}">
+                    <p  th:text="${userlist.profName}+ ' ' + ${userlist.ProfLevel}"></p>
+                    <p th:text="${userlist.orgName} + ', ' + ${{userlist.startDate}} + ' to ' + ${{userlist.endDate}}"></p>
+                    <p th:text="${userlist.duty}"></p>
+                    <br/>
+                </th:block>
+                <br/>
+
+            </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-caret-right"></i> <caption> <h4><b>Skills</b></h4></caption>
+                    </div>
+                    <hr/>
+                    <th:block th:each="userlist : ${searchUser.skils}">
+                        <p th:text="${userlist.skill} + ', ' + ${userlist.rate}"></p>
+                        <br/>
+                    </th:block>
+                    <br/>
+                </div>
+
         </div>
     </div>
 </header>
 <!--<div th:replace="base :: javaScript"></div>-->
+<div th:replace="base :: footer"></div>
 </body>
 </html>

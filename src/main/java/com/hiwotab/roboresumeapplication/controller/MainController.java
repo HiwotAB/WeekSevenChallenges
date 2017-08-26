@@ -9,11 +9,15 @@ import com.hiwotab.roboresumeapplication.repository.ResumeRepostory;
 import com.hiwotab.roboresumeapplication.repository.SkillsRepostory;
 import com.hiwotab.roboresumeapplication.repository.WorkExperiencesRepostory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.util.ArrayList;
 @Controller
@@ -232,6 +236,7 @@ public class MainController {
     /*******************************Result Info***************************************************************/
     @GetMapping("/ResultResumeInfo")
     public String listAllResumeInfo(Model model) {
+
         Resume resume=resumeRepostory.findOne(new Long(1));
 
         ArrayList<EduAchievements> eduAchievementsArrayList=(ArrayList<EduAchievements>)eduAchievementsRepostory.findAll();
@@ -267,6 +272,15 @@ public class MainController {
         model.addAttribute("searchUser", resume);
 
         return "SummerizedResume";
+    }
+
+    @GetMapping("/logout")
+    public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null){
+            new SecurityContextLogoutHandler().logout(request, response, auth);
+        }
+        return "redirect:/login";
     }
     /**
      * Checks the param date is in 'yyyy-MM-dd' format
