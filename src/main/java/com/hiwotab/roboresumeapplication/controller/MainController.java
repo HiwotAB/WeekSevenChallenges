@@ -153,7 +153,7 @@ public class MainController {
     /*This method is used to check the validation for each values has been entered and if it is valid data then it will save it to data base table
     * also store and check  the record of the rows in data base table*/
     @PostMapping("/addWorkExpInfo")
-    public String addWorkExpiInfo(@Valid @ModelAttribute("newWork") WorkExperiences workExperiences,Model model, BindingResult bindingResult) {
+    public String addWorkExpiInfo(@Valid @ModelAttribute("newWork") WorkExperiences workExperiences,BindingResult bindingResult,Model model) {
 
         if (bindingResult.hasErrors()) {
             return "addWorkExpInfo";
