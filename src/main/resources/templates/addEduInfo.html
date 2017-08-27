@@ -56,7 +56,7 @@
                                             <div class="col-md-4 inputGroupContainer">
                                                 <div class="input-group">
                                                     <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
-                                                    <input  th:field="*{grdYear}" name="grdYear" placeholder="Enter Year Graduate" class="form-control" type="text">
+                                                    <input  th:field="*{grdYear}" name="grdYear" placeholder="Enter Year Graduate yyyy" class="form-control" type="text">
                                                 </div>
                                             </div>
                                         </div>
@@ -65,7 +65,7 @@
                                         <div class="form-group">
                                             <label class="col-md-4 control-label"></label>
                                             <div class="col-md-4">
-                                                <input th:disabled="${disSubmit}" class="btn btn-success" type="submit" value="Submit">
+                                                <input th:disabled="${disSubmit}" class="btn btn-success"  type="submit" value="Submit">
                                                 <!--<button type="submit" class="btn btn-success" >Submit<span class="glyphicon glyphicon-save" ></span></button>-->
                                                 <button type="reset" class="btn btn-warning">Reset</button>
                                             </div>
