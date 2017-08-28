@@ -1,11 +1,11 @@
 
-    /*!
-     * Start Bootstrap - Stylish Portfolio (http://startbootstrap.com/)
-     * Copyright 2013-2016 Start Bootstrap
-     * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
-     */
+/*!
+ * Start Bootstrap - Stylish Portfolio (http://startbootstrap.com/)
+ * Copyright 2013-2016 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
+ */
 
-    /* Global Styles */
+/* Global Styles */
 
 html,
 body {
@@ -34,8 +34,8 @@ body {
 
 .btn-dark {
     border-radius: 0;
-    color: #fff;
-    background-color: rgba(0,0,0,0.4);
+    color: #0e0d0d;
+    background-color: rgba(138, 156, 19, 0.02);
 }
 
 .btn-dark:hover,
