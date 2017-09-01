@@ -31,7 +31,7 @@ public class MainController {
     WorkExperiencesRepostory workExperiencesRepostory;
     @Autowired
     SkillsRepostory skillsRepostory;
-    /*******************************home Page and default home page*************************************************/
+    /*******************************home Page , default home page and Login***********************************************/
 
     @RequestMapping("/")
     public String showHomePages() {
@@ -52,14 +52,7 @@ public class MainController {
 /*This method is used to dispaly a form of person info for a user to enter values*/
     @GetMapping("/addUser")
     public String addUserInfo(Model model) {
-
-        /*Here as we consider that we have only one person information so if more than one person tries
-	       to enter his if then the submit button will get
-	        disable so that they cannot enter more than ten information*/
-        model.addAttribute("disSubmit", resumeRepostory.count() >= 1);
-        model.addAttribute("rowNumber", resumeRepostory.count());
         model.addAttribute("newUser", new Resume());
-
         return "addUser";
     }
     /*This method is used to check the validation for each values has been entered and if it is valid data then it will save it to resume(user )table
@@ -99,23 +92,25 @@ public class MainController {
          /*Here we allow the user only has to enter 10 most recent education achivement information and
 	    if the user or person tries to enter more than 10 information then submit button will get
 	    disable so that they cannot enter more than ten information*/
+        EduAchievements eduAchievements=new EduAchievements();
+        model.addAttribute("allUser", resumeRepostory.findAll());
         model.addAttribute("disSubmit", eduAchievementsRepostory.count() >= 10);
         model.addAttribute("rowNumber", eduAchievementsRepostory.count());
-        model.addAttribute("newEduInfo", new EduAchievements());
+        model.addAttribute("newEduInfo", eduAchievements);
         return "addEduInfo";
     }
 
     /*This method is used to check the validation for each values has been entered and if it is valid data then it will save it to data base table
    * also store and check  the record of the rows in data base table*/
     @PostMapping("/addEduInfo")
-    public String addEducationInfo(@Valid @ModelAttribute("newEduInfo") EduAchievements eduAchievements,BindingResult bindingResult,Model model) {
+    public String addEducationInfo(@Valid @ModelAttribute("newEduInfo") EduAchievements eduAchievements,BindingResult bindingResult,@RequestParam("resumes") long resume_id,Model model) {
 
         if (bindingResult.hasErrors()) {
             // expect at least one educational info
             model.addAttribute("rowNumber", eduAchievementsRepostory.count());
             return "addEduInfo";
         }
-
+        eduAchievements.setResume(resumeRepostory.findOne(resume_id));
         eduAchievementsRepostory.save(eduAchievements);
         model.addAttribute("rowNumber", eduAchievementsRepostory.count());
         return "dispEduInfo";
@@ -125,9 +120,13 @@ public class MainController {
     /*This method is used to modify the existing in forms then update data bas tables according to there modify fields */
     @RequestMapping("/updateEduInfo/{id}")
     public String updateEduInfo(@PathVariable("id") long id, Model model){
+        model.addAttribute("allUser",resumeRepostory.findOne(id));
         model.addAttribute("newEduInfo", eduAchievementsRepostory.findOne(id));
         return "addEduInfo";
     }
+
+
+
     /*This method is used to delete the existing data  records from data base table and dispaly the rest of data which has been there*/
     @RequestMapping("/deleteEduInfo/{id}")
     public String delEduInfo(@PathVariable("id") long id){
@@ -145,24 +144,28 @@ public class MainController {
     /*This method is used to dispaly a form of  work Experiences to person to enter values*/
     @GetMapping("/addWorkExpInfo")
     public String addWorkExpiInfo(Model model) {
-         /*Here we allow the user only has to enter 10 most recent work experiences information and
+          /*Here we allow the user only has to enter 10 most recent work experience information and
 	    if the user or person tries to enter more than 10 information then submit button will get
 	    disable so that they cannot enter more than ten information*/
+        WorkExperiences workExperiences=new WorkExperiences();
+//        workExperiences.setResume(resumeRepostory.findOne(id));
+        model.addAttribute("allUser", resumeRepostory.findAll());
         model.addAttribute("disSubmit", workExperiencesRepostory.count() >= 10);
         model.addAttribute("rowNumber", workExperiencesRepostory.count());
-        model.addAttribute("newWork", new WorkExperiences());
+        model.addAttribute("newWork",workExperiences);
         return "addWorkExpInfo";
     }
 
     /*This method is used to check the validation for each values has been entered and if it is valid data then it will save it to data base table
     * also store and check  the record of the rows in data base table*/
     @PostMapping("/addWorkExpInfo")
-    public String addWorkExpiInfo(@Valid @ModelAttribute("newWork") WorkExperiences workExperiences,BindingResult bindingResult,Model model) {
+    public String addWorkExpiInfo(@Valid @ModelAttribute("newWork") WorkExperiences workExperiences,BindingResult bindingResult,@RequestParam("resumes") long resume_id,Model model) {
 
         if (bindingResult.hasErrors()) {
             return "addWorkExpInfo";
         }
 
+        workExperiences.setResume(resumeRepostory.findOne(resume_id));
         workExperiencesRepostory.save(workExperiences);
         model.addAttribute("rowNumber", workExperiencesRepostory.count());
         return "dispWorkExpInfo";
@@ -170,6 +173,7 @@ public class MainController {
     /*This method is used to modify the existing in forms then update data bas tables according to there modify fields */
     @RequestMapping("/updateExpInfo/{id}")
     public String updateWorkExp(@PathVariable("id") long id, Model model){
+        model.addAttribute("allUser",resumeRepostory.findOne(id));
         model.addAttribute("newWork", workExperiencesRepostory.findOne(id));
         return "addWorkExpInfo";
     }
@@ -194,21 +198,24 @@ public class MainController {
         /*Here we allow the user only has to enter 20 skills information and
 	    if the user or person tries to enter more than 20 information then submit button will get
 	    disable so that they cannot enter more than ten information*/
+        Skills skills=new Skills();
+//        skills.setResume(resumeRepostory.findOne(id));
+        model.addAttribute("allUser", resumeRepostory.findAll());
         model.addAttribute("disSubmit", skillsRepostory.count() >= 20);
         model.addAttribute("rowNumber", skillsRepostory.count());
-        model.addAttribute("newSkill", new Skills());
+        model.addAttribute("newSkill", skills);
         return "addSkillInfo";
     }
     /*This method is used to check the validation for each values has been entered and if it is valid data then it will save it to data base table
      * also store and check  the record of the rows in data base table*/
     @PostMapping("/addSkillInfo")
-    public String addSkilsInfo(@Valid @ModelAttribute("newSkill") Skills skills,BindingResult bindingResult, Model model) {
+    public String addSkilsInfo(@Valid @ModelAttribute("newSkill") Skills skills,BindingResult bindingResult, @RequestParam("resumes") long resume_id,Model model) {
 
         if (bindingResult.hasErrors()) {
             model.addAttribute("rowNumber", skillsRepostory.count());
             return "addSkillInfo";
         }
-
+        skills.setResume(resumeRepostory.findOne(resume_id));
         skillsRepostory.save(skills);
         model.addAttribute("rowNumber", skillsRepostory.count());
         return "dispSkillsInfo";
@@ -217,6 +224,7 @@ public class MainController {
     /*This method is used to modify the existing in forms then update data bas tables according to there modify fields */
     @RequestMapping("/updateSkillInfo/{id}")
     public String updateSkillInfo(@PathVariable("id") long id, Model model){
+        model.addAttribute("allUser",resumeRepostory.findOne(id));
         model.addAttribute("newSkill", skillsRepostory.findOne(id));
         return "addSkillInfo";
     }
@@ -234,43 +242,45 @@ public class MainController {
     }
     /***************************************************************************************************/
     /*******************************Result Info***************************************************************/
-    @GetMapping("/ResultResumeInfo")
-    public String listAllResumeInfo(Model model) {
-
-        Resume resume=resumeRepostory.findOne(new Long(1));
-
-        ArrayList<EduAchievements> eduAchievementsArrayList=(ArrayList<EduAchievements>)eduAchievementsRepostory.findAll();
-        resume.setEduAchieve(eduAchievementsArrayList);
-
-        ArrayList<Skills>skillsArrayList=(ArrayList<Skills>)skillsRepostory.findAll();
-        resume.setSkils(skillsArrayList);
-
-        ArrayList<WorkExperiences>workExperiencesArrayList=(ArrayList<WorkExperiences>) workExperiencesRepostory.findAll();
-        resume.setWorkExp(workExperiencesArrayList);
-
-        model.addAttribute("searchUser", resume);
-        //model.addAttribute("searchEdu",  eduAchievementsArrayList);
-        //model.addAttribute("searchSkil", skillsArrayList);
-        // model.addAttribute("searchWork", workExperiencesArrayList);
+//    @GetMapping("/ResultResumeInfo")
+//    public String listAllResumeInfo(Model model) {
+//
+////        Resume resume=resumeRepostory.findOne(new Long(1));
+////
+////        ArrayList<EduAchievements> eduAchievementsArrayList=(ArrayList<EduAchievements>)eduAchievementsRepostory.findAll();
+////        resume.setEduAchieve(eduAchievementsArrayList);
+////
+////        ArrayList<Skills>skillsArrayList=(ArrayList<Skills>)skillsRepostory.findAll();
+////        resume.setSkils(skillsArrayList);
+////
+////        ArrayList<WorkExperiences>workExperiencesArrayList=(ArrayList<WorkExperiences>) workExperiencesRepostory.findAll();
+////        resume.setWorkExp(workExperiencesArrayList);
+////
+////        model.addAttribute("searchUser", resume);
+////        //model.addAttribute("searchEdu",  eduAchievementsArrayList);
+////        //model.addAttribute("searchSkil", skillsArrayList);
+////        // model.addAttribute("searchWork", workExperiencesArrayList);
+//        return "ResultResumeInfo";
+//
+//    }
+    @RequestMapping("/EditResumedetail/{id}")
+    public String viewResume(@PathVariable("id") long id, Model model) {
+        Resume resumeR=resumeRepostory.findOne(id);
+        model.addAttribute("resumeR", resumeR);
+        model.addAttribute("listEdu",eduAchievementsRepostory.findByResume(resumeR));
+        model.addAttribute("listSkill",skillsRepostory.findByResume(resumeR));
+        model.addAttribute("listExps",workExperiencesRepostory.findByResume(resumeR));
         return "ResultResumeInfo";
-
     }
+
     /*******************************************************************************************/
-    @GetMapping("/SummerizedResume")
-    public String summary(Model model) {
-        Resume resume=resumeRepostory.findOne(new Long(1));
-
-        ArrayList<EduAchievements> eduAchievementsArrayList=(ArrayList<EduAchievements>)eduAchievementsRepostory.findAll();
-        resume.setEduAchieve(eduAchievementsArrayList);
-
-        ArrayList<Skills>skillsArrayList=(ArrayList<Skills>)skillsRepostory.findAll();
-        resume.setSkils(skillsArrayList);
-
-        ArrayList<WorkExperiences>workExperiencesArrayList=(ArrayList<WorkExperiences>) workExperiencesRepostory.findAll();
-        resume.setWorkExp(workExperiencesArrayList);
-
-        model.addAttribute("searchUser", resume);
-
+    @GetMapping("/SummerizedResume/{id}")
+    public String summary(@PathVariable("id") long id,Model model) {
+        Resume resumeR=resumeRepostory.findOne(id);
+        model.addAttribute("resumeR", resumeR);
+        model.addAttribute("listEdu",eduAchievementsRepostory.findByResume(resumeR));
+        model.addAttribute("listSkill",skillsRepostory.findByResume(resumeR));
+        model.addAttribute("listExp",workExperiencesRepostory.findByResume(resumeR));
         return "SummerizedResume";
     }
 
@@ -282,16 +292,6 @@ public class MainController {
         }
         return "redirect:/login";
     }
-    /**
-     * Checks the param date is in 'yyyy-MM-dd' format
-     * @param _date the date to be validated
-     * @return returns true if _date is in 'yyyy-MM-dd' format, false otherwise
-     */
-    /*public static boolean validateDate(String _date) {
 
-        String pattern = "([0-9]{4})\\-((0[1-9]|1[0-3])\\-([0-2][0-9]|30))|((13)\\-(0[0-6]))";
-        return Pattern.matches(pattern, (CharSequence) _date);
-
-    }*/
 
 }

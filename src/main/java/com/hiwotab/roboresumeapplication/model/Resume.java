@@ -2,13 +2,12 @@ package com.hiwotab.roboresumeapplication.model;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Resume {
@@ -29,11 +28,44 @@ public class Resume {
     @Email
     private String email;
 
-    public ArrayList<EduAchievements> eduAchieve;
+    @OneToMany(mappedBy = "resume",cascade= CascadeType.ALL,fetch=FetchType.EAGER)
+    public Set<EduAchievements> eduAchievementsSet;
 
-    private  ArrayList<WorkExperiences>  workExp;
+    @OneToMany(mappedBy = "resume",cascade= CascadeType.ALL,fetch=FetchType.EAGER)
+    public Set<Skills> skillsSet;
 
-    private ArrayList<Skills> skils;
+    @OneToMany(mappedBy = "resume",cascade= CascadeType.ALL,fetch=FetchType.EAGER)
+    public Set<WorkExperiences> workExperiencesSet;
+
+    //constructor for resume and  initialize an empty set of education, skill and exp
+    public Resume(){
+        this.eduAchievementsSet= new HashSet<EduAchievements>();
+        this.skillsSet=new HashSet<Skills>();
+        this.workExperiencesSet=new HashSet<WorkExperiences>();
+    }
+    public Set<EduAchievements> getEduAchievementsSet() {
+        return eduAchievementsSet;
+    }
+
+    public void setEduAchievementsSet(Set<EduAchievements> eduAchievementsSet) {
+        this.eduAchievementsSet = eduAchievementsSet;
+    }
+
+    public Set<Skills> getSkillsSet() {
+        return skillsSet;
+    }
+
+    public void setSkillsSet(Set<Skills> skillsSet) {
+        this.skillsSet = skillsSet;
+    }
+
+    public Set<WorkExperiences> getWorkExperiencesSet() {
+        return workExperiencesSet;
+    }
+
+    public void setWorkExperiencesSet(Set<WorkExperiences> workExperiencesSet) {
+        this.workExperiencesSet = workExperiencesSet;
+    }
 
     public long getId() {
         return id;
@@ -65,26 +97,17 @@ public class Resume {
         this.email = email;
     }
 
-    public ArrayList<EduAchievements> getEduAchieve() {
-        return eduAchieve;
+    public void addEduAchievements(EduAchievements eduAchievements){
+        eduAchievements.setResume(this);
+        this.eduAchievementsSet.add(eduAchievements);
     }
-    public void setEduAchieve(ArrayList<EduAchievements> eduAchieve) {
-        this.eduAchieve = eduAchieve;
+    public void addSkills(Skills skills){
+        skills.setResume(this);
+        this.skillsSet.add(skills);
     }
-
-    public ArrayList<WorkExperiences> getWorkExp() {
-        return workExp;
-    }
-
-    public void setWorkExp(ArrayList<WorkExperiences> workExp) {
-        this.workExp = workExp;
+    public void addWorkExperiences(WorkExperiences workExperiences){
+        workExperiences.setResume(this);
+        this.workExperiencesSet.add(workExperiences);
     }
 
-    public ArrayList<Skills> getSkils() {
-        return skils;
-    }
-
-    public void setSkils(ArrayList<Skills> skils) {
-        this.skils = skils;
-    }
 }

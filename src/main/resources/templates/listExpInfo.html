@@ -20,6 +20,7 @@
                                         <caption class="sr-only">Your Work Experience Information</caption>
                                         <thead>
                                         <tr>
+                                            <th id="res_filed" role="gridcell">Full Name</th>
                                             <th id="prof_Name" role="gridcell">Professional Name</th>
                                             <th id="prof_level" role="gridcell">Professional Level</th>
                                             <th id="org_Name" role="gridcell">Organization Name</th>
@@ -31,6 +32,7 @@
                                         </thead>
                                         <tbody>
                                         <tr th:each="explist : ${searchExp}">
+                                            <td th:text="${explist.resume.firstname}+' '+ ${explist.resume.lastname}"></td>
                                             <td th:text="${explist.profName}"></td>
                                             <td th:text="${explist.ProfLevel}" ></td>
                                             <td th:text="${explist.orgName}"></td>
@@ -46,10 +48,10 @@
                                     </table>
                                 </div>
                             </div>
-                            <div class="form-group"align="center">
-                                <div class="col-md-4" align="center">
+                            <div class="form-group">
+                                <div class="col-md-4">
                                     <p><a href="addWorkExpInfo"><strong>Most Recent Work Experience Info</strong></a></p>
-                                    <p><a href="ResultResumeInfo"><strong>Your Resume Application Info</strong></a></p>
+                                    <!--<p><a th:href="@{/EditResumedetail/{id}(id=${explist.id})}"><strong>Edit Resume</strong></a></p>-->
                                 </div>
 
                             </div>

@@ -24,6 +24,17 @@
 
                                         <!-- Form Name -->
                                         <legend align="Center">Your Work Experience Information:</legend>
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label">Full Name</label>
+                                            <div class="col-md-4 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                                    <select name="resumes" placeholder="Select Full Name" class="form-control">
+                                                        <option th:text="${newWork.resume.firstname}+' '+ ${newWork.resume.lastname}"></option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
 
                                         <!-- Text input-->
                                         <div class="form-group">
@@ -90,9 +101,11 @@
                                         <!-- Links-->
                                         <div class="form-group"align="center">
                                             <div class="col-md-4" align="center">
-                                                <p><a href="listExpInfo"><strong>Display Work Experience Information</strong></a></p>
                                                 <p><a href="addWorkExpInfo"><strong>More Work Experience Information</strong></a></p>
-                                                <p><a href="ResultResumeInfo"><strong>Your Resume In Table</strong></a></p>
+                                                <p><a href="listExpInfo"><strong>Display Work Experience Information</strong></a></p>
+                                                <p><a th:href="@{/EditResumedetail/{id}(id=${newWork.id})}"><strong>Edit Resume</strong></a></p>
+                                                <p><a th:href="@{/SummerizedResume/{id}(id=${newWork.id})}"><strong>View Resume </strong></a></p>
+
                                             </div>
                                         </div>
 

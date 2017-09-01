@@ -2,10 +2,7 @@ package com.hiwotab.roboresumeapplication.model;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -23,6 +20,18 @@ public class Skills {
     @NotEmpty
     @Size(min=1,max=30)
     private String rate;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="resume_id")
+    private Resume resume;
+
+    public Resume getResume() {
+        return resume;
+    }
+
+    public void setResume(Resume resume) {
+        this.resume = resume;
+    }
 
     public long getId() {
         return id;

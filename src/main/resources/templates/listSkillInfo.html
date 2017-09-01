@@ -22,6 +22,7 @@
                                         <caption class="sr-only">Your Skills Information</caption>
                                         <thead>
                                         <tr>
+                                            <th id="res_filed" role="gridcell">Full Name</th>
                                             <th id="skill" role="gridcell">Skill</th>
                                             <th id="rate" role="gridcell">Rate</th>
                                             <th id="user_action" role="gridcell">Actions</th>
@@ -29,6 +30,7 @@
                                         </thead>
                                         <tbody>
                                         <tr th:each="skilllist : ${searchSkill}">
+                                            <td th:text="${skilllist.resume.firstname}+' '+ ${skilllist.resume.lastname}"></td>
                                             <td th:text="${skilllist.skill}"></td>
                                             <td th:text="${skilllist.rate}"></td>
                                             <td>
@@ -41,7 +43,7 @@
                                     </table>
                                 </div>
                             </div>
-                            <div class="form-group"align="center">
+                            <div class="form-group">
                                 <div class="col-md-4" align="center">
                                     <p><a href="addSkillInfo"><strong>Add Your Skill Info</strong></a></p>
                                 </div>

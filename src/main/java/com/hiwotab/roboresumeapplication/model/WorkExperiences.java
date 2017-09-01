@@ -3,10 +3,7 @@ package com.hiwotab.roboresumeapplication.model;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
@@ -25,6 +22,18 @@ public class WorkExperiences {
     private Date startDate;
     @DateTimeFormat(pattern ="MMM,yyyy")
     private Date endDate;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="resume_id")
+    private Resume resume;
+
+    public Resume getResume() {
+        return resume;
+    }
+
+    public void setResume(Resume resume) {
+        this.resume = resume;
+    }
 
     public long getId() {
         return id;

@@ -19,6 +19,7 @@
                                         <caption class="sr-only">Your Education Achievement Information.</caption>
                                         <thead>
                                             <tr>
+                                                <th id="res_filed" role="gridcell">Full Name</th>
                                                 <th id="edu_filed" role="gridcell">Education Filed</th>
                                                 <th id="uni_name" role="gridcell">Univ/College Name</th>
                                                 <th id="year" role="gridcell">Year Graduate</th>
@@ -27,6 +28,7 @@
                                             </thead>
                                             <tbody>
                                             <tr th:each="eduList : ${searchEdu}">
+                                                <td th:text="${eduList.resume.firstname}+' '+ ${eduList.resume.lastname}"></td>
                                                 <td th:text="${eduList.eduType}"></td>
                                                 <td th:text="${eduList.uniName}" ></td>
                                                 <td th:text="${{eduList.grdYear}}"></td>

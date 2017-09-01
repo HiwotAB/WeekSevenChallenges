@@ -19,7 +19,22 @@
                                     <fieldset>
                                         <!-- Form Name -->
                                         <legend align="Center">Please Enter Your Work Experience Info.</legend>
+                                        <!--<input type=hidden th:field="*{resume.id}" />-->
+
                                         <input type="hidden" th:field="*{id}" />
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label">Full Name</label>
+                                            <div class="col-md-4 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                                    <select name="resumes"  placeholder="Select Full Name" class="form-control">
+                                                        <option th:each="res:${allUser}"
+                                                                th:value="${res.id}"
+                                                                th:text="${res.firstname}+' '+ ${res.lastname}"></option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <!-- Text input-->
                                         <div  th:if="${#fields.hasErrors('profName')}" th:errors="*{profName}" class="well alert alert-danger" role="alert"></div>
                                         <div class="form-group">

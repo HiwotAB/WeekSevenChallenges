@@ -24,7 +24,17 @@
 
                                         <!-- Form Name -->
                                         <legend align="Center">Your Skill Information:</legend>
-
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label">Full Name</label>
+                                            <div class="col-md-4 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                                    <select name="resumes" placeholder="Select Full Name" class="form-control">
+                                                        <option th:text="${newSkill.resume.firstname}+' '+ ${newSkill.resume.lastname}"></option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <!-- Text input-->
                                         <div class="form-group">
                                             <label class="col-md-4 control-label">Skill</label>
@@ -48,10 +58,11 @@
                                         <!-- Button -->
                                         <div class="form-group"align="center">
                                             <div class="col-md-4" align="center">
-                                                <p><a href="listSkillInfo"><strong>Display Skill Information</strong></a></p>
                                                 <p><a href="addSkillInfo"><strong>More Skill Information</strong></a></p>
+                                                <p><a href="listSkillInfo"><strong>Display Skill Information</strong></a></p>
                                                 <p><a href="addWorkExpInfo"><strong>Most Recent Work Experience Information</strong></a></p>
-                                                <p><a href="SummerizedResume"><strong>View Resume </strong></a></p>
+                                                <p><a th:href="@{/EditResumedetail/{id}(id=${newSkill.id})}"><strong>Edit Resume</strong></a></p>
+                                                <p><a th:href="@{/SummerizedResume/{id}(id=${newSkill.id})}"><strong>View Resume </strong></a></p>
                                             </div>
                                         </div>
 

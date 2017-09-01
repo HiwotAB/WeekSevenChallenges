@@ -18,15 +18,30 @@
                         <div class="header-content-inner">
                             <div class="container">
 
+                                <!--<form class="well form-horizontal" th:action="@{/addEduInfo/{id}(id=${resume.id})}" th:object="${newEduInfo}" method="post">-->
                                 <form class="well form-horizontal" th:action="@{/addEduInfo}" th:object="${newEduInfo}" method="post">
-
                                     <fieldset>
 
                                         <!-- Form Name -->
                                         <legend align="Center">Please Enter Your Education Achievement Information</legend>
+                                        <!--<input type=hidden th:field="*{resume.id}" />-->
+                                        <!--<input  th:if="${modifymode ==0}"></input>-->
+                                        <!--<input  th:if="${editmodde} gt 0"></input>-->
                                         <input type="hidden" th:field="*{id}" />
                                         <!-- Text input-->
-
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label">Full Name</label>
+                                            <div class="col-md-4 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                                    <select name="resumes"  placeholder="Select Full Name" class="form-control">
+                                                        <option th:each="res:${allUser}"
+                                                                th:value="${res.id}"
+                                                                th:text="${res.firstname}+' '+ ${res.lastname}"></option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div  th:if="${#fields.hasErrors('eduType')}" th:errors="*{eduType}" class="well alert alert-danger" role="alert"></div>
                                         <div class="form-group">
                                             <label class="col-md-4 control-label">Education Filed</label>

@@ -17,7 +17,7 @@
                     <div class="header-content">
                         <div class="header-content-inner">
                             <div class="container">
-                                <form class="well form-horizontal" th:action="@{/ResultResumeInfo}" th:object="${searchUser}" method="">
+                                <form class="well form-horizontal" th:action="@{/EditResumedetail/{id}}" th:object="${resumeR}" method="">
                                     <fieldset>
                                         <!-- Form Name -->
                                         <legend align="Center"><h3><strong>Your Resume Application </strong></h3></legend>
@@ -27,7 +27,7 @@
                                             <div class="col-md-4 inputGroupContainer">
                                                 <div class="input-group">
                                                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                                    <p th:text="${searchUser.firstname}" />
+                                                    <p th:text="${resumeR.firstname}" />
                                                 </div>
                                             </div>
                                         </div>
@@ -36,7 +36,7 @@
                                             <div class="col-md-4 inputGroupContainer">
                                                 <div class="input-group">
                                                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                                    <p th:text="${searchUser.lastname}" />
+                                                    <p th:text="${resumeR.lastname}" />
                                                 </div>
                                             </div>
                                         </div>
@@ -46,11 +46,11 @@
                                             <div class="col-md-4 inputGroupContainer">
                                                 <div class="input-group">
                                                     <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                                                    <p th:text="${searchUser.email}" />
+                                                    <p th:text="${resumeR.email}" />
                                                 </div>
                                             </div>
                                         </div>
-                                        <a th:href="@{/updateUserInfo/{id}(id=${searchUser.id})}">Update</a>
+                                        <a th:href="@{/updateUserInfo/{id}(id=${resumeR.id})}">Update</a>
                                     </fieldset>
                                 </form>
                                 <!--Education Achievement Info-->
@@ -67,13 +67,13 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <tr th:each="userlist : ${searchUser.eduAchieve}">
-                                                <td th:text="${userlist.eduType}"></td>
-                                                <td th:text="${userlist.uniName}" ></td>
-                                                <td th:text="${{userlist.grdYear}}"></td>
+                                            <tr th:each="edu : ${listEdu}">
+                                                <td th:text="${edu.eduType}"></td>
+                                                <td th:text="${edu.uniName}" ></td>
+                                                <td th:text="${{edu.grdYear}}"></td>
                                                 <td>
-                                                    <a th:href="@{/updateEduInfo/{id}(id=${userlist.id})}" class="btn btn-primary">Update</a> -
-                                                    <a th:href="@{/deleteEduInfo/{id}(id=${userlist.id})}" class="btn btn-danger">Delete</a>
+                                                    <a th:href="@{/updateEduInfo/{id}(id=${edu.id})}" class="btn btn-primary">Update</a> -
+                                                    <!--<a th:href="@{/deleteEduInfo/{id}(id=${edu.id})}" class="btn btn-danger">Delete</a>-->
                                                 </td>
                                             </tr>
                                             </tbody>
@@ -94,12 +94,12 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <tr th:each="userlist : ${searchUser.skils}">
-                                                <td th:text="${userlist.skill}"></td>
-                                                <td th:text="${userlist.rate}"></td>
+                                            <tr th:each="skill : ${listSkill}">
+                                                <td th:text="${skill.skill}"></td>
+                                                <td th:text="${skill.rate}"></td>
                                                 <td>
-                                                    <a th:href="@{/updateSkillInfo/{id}(id=${userlist.id})}" class="btn btn-primary">Update</a> -
-                                                    <a th:href="@{/deleteSkillInfo/{id}(id=${userlist.id})}" class="btn btn-danger">Delete</a>
+                                                    <a th:href="@{/updateSkillInfo/{id}(id=${skill.id})}" class="btn btn-primary">Update</a> -
+                                                    <!--<a th:href="@{/deleteSkillInfo/{id}(id=${skill.id})}" class="btn btn-danger">Delete</a>-->
                                                 </td>
                                             </tr>
                                             </tbody>
@@ -124,32 +124,31 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <tr th:each="userlist : ${searchUser.workExp}">
-                                                <td th:text="${userlist.profName}"></td>
-                                                <td th:text="${userlist.ProfLevel}" ></td>
-                                                <td th:text="${userlist.orgName}"></td>
-                                                <td th:text="${userlist.duty}"></td>
-                                                <td th:text="${{userlist.startDate}}"></td>
-                                                <td th:text="${{userlist.endDate}}"></td>
+                                            <tr th:each="exp : ${listExps}">
+                                                <td th:text="${exp.profName}"></td>
+                                                <td th:text="${exp.ProfLevel}" ></td>
+                                                <td th:text="${exp.orgName}"></td>
+                                                <td th:text="${exp.duty}"></td>
+                                                <td th:text="${{exp.startDate}}"></td>
+                                                <td th:text="${{exp.endDate}}"></td>
                                                 <td>
-                                                    <a th:href="@{/updateExpInfo/{id}(id=${userlist.id})}" class="btn btn-primary">Update</a>-
-                                                    <a th:href="@{/deleteExpInfo/{id}(id=${userlist.id})}" class="btn btn-danger">Delete</a>
+                                                    <a th:href="@{/updateExpInfo/{id}(id=${exp.id})}" class="btn btn-primary">Update</a>-
+                                                    <!--<a th:href="@{/deleteExpInfo/{id}(id=${emp.id})}" class="btn btn-danger">Delete</a>-->
                                                 </td>
                                             </tr>
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
+                                <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                                <p><a th:href="@{/SummerizedResume/{id}(id=${resumeR.id})}"><strong>View Resume </strong></a></p>
+                                                <p><a href="addEduInfo"><strong>More Education Achievement Info.</strong></a></p>
+                                                <p><a href="addSkillInfo"><strong>Add Your Skill Info.</strong></a></p>
+                                                <p><a href="addWorkExpInfo"><strong>Most Recent Work Experience Info.</strong></a></p>
 
-                                    <div class="panel panel-default">
-                                            <div class="panel-heading">
-                                                    <p><a href="SummerizedResume"><strong>Resume Summary</strong></a></p>
-                                                    <p><a href="addEduInfo"><strong>More Education Achievement Info.</strong></a></p>
-                                                    <p><a href="addSkillInfo"><strong>Add Your Skill Info.</strong></a></p>
-                                                    <p><a href="addWorkExpInfo"><strong>Most Recent Work Experience Info.</strong></a></p>
-
-                                            </div>
-                                    </div>
+                                        </div>
+                                </div>
 
                             </div>
                         </div>
