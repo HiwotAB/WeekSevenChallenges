@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+    <div class="col-md-6">
+
+
+            <div th:each="moreCourse:${aPer.teach}">
+                <p th:text="${moreCourse.courseName}">
+                <p th:text="${moreCourse.courseCreditHr}">
+            </div>
+        </div>
+
+
+    </div>
+</div>
+</body>
+</html>
+
+
+
+<div class="container">
+    <div class="col-md-6">
+        <h1>Welcome to the movie database</h1>
+
+        <div class="row align-baseline">
+            <h2>Students</h2>
+            <a th:href="@{/addUser}" class="align-baseline"> Add Student</a>
+        </div>
+
+        <div class="col-md6 col-offset-2" th:each="user:${listPerson}" >
+
+
+            <h3 th:text="${user.firstname}">Name</h3><a th:disabled="${gotactors lt 1}" th:href="@{/addPersontoCourse/{id}(id=${user.id})}">Add Course</a>
+            <div th:each="anotherCourse:${user.teach}">
+                <p th:text="${anotherCourse.courseName}">
+                <p th:text="${anotherCourse.courseCreditHr}">
+            </div>
+        </div>
+        <h2>Course</h2>
+        <div th:each="courses:${courseList}" >
+
+            <p th:text="${courses.courseName}"></p>
+        </div>
+
+    </div>
+</div>

@@ -37,11 +37,15 @@ public class Resume {
     @OneToMany(mappedBy = "resume",cascade= CascadeType.ALL,fetch=FetchType.EAGER)
     public Set<WorkExperiences> workExperiencesSet;
 
+    @ManyToMany()
+    private Set<Course> teach;
+
     //constructor for resume and  initialize an empty set of education, skill and exp
     public Resume(){
         this.eduAchievementsSet= new HashSet<EduAchievements>();
         this.skillsSet=new HashSet<Skills>();
         this.workExperiencesSet=new HashSet<WorkExperiences>();
+        this.teach = new HashSet<Course>();
     }
     public Set<EduAchievements> getEduAchievementsSet() {
         return eduAchievementsSet;
@@ -108,6 +112,10 @@ public class Resume {
     public void addWorkExperiences(WorkExperiences workExperiences){
         workExperiences.setResume(this);
         this.workExperiencesSet.add(workExperiences);
+    }
+    public void addCourse(Course course)
+    {
+        this.teach.add(course);
     }
 
 }

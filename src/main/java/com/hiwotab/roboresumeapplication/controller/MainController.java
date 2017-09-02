@@ -1,13 +1,7 @@
 package com.hiwotab.roboresumeapplication.controller;
 
-import com.hiwotab.roboresumeapplication.model.EduAchievements;
-import com.hiwotab.roboresumeapplication.model.Resume;
-import com.hiwotab.roboresumeapplication.model.Skills;
-import com.hiwotab.roboresumeapplication.model.WorkExperiences;
-import com.hiwotab.roboresumeapplication.repository.EduAchievementsRepostory;
-import com.hiwotab.roboresumeapplication.repository.ResumeRepostory;
-import com.hiwotab.roboresumeapplication.repository.SkillsRepostory;
-import com.hiwotab.roboresumeapplication.repository.WorkExperiencesRepostory;
+import com.hiwotab.roboresumeapplication.model.*;
+import com.hiwotab.roboresumeapplication.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -31,6 +25,8 @@ public class MainController {
     WorkExperiencesRepostory workExperiencesRepostory;
     @Autowired
     SkillsRepostory skillsRepostory;
+    @Autowired
+    CourseRepository courseRepository;
     /*******************************home Page , default home page and Login***********************************************/
 
     @RequestMapping("/")
@@ -291,6 +287,38 @@ public class MainController {
             new SecurityContextLogoutHandler().logout(request, response, auth);
         }
         return "redirect:/login";
+    }
+
+
+    @GetMapping("/addCourse")
+    public String addCourse(Model model){
+        model.addAttribute("course",new Course());
+        return "addCourse";
+    }
+
+    @PostMapping("/addCourse")
+    public String saveCourse(@ModelAttribute("course") Course  course)
+    {
+        courseRepository.save(course);
+        return "dispCourseInfo";
+    }
+    @GetMapping("/addPersontoCourse/{id}")
+    public String addPersonCourse(@PathVariable("id") long course_Id, Model model)
+    {
+        model.addAttribute("courseList",courseRepository.findOne(new Long(course_Id)));
+        model.addAttribute("listPerson",resumeRepostory.findAll());
+        return "addPersontoCourse";
+    }
+    @PostMapping("/addPersontoCourse/{per_id}")
+    public String addPersonsCourses(@RequestParam("course") String course_Id, @PathVariable("per_id") long pers_ID,  @ModelAttribute("course") Course course, Model model)
+    {
+
+        Resume resume = resumeRepostory.findOne(new Long(pers_ID));
+        resume.addCourse(courseRepository.findOne(new Long(course_Id)));
+        resumeRepostory.save(resume);
+        model.addAttribute("courseList",courseRepository.findAll());
+        model.addAttribute("userList",resumeRepostory.findAll());
+        return "redirect:/";
     }
 
 

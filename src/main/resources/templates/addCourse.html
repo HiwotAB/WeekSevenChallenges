@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <meta charset="UTF-8"/>
+    <title>Add Course Info</title>
+</head>
+<body>
+<form class="form-inline" th:action="@{/addCourse}" th:object="${course}" method="post">
+    <input type="hidden" th:field="*{id}" placeholder="Enter Course name">
+
+    <div class="form-group">
+        <label>Course Name</label>
+        <input type="text" th:field="*{courseName}" placeholder="Enter Course Name">
+    </div>
+    <div class="form-group">
+        <label>Credit Hours </label>
+        <input type="text" th:field="*{courseCreditHr}" placeholder = "Enter Course Credit Hours">
+    </div>
+     <input type="submit" value="Submit">
+</form>
+</body>
+</html>
