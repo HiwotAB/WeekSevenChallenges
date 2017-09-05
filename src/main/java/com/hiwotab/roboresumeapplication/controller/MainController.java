@@ -322,9 +322,7 @@ public class MainController {
     @PostMapping("/addcourseTostudent/{id}")
     public String addStudentToCourse(@RequestParam("stud") String perID, @PathVariable("course") long id, Model model)
     {
-        System.out.println("Post Method:");
-        System.out.println("Actor ID"+id);
-        System.out.println("Movie ID"+perID);
+
         Course course = courseRepository.findOne(new Long(id));
         course.addResume(resumeRepostory.findOne(new Long(perID)));
         courseRepository.save(course);
