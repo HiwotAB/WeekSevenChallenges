@@ -3,7 +3,7 @@ html { height: 100% }
 ::selection { background: #fe57a1; color: #fff; text-shadow: none; }
 body { background-image: radial-gradient( cover, rgba(92,100,111,1) 0%,rgba(31,35,40,1) 100%), url('http://i.minus.com/io97fW9I0NqJq.png') }
 .login {
-    background:#88b3ea1a;
+    background: rgba(2, 139, 226, 0.3);
     border-radius: 6px;
     height: 280px;
     margin: 20px auto 0;
