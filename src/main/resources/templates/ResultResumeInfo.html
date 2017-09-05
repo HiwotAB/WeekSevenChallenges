@@ -119,19 +119,19 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="exp : ${listExps}">
+                        <tr th:each="expl : ${listExps}">
                             <td > <select name="resumes" class="form-control">
-                                <option th:text="${exp.resume.firstname}+' '+ ${exp.resume.lastname}"></option>
+                                <option th:text="${expl.resume.firstname}+' '+ ${expl.resume.lastname}"></option>
                             </select>
                             </td>
-                            <td th:text="${exp.profName}"></td>
-                            <td th:text="${exp.ProfLevel}" ></td>
-                            <td th:text="${exp.orgName}"></td>
-                            <td th:text="${exp.duty}"></td>
-                            <td th:text="${{exp.startDate}}"></td>
-                            <td th:text="${{exp.endDate}}"></td>
+                            <td th:text="${expl.profName}"></td>
+                            <td th:text="${expl.ProfLevel}" ></td>
+                            <td th:text="${expl.orgName}"></td>
+                            <td th:text="${expl.duty}"></td>
+                            <td th:text="${{expl.startDate}}"></td>
+                            <td th:text="${{expl.endDate}}"></td>
                             <td>
-                                <a th:href="@{/updateExpInfo/{id}(id=${exp.id})}" class="btn btn-primary">Update</a>
+                                <a th:href="@{/updateExpInfo/{id}(id=${expl.id})}" class="btn btn-primary">Update</a>
                                 <!--<a th:href="@{/deleteExpInfo/{id}(id=${emp.id})}" class="btn btn-danger">Delete</a>-->
                             </td>
                         </tr>
