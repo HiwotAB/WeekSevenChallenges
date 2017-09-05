@@ -262,7 +262,7 @@ public class MainController {
         model.addAttribute("resumeR", resumeR);
         model.addAttribute("listEdu",eduAchievementsRepostory.findByResume(resumeR));
         model.addAttribute("listSkill",skillsRepostory.findByResume(resumeR));
-        model.addAttribute("listExp",workExperiencesRepostory.findByResume(resumeR));
+        model.addAttribute("listExps",workExperiencesRepostory.findByResume(resumeR));
         return "SummerizedResume";
     }
 

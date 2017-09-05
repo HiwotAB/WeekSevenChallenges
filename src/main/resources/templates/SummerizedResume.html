@@ -35,7 +35,7 @@
 
             </div>
             <hr/>
-            <th:block th:each="exp : ${listExp}">
+            <th:block th:each="exp : ${listExps}">
                 <p  th:text="${exp.profName}+ ' ' + ${exp.ProfLevel}"></p>
                 <p th:text="${exp.orgName} + ', ' + ${{exp.startDate}} + ' to ' + ${{exp.endDate}}"></p>
                 <p th:text="${exp.duty}"></p>
