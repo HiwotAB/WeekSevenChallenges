@@ -31,15 +31,15 @@ public class MainController {
 
     @RequestMapping("/")
     public String showHomePages(Model model) {
-//        model.addAttribute("rowNumber",resumeRepostory.count());
-//        model.addAttribute("rowNumber",eduAchievementsRepostory.count());
-//        model.addAttribute("rowNumber",skillsRepostory.count());
-//        model.addAttribute("rowNumber",workExperiencesRepostory.count());
-//        model.addAttribute("rowNumber",courseRepository.count());
-//        model.addAttribute("allUser", resumeRepostory.findAll());
-//        model.addAttribute("searchEdu", eduAchievementsRepostory.findAll());
-//        model.addAttribute("searchExp", workExperiencesRepostory.findAll());
-//        model.addAttribute("searchSkill", skillsRepostory.findAll());
+        model.addAttribute("rowNumberP",resumeRepostory.count());
+        model.addAttribute("rowNumberE",eduAchievementsRepostory.count());
+        model.addAttribute("rowNumberS",skillsRepostory.count());
+        model.addAttribute("rowNumberX",workExperiencesRepostory.count());
+        model.addAttribute("rowNumberC",courseRepository.count());
+        model.addAttribute("allUser", resumeRepostory.findAll());
+        model.addAttribute("searchEdu", eduAchievementsRepostory.findAll());
+        model.addAttribute("searchExp", workExperiencesRepostory.findAll());
+        model.addAttribute("searchSkill", skillsRepostory.findAll());
         return "index";
     }
 
@@ -125,8 +125,9 @@ public class MainController {
     /*This method is used to modify the existing in forms then update data bas tables according to there modify fields */
     @RequestMapping("/updateEduInfo/{id}")
     public String updateEduInfo(@PathVariable("id") long id, Model model){
-        model.addAttribute("allUser",resumeRepostory.findOne(id));
         model.addAttribute("newEduInfo", eduAchievementsRepostory.findOne(id));
+        model.addAttribute("allUser",resumeRepostory.findAll());
+
         return "addEduInfo";
     }
 
@@ -175,7 +176,7 @@ public class MainController {
     /*This method is used to modify the existing in forms then update data bas tables according to there modify fields */
     @RequestMapping("/updateExpInfo/{id}")
     public String updateWorkExp(@PathVariable("id") long id, Model model){
-        model.addAttribute("allUser",resumeRepostory.findOne(id));
+        model.addAttribute("allUser",resumeRepostory.findAll());
         model.addAttribute("newWork", workExperiencesRepostory.findOne(id));
         return "addWorkExpInfo";
     }
@@ -225,8 +226,8 @@ public class MainController {
     /*This method is used to modify the existing in forms then update data bas tables according to there modify fields */
     @RequestMapping("/updateSkillInfo/{id}")
     public String updateSkillInfo(@PathVariable("id") long id, Model model){
-        model.addAttribute("allUser",resumeRepostory.findOne(id));
         model.addAttribute("newSkill", skillsRepostory.findOne(id));
+        model.addAttribute("allUser",resumeRepostory.findAll());
         return "addSkillInfo";
     }
     /*This method is used to delete the existing data  records from data base table and dispaly the rest of data which has been there*/
