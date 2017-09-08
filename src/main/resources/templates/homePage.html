@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head th:replace="base :: header">
+    <title>Home Page</title>
+</head>
+<body>
+<section class="hero">
+    <div class="container text-center">
+        <h1>Welcome to Robo Resume Application</h1>
+        <br>
+        <div><h3><a href="/login" type="submit"  class="btn btn-full">LogIn</a></h3></div><br>
+
+        <h3><a href="/signUpForm" type="submit"  class="btn btn-full">SignUp</a></h3>
+    </div>
+</section>
+<div th:replace="base :: javaScript"></div>
+<div th:replace="base :: footer"></div>
+</body>
+</html>

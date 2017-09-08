@@ -53,7 +53,7 @@ public class Resume {
     public Set<WorkExperiences> workExperiencesSet;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(joinColumns=@JoinColumn(name="user_id"),
+    @JoinTable(joinColumns=@JoinColumn(name="resume_id"),
             inverseJoinColumns=@JoinColumn(name="role_id"))
     private Collection<UserRole> roles;
 
@@ -174,7 +174,6 @@ public class Resume {
     }
     public void addRole(UserRole role)
     {
-
         this.roles.add(role);
     }
 

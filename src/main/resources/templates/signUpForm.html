@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head th:replace="base :: header">
     <title>Add User Resume Info</title>
 </head>
@@ -9,11 +10,23 @@
 <section class="hero">
     <div class="container text-center">
         <div class="container">
-        <form class="well form-horizontal" th:action="@{/addUser}" th:object="${newUser}" method="post">
+        <form autocomplete="off" class="well form-horizontal" th:action="@{/signUpForm}" th:object="${newUser}" method="post">
             <fieldset>
                 <!-- Form Name -->
                 <legend align="Center">Please Enter Your Information</legend>
                 <input type="hidden" th:field="*{id}" />
+                <div class="form-group">
+                    <!--<label th:inline="text">Adding Education for [[${newesume.firstname}+' '+${newesume.lastname}]]</label>-->
+                    <div class="col-sm-10">
+                        <label class="col-md-10 control-label">Role Type</label>
+                        <select th:name="selectVal" class="form-control">
+                            <th:block th:each="uRole:${listRoles}">
+                                <option th:value="${uRole.urole}"
+                                        th:text="${uRole.urole}"></option>
+                            </th:block>
+                        </select>
+                    </div>
+                </div>
                 <!-- Text input-->
                 <div class="form-group">
                     <div class="col-sm-10">
@@ -36,11 +49,24 @@
                         <input  th:field="*{email}" name="email" placeholder="Enter E-Mail" class="form-control"  type="text">
                     </div>
                 </div>
+                <!-- Text input-->
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        <div  th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="well alert alert-danger" role="alert"></div>
+                        <input  th:field="*{username}" name="username" placeholder="Enter User Name" class="form-control"  type="text">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        <div  th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="well alert alert-danger" role="alert"></div>
+                        <input  th:field="*{password}" name="password" placeholder="Enter Password" class="form-control"  type=password>
+                    </div>
+                </div>
 
                 <!-- Button -->
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <p><button type="submit" class="btn btn-success" >Submit</button></p>
+                        <p><button type="submit" class="btn btn-success" >SignUp</button></p>
                         <p><button type="reset" class="btn btn-warning" >Reset</span></button></p>
                     </div>
                 </div>

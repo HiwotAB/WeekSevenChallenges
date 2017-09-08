@@ -17,16 +17,7 @@
                     <input type=hidden th:field="*{resume.id}" />
                     <input type="hidden" th:field="*{id}" />
 
-                    <div class="form-group">
-                        <div class="col-sm-10">
-                            <!--<label th:inline="text">Full Name</label>-->
-                            <select name="resumes" class="form-control">
-                                <option th:each="res:${allUser}"
-                                        th:value="${res.id}"
-                                        th:text="${res.firstname}+' '+ ${res.lastname}"></option>
-                            </select>
-                        </div>
-                    </div>
+                    <label th:inline="text">Adding Work Experience for [[${newWork.resume.firstname}+' '+${newWork.resume.lastname}]]</label>
                     <!-- Text input-->
                     <div class="form-group">
                         <div class="col-sm-10">

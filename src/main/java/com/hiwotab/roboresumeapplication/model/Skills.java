@@ -3,8 +3,10 @@ package com.hiwotab.roboresumeapplication.model;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
+import java.util.Collection;
+
 
 @Entity
 public class Skills {
@@ -24,6 +26,15 @@ public class Skills {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="resume_id")
     private Resume resume;
+
+    @ManyToMany(mappedBy="jobskill",fetch=FetchType.LAZY)
+    private Collection<Job> jobs;
+
+    public Skills(){
+        this.jobs=new ArrayList<Job>();
+    }
+
+
 
     public Resume getResume() {
         return resume;
@@ -55,5 +66,18 @@ public class Skills {
 
     public void setRate(String rate) {
         this.rate = rate;
+    }
+
+    public Collection<Job> getJobs() {
+        return jobs;
+    }
+
+    public void setJobs(Collection<Job> jobs) {
+        this.jobs = jobs;
+    }
+
+    public void addJob(Job job)
+    {
+        this.jobs.add(job);
     }
 }

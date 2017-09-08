@@ -1,9 +1,11 @@
 package com.hiwotab.roboresumeapplication.services;
 
 
-import byAJ.Securex.models.NewUsers;
-import byAJ.Securex.repositories.NewUserRepo;
-import byAJ.Securex.repositories.UseRoleRepo;
+
+import com.hiwotab.roboresumeapplication.model.Resume;
+import com.hiwotab.roboresumeapplication.model.UserRole;
+import com.hiwotab.roboresumeapplication.repository.ResumeRepostory;
+import com.hiwotab.roboresumeapplication.repository.UserRoleRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,34 +14,40 @@ import java.util.Arrays;
 @Service
 public class UserService {
     @Autowired
-    NewUserRepo userRepo;
+    ResumeRepostory resumeRepostory;
     @Autowired
-    UseRoleRepo roleRepo;
+    UserRoleRepo userRoleRepo;
     @Autowired
-    public UserService(NewUserRepo userRepo){
-        this.userRepo=userRepo;
+    public UserService(ResumeRepostory userRepo){
+        this.resumeRepostory=userRepo;
     }
-    public NewUsers findByEmail(String email){
-        return userRepo.findByEmail(email);
+    public Resume findByEmail(String email){
+        return resumeRepostory.findByEmail(email);
 
     }
     public Long countByEmail(String email){
-        return userRepo.countByEmail(email);
+        return resumeRepostory.countByEmail(email);
 
     }
-    public NewUsers findByUsername(String username){
-        return userRepo.findByUsername(username);
+    public Resume findByUsername(String username){
+        return resumeRepostory.findByUsername(username);
 
     }
-    public void saveUser(NewUsers user){
-        user.setRoles(Arrays.asList(roleRepo.findByUrole("USER")));
-        user.setEnabled(true);
-        userRepo.save(user);
+    public void saveRecruiters(Resume  resume){
+        resume.setRoles(Arrays.asList(userRoleRepo.findByUrole("RECRUITERS")));
+        resume.setEnabled(true);
+        resumeRepostory.save(resume);
     }
-    public void saveAdmin(NewUsers users){
-        users.setRoles(Arrays.asList(roleRepo.findByUrole("ADMIN")));
-        users.setEnabled(true);
-        userRepo.save(users);
+    public void saveJobSeeker(Resume  resume){
+        resume.setRoles(Arrays.asList(userRoleRepo.findByUrole("JOB SEEKERS")));
+        resume.setEnabled(true);
+        resumeRepostory.save(resume);
+    }
+
+    public void saveAdmin(Resume resumes){
+        resumes.setRoles(Arrays.asList(userRoleRepo.findByUrole("ADMIN")));
+        resumes.setEnabled(true);
+        resumeRepostory.save(resumes);
     }
 
 

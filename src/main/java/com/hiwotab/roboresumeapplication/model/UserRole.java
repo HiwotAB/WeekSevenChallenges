@@ -10,6 +10,7 @@ public class UserRole {
     private long id;
     @Column(unique = true)
     private String urole;
+
     @ManyToMany(mappedBy="roles",fetch=FetchType.LAZY)
     private Set<Resume> resumeSet;
 

@@ -34,9 +34,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
         http
                 .authorizeRequests()
-                .antMatchers("/","/signUpForm","/css/**","/js/**","/img/**","/font-awesome/**","lib/**").permitAll()
-                .antMatchers("/add","/list","/books/edit/**","/books/delete/**").access("hasAuthority('ADMIN')")
-                .antMatchers("/list").access("hasAuthority('USER')")
+                .antMatchers("/","/signUpForm","/css/**","/js/**","/img/**","/font-awesome/**","lib/**", "/homePage","/addEduInfo","dispEduInfo","/updateEduInfo/{id}",
+                        "/listEduInfo","/addWorkExpInfo","dispWorkExpInfo","/updateExpInfo/**","/listExpInfo","/addSkillInfo","dispSkillsInfo","/updateSkillInfo/**",
+                        "/listSkillInfo","/EditResumedetail/**","/SummerizedResume/**","/addSkillToJobInfo/**","/listJobInfo","/addJobInfo").permitAll()
+                .antMatchers("/signUpForm","/listUserInfo","/searchUser/updateUserInfo/**").access("hasAuthority('ADMIN')")
+                .antMatchers("/signUpForm","/listUserInfo").access("hasAuthority('RECRUITERS')")
+                .antMatchers("/signUpForm","/listUserInfo","/addEduInfo","dispEduInfo").access("hasAuthority('JOB SEEKERS')")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/login").permitAll()
