@@ -3,9 +3,9 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -18,15 +18,30 @@ public class Resume {
 
     @NotEmpty
     @Size(min=2, max = 30)
+    @Column(name="firs_tname")
     private String firstname;
 
     @NotEmpty
     @Size(min=2, max = 30)
+    @Column(name="last_name")
     private String lastname;
 
     @NotEmpty
     @Email
+    @Column(name="email",nullable = false)
     private String email;
+
+    @Column(name="password")
+    private String password;
+
+    @Column(name="enabled")
+    private boolean enabled;
+
+    @Column(name="username")
+    private String username;
+
+    @Column(name="selectVal")
+    private String selectVal;
 
     @OneToMany(mappedBy = "resume",cascade= CascadeType.ALL,fetch=FetchType.EAGER)
     public Set<EduAchievements> eduAchievementsSet;
@@ -37,16 +52,20 @@ public class Resume {
     @OneToMany(mappedBy = "resume",cascade= CascadeType.ALL,fetch=FetchType.EAGER)
     public Set<WorkExperiences> workExperiencesSet;
 
-    @ManyToMany()
-    private Set<Course> teach;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(joinColumns=@JoinColumn(name="user_id"),
+            inverseJoinColumns=@JoinColumn(name="role_id"))
+    private Collection<UserRole> roles;
+
 
     //constructor for resume and  initialize an empty set of education, skill and exp
     public Resume(){
         this.eduAchievementsSet= new HashSet<EduAchievements>();
         this.skillsSet=new HashSet<Skills>();
         this.workExperiencesSet=new HashSet<WorkExperiences>();
-        this.teach = new HashSet<Course>();
+        this.roles=new ArrayList<UserRole>();
     }
+
     public Set<EduAchievements> getEduAchievementsSet() {
         return eduAchievementsSet;
     }
@@ -71,12 +90,44 @@ public class Resume {
         this.workExperiencesSet = workExperiencesSet;
     }
 
-    public Set<Course> getTeach() {
-        return teach;
+    public String getPassword() {
+        return password;
     }
 
-    public void setTeach(Set<Course> teach) {
-        this.teach = teach;
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getSelectVal() {
+        return selectVal;
+    }
+
+    public void setSelectVal(String selectVal) {
+        this.selectVal = selectVal;
+    }
+
+    public Collection<UserRole> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Collection<UserRole> roles) {
+        this.roles = roles;
     }
 
     public long getId() {
@@ -121,9 +172,10 @@ public class Resume {
         workExperiences.setResume(this);
         this.workExperiencesSet.add(workExperiences);
     }
-    public void addCourse(Course course)
+    public void addRole(UserRole role)
     {
-        this.teach.add(course);
+
+        this.roles.add(role);
     }
 
 }
