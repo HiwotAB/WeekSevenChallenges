@@ -52,6 +52,9 @@ public class Resume {
     @OneToMany(mappedBy = "resume",cascade= CascadeType.ALL,fetch=FetchType.EAGER)
     public Set<WorkExperiences> workExperiencesSet;
 
+//    @OneToMany(mappedBy = "resume",cascade= CascadeType.ALL,fetch=FetchType.EAGER)
+//    public Set<Job> jobSet;
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(joinColumns=@JoinColumn(name="resume_id"),
             inverseJoinColumns=@JoinColumn(name="role_id"))
@@ -64,8 +67,16 @@ public class Resume {
         this.skillsSet=new HashSet<Skills>();
         this.workExperiencesSet=new HashSet<WorkExperiences>();
         this.roles=new ArrayList<UserRole>();
+//        this.jobSet=new HashSet<Job>();
     }
 
+//    public Set<Job> getJobSet() {
+//        return jobSet;
+//    }
+//
+//    public void setJobSet(Set<Job> jobSet) {
+//        this.jobSet = jobSet;
+//    }
     public Set<EduAchievements> getEduAchievementsSet() {
         return eduAchievementsSet;
     }
@@ -172,6 +183,10 @@ public class Resume {
         workExperiences.setResume(this);
         this.workExperiencesSet.add(workExperiences);
     }
+//    public void addJob(Job job){
+//        job.setResume(this);
+//        this.jobSet.add(job);
+//    }
     public void addRole(UserRole role)
     {
         this.roles.add(role);

@@ -13,26 +13,22 @@
                     <caption class="sr-only">Your Education Achievement Information.</caption>
                     <thead>
                         <tr>
-                            <th id="res_filed" role="gridcell">Full Name</th>
+
                             <th id="edu_filed" role="gridcell">Education Filed</th>
                             <th id="uni_name" role="gridcell">Univ/College Name</th>
                             <th id="year" role="gridcell">Year Graduate</th>
                             <th id="user_actions" role="gridcell">Actions</th>
                         </tr>
                         </thead>
+
                         <tbody>
                         <tr th:each="eduList : ${searchEdu}">
-                            <td > <select name="resumes" class="form-control">
-                                    <option
-                                            th:text="${eduList.resume.firstname}+' '+ ${eduList.resume.lastname}"></option>
-                                    </select>
-                            </td>
                             <td th:text="${eduList.eduType}"></td>
                             <td th:text="${eduList.uniName}" ></td>
                             <td th:text="${{eduList.grdYear}}"></td>
                             <td>
                                 <a th:href="@{/updateEduInfo/{id}(id=${eduList.id})}" class="btn btn-primary">Update</a>
-                                <!--<a th:href="@{/deleteEduInfo/{id}(id=${eduList.id})}" class="btn btn-danger">Delete</a>-->
+
 
                             </td>
                         </tr>

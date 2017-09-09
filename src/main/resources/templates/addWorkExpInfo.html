@@ -49,7 +49,7 @@
                     <!-- Text input-->
                     <div class="form-group">
                         <div class="col-sm-10">
-                            <div  th:if="${#fields.hasErrors('startDate')}" th:errors="startDate" class="well alert alert-danger" role="alert"></div>
+                            <div  th:if="${#fields.hasErrors('startDate')}" th:errors="*{startDate}" class="well alert alert-danger" role="alert"></div>
                             <input  th:field="*{startDate}" name="startDate" placeholder="Enter StartDate MMM,yyyy" class="form-control"  type="text">
                         </div>
                     </div>

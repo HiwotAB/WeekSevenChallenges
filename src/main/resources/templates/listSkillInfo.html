@@ -24,10 +24,6 @@
                         </thead>
                         <tbody>
                         <tr th:each="skilllist : ${searchSkill}">
-                            <td > <select name="resumes" class="form-control">
-                                <option th:text="${skilllist.resume.firstname}+' '+ ${skilllist.resume.lastname}"></option>
-                                </select>
-                            </td>
                             <td th:text="${skilllist.skill}"></td>
                             <td th:text="${skilllist.rate}"></td>
                             <td>

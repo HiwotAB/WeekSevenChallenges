@@ -13,17 +13,28 @@
                         <caption class="sr-only">Your Information</caption>
                         <thead>
                         <tr>
+                            <th id="roleType" role="gridcell">Role Type</th>
                             <th id="fname" role="gridcell">First Name</th>
                             <th id="lname" role="gridcell">Last Name</th>
                             <th id="email" role="gridcell">E-Mail</th>
+                            <th id="username" role="gridcell">Username</th>
+                            <th id="password" role="gridcell">Password</th>
                             <th id="user_action" role="gridcell">Actions</th>
                         </tr>
                         </thead>
                         <tbody align="left">
                         <tr th:each="search : ${searchUser}">
+                            <td >
+                                <select name="selectVal" class="form-control">
+                                    <option
+                                    th:text="${search.selectVal}"></option>
+                                 </select>
+                            </td>
                             <td th:text="${search.firstname}"></td>
                             <td th:text="${search.lastname}"></td>
                             <td th:text="${search.email}"></td>
+                            <td th:text="${search.username}"></td>
+                            <td th:text="${search.password}"></td>
                             <td>
                                 <a th:href="@{/updateUserInfo/{id}(id=${search.id})}" class="btn btn-primary">Update</a>
                                 <a th:href="@{/SummerizedResume/{id}(id=${search.id})}"class="btn btn-primary">Details</a>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="base :: header">
-    <title>Display User Resume Info</title>
+    <title>Display User  Info</title>
 </head>
 <body>
 <!-- Header -->
@@ -10,15 +10,16 @@
         <div class="container">
 
         <!-- Text input-->
-        <div class="panel panel-default">
-            <div class="panel-heading">
+
+                <div class="panel panel-default">
+                    <div class="panel-body">
                     <h2 th:text="${resumeR.firstname + ' ' + resumeR.lastname}"></h2>
                     <h6 th:text="${resumeR.email}"></h6>
              </div>
         </div>
 
         <div class="panel panel-default active">
-            <div class="panel-heading">
+            <div class="panel-body">
                 <caption> <h4><b>Education Achievement</b></h4></caption>
             </div>
             <hr/>
@@ -30,14 +31,14 @@
 
         </div>
         <div class="panel panel-default">
-            <div class="panel-heading">
+            <div class="panel-body">
                 <caption> <h4><b>Work Experience</b></h4></caption>
 
             </div>
             <hr/>
             <th:block th:each="expl : ${listExps}">
                 <p  th:text="${expl.profName}+ ' ' + ${expl.ProfLevel}"></p>
-                <p th:text="${expl.orgName} + ', ' + ${{expl.startDate}} + ' to ' + ${{expl.endDate}}"></p>
+                <p th:text="${expl.orgName} + ', ' + ${{expl.startDate}} + ' to ' + ${{exp.endDate}}"></p>
                 <p th:text="${expl.duty}"></p>
                 <br/>
             </th:block>
@@ -45,7 +46,7 @@
 
         </div>
             <div class="panel panel-default">
-                <div class="panel-heading">
+                <div class="panel-body">
                   </i> <caption> <h4><b>Skills</b></h4></caption>
                 </div>
                 <hr/>
@@ -57,11 +58,7 @@
             </div>
 
             </div>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <p><a th:href="@{/EditResumedetail/{id}(id=${resumeR.id})}"><strong>Edit Resume</strong></a></p>
-            </div>
-        </div>
+
     </div>
 </section>
 <div th:replace="base :: javaScript"></div>

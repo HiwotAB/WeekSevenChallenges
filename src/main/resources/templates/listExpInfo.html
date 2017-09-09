@@ -14,7 +14,7 @@
                     <caption class="sr-only">Your Work Experience Information</caption>
                     <thead>
                     <tr>
-                        <th id="res_filed" role="gridcell">Full Name</th>
+
                         <th id="prof_Name" role="gridcell">Professional Name</th>
                         <th id="prof_level" role="gridcell">Professional Level</th>
                         <th id="org_Name" role="gridcell">Organization Name</th>
@@ -26,10 +26,6 @@
                     </thead>
                     <tbody>
                     <tr th:each="explist : ${searchExp}">
-                        <td > <select name="resumes" class="form-control">
-                                <option th:text="${explist.resume.firstname}+' '+ ${explist.resume.lastname}"></option>
-                                </select>
-                        </td>
                         <td th:text="${explist.profName}"></td>
                         <td th:text="${explist.ProfLevel}" ></td>
                         <td th:text="${explist.orgName}"></td>
@@ -38,7 +34,7 @@
                         <td th:text="${{explist.endDate}}"></td>
                         <td>
                             <a th:href="@{/updateExpInfo/{id}(id=${explist.id})}" class="btn btn-primary">Update</a>
-                            <!--<a th:href="@{/deleteExpInfo/{id}(id=${explist.id})}" class="btn btn-danger">Delete</a>-->
+
                         </td>
                     </tr>
                     </tbody>

@@ -32,12 +32,24 @@ public class Job {
     @JoinTable(
             joinColumns=@JoinColumn(name="job_id"),
             inverseJoinColumns=@JoinColumn(name="skill_id"))
-
     private Collection<Skills> jobskill;
 
     public Job(){
         this.jobskill=new ArrayList<Skills>();
     }
+
+//    @ManyToOne(fetch = FetchType.EAGER)
+//    @JoinColumn(name="resume_id")
+//    private Resume resume;
+//
+//    public Resume getResume() {
+//        return resume;
+//    }
+
+//    public void setResume(Resume resume) {
+//        this.resume = resume;
+//    }
+
 
     public long getId() {
         return id;
