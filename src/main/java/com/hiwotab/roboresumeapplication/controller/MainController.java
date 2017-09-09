@@ -392,7 +392,7 @@ public class MainController {
     }
 
     @PostMapping("/searchpeople")
-    public String showPeople(@ModelAttribute("user") Resume resumes,
+    public String searchPeople(@ModelAttribute("user") Resume resumes,
                              Model model) {
 
         Iterable<Resume>resumeIterable=resumeRepostory.findByFirstname(resumes.getFirstname());
@@ -417,6 +417,23 @@ public class MainController {
 
         return "dispSchool";
     }
+    @GetMapping("/searchcompany")
+    public String searchCompany(Model model) {
+
+        model.addAttribute("newExps",new WorkExperiences());
+
+        return "searchcompany";
+    }
+
+    @PostMapping("/searchcompany")
+    public String searchCompany(@ModelAttribute("newExps") WorkExperiences workExperiences,
+                               Model model) {
+
+        Iterable<WorkExperiences>listorg=workExperiencesRepostory.findByOrgName(workExperiences.getOrgName());
+        model.addAttribute("workList",listorg);
+
+        return "dispCompany";
+    }
 
     @GetMapping("/listjobs")
     public String jobsListed(Model model)
@@ -433,18 +450,5 @@ public class MainController {
         return"jobdetail";
     }
 
-//    @GetMapping("/viewresume")
-//    public String PostResume( Principal principal,Model model)
-//    {
-//        model.addAttribute("person",personRepository.findAllByUsername(principal.getName()));
-//        return "viewresume";
-//    }
-//    @GetMapping("/editinfo")
-//
-//    public String Editperson(Principal principal,Model model)
-//    {
-//        model.addAttribute("person",personRepository.findAllByUsername(principal.getName()));
-//        return "editinfo";
-//    }
 
 }
