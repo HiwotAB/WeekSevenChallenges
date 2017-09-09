@@ -283,26 +283,43 @@ public class MainController {
     /***************************************************************************************************/
 
 
+    @GetMapping("/addJobInfo")
+    public String showJobPage(Model model)
+    {
+        // this is to check that principal is returning the loggedin user
+
+
+        model.addAttribute("job",new Job());
+        return "addJobInfo";
+    }
+    @PostMapping("/addJobInfo")
+    public  String saveJob( @ModelAttribute("job") Job job,  Model model) {
+
+        jobRepository.save(job);
+
+        return "redirect:/addSkillToJobInfo/"+  job.getId();
+    }
     @GetMapping("/addSkillToJobInfo/{id}")
-    public String addJobInfo(@PathVariable("id") long job_Id,Model model) {
-        model.addAttribute("newJob", jobRepository.findOne(new Long(job_Id)));
+    public String addSkilltoJob(@PathVariable("id") long job_Id,Model model) {
+        model.addAttribute("job", jobRepository.findOne(new Long(job_Id)));
         model.addAttribute("skillLists", skillsRepostory.findAll());
         return "addSkillToJobInfo";
     }
 
-    @PostMapping("/addSkillToJobInfo{JId}")
-    public String addJobInfo(@Valid @PathVariable("JId") long job_Id,@RequestParam("skill")String skill_Id ,@ModelAttribute("newJob") Skills skills,BindingResult bindingResult,Model model) {
+   @PostMapping("/addSkillToJobInfo{jobid}")
+    public String addJobInfo(@PathVariable("jobid") long id,
+                             @RequestParam("job")String job_Id , @ModelAttribute("aSkill") Skills skill,Model model) {
 
-        if (bindingResult.hasErrors()) {
-
-            return "addSkillToJobInfo";
-        }
-        Job job= jobRepository.findOne(new Long(job_Id));
-        job.addSkill(skillsRepostory.findOne(new Long(skill_Id)));
-        jobRepository.save(job);
-        model.addAttribute("skillLists", skillsRepostory.findAll());
-        model.addAttribute("jobList", jobRepository.findAll());
-        return "redirect:/listJobInfo";
+//        if (bindingResult.hasErrors()) {
+//
+//            return "addSkillToJobInfo";
+//        }
+        Job jobs= jobRepository.findOne(new Long(id));
+        jobs.addSkill(skillsRepostory.findOne(new Long(job_Id)));
+        jobRepository.save(jobs);
+//        model.addAttribute("skillLists", skillsRepostory.findAll());
+//        model.addAttribute("jobList", jobRepository.findAll());
+        return "redirect:/addSkillToJobInfo/"+id;
 
     }
     /*This method is used to modify the existing in forms then update data bas tables according to there modify fields */
