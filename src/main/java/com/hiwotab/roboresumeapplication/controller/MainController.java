@@ -115,9 +115,10 @@ public class MainController {
 
 
     /*This method is used to modify the existing in forms then update data bas tables according to there modify fields */
-    @RequestMapping("/updateUserInfo")
-    public String updateUserInfo(Principal principal, Model model){
-        model.addAttribute("newUser", resumeRepostory.findByUsername(principal.getName()));
+    @RequestMapping("/updateUserInfo/{id}")
+    public String updateUserInfo(@PathVariable("id") long id, Model model){
+        model.addAttribute("newUser", resumeRepostory.findOne(id));
+        model.addAttribute("listRoles",userRoleRepo.findAll());
         return "signUpForm";
     }
     /*This method is used to delete the existing data  records from data base table and dispaly the rest of data which has been there*/
@@ -167,6 +168,7 @@ public class MainController {
     /*This method is used to modify the existing in forms then update data bas tables according to there modify fields */
     @RequestMapping("/updateEduInfo/{id}")
     public String updateEduInfo(@PathVariable("id") long id, Model model){
+
         model.addAttribute("newEduInfo", eduAchievementsRepostory.findOne(id));
         return "addEduInfo";
     }
