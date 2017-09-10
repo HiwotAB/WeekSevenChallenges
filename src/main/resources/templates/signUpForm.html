@@ -15,7 +15,7 @@
                         <div class="header-content-inner">
                             <div class="container">
                                 <div class="transbox" opacity="0.5">
-                                    <form autocomplete="off" class="well form-horizontal" th:action="@{/signUpForm}" th:object="${newUser}" method="post">
+                                    <form autocomplete="off" autocomplete="off" class="well form-horizontal" th:action="@{/signUpForm}" th:object="${newUser}" method="post">
                                         <fieldset>
                                             <!-- Form Name -->
                                             <legend align="Center">Please Enter Your Information</legend>
@@ -95,8 +95,8 @@
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label"></label>
                                                     <div class="col-md-4">
-                                                        <p><button type="submit" class="btn btn-success" >SignUp</button></p>
-                                                        <p><button type="reset" class="btn btn-warning" >Reset</span></button></p>
+                                                        <p><button type="submit" class="btn btn-success" ><span class="glyphicon glyphicon-user"></span>SignUp</button></p>
+                                                        <p><button type="reset" class="btn btn-warning" ><span class="glyphicon glyphicon-remove"></span>Reset</button></p>
                                                     </div>
                                                 </div>
                                             </fieldset>

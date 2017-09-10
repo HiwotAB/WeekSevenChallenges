@@ -34,13 +34,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
         http
                 .authorizeRequests()
-                .antMatchers("/","/signUpForm","signUpConfirm","/css/**","/js/**","/img/**","/font-awesome/**","lib/**", "/homePage").permitAll()
-                .antMatchers("/","/signUpForm","signUpConfirm","/css/**","/js/**","/img/**","/fonts/**","/font-awesome/**","lib/**", "/homePage","/addEduInfo","dispEduInfo","/updateEduInfo/{id}",
-                        "/listEduInfo","/addWorkExpInfo","dispWorkExpInfo","/updateExpInfo/**","/listExpInfo","/addSkillInfo","dispSkillsInfo","/updateSkillInfo/**",
-                        "/listSkillInfo","/EditResumedetail/**","/SummerizedResume/**","/addSkillToJobInfo/**","/listJobInfo","/addJobInfo").permitAll()
-                .antMatchers("/listUserInfo","/searchUser/updateUserInfo/**","/addEduInfo","dispEduInfo").access("hasAuthority('ADMIN')")
-                .antMatchers("/listUserInfo").access("hasAuthority('RECRUITERS')")
-                .antMatchers("/listUserInfo","/addEduInfo","dispEduInfo").access("hasAuthority('JOB SEEKERS')")
+                .antMatchers("/","/signUpForm","/editSignUp","/css/**","/js/**","/img/**","/font-awesome/**","/fonts/**","lib/**", "/homePage").permitAll()
+                .antMatchers("/addEduInfo","/listEduInfo","/updateEduInfo/**","/addSkillInfo","/listSkillInfo",
+                        "/updateSkillInfo/**","/addWorkExpInfo","/listExpInfo","/updateExpInfo/**","/searchPeople",
+                        "/searchSchool","/searchCompany","/searchJobs","/listJobs","/EditResumedetail","/SummerizedResume").access("hasAuthority('JOB SEEKERS')")
+                .antMatchers("/addJobInfo","/listJobInfo","/listJobs","/updateJobInfo/**").access("hasAuthority('RECRUITERS')")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/login").permitAll()

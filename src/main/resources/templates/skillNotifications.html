@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="base :: header">
+
+    <title>Add Skill Info</title>
+</head>
+
+<body>
+<!-- Header -->
+<div th:replace="base :: navlinks"></div>
+<header id="top" class="header">
+    <div class="text-vertical-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-7">
+                    <div class="header-content">
+                        <div class="header-content-inner">
+                            <div class="container">
+
+                                <label th:inline="text">Adding Skill for [[${newSkill.resume.firstname}+' '+${newSkill.resume.lastname}]]</label>
+                                <!-- Text input-->
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <div th:each="skill:${matchFound}">
+                                            <p th:text="${skill.title}" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</header>
+<!--<div th:replace="base :: javaScript"></div>-->
+<div th:replace="base :: footer"></div>
+</body>
+</html>

@@ -18,7 +18,7 @@
                         <div class="header-content-inner">
                             <div class="container">
 
-                                <form class="well form-horizontal" th:action="@{/addEduInfo}" th:object="${newEduInfo}" method="post">
+                                <form autocomplete="off" class="well form-horizontal" th:action="@{/addEduInfo}" th:object="${newEduInfo}" method="post">
                                     <fieldset>
                                         <!-- Form Name -->
                                         <legend align="Center">Please Enter Your Education Achievement Information</legend>
@@ -85,7 +85,7 @@
 
     </div>
 </header>
-<!--<div th:replace="base :: javaScript"></div>-->
+<div th:replace="base :: javaScript"></div>
 <div th:replace="base :: footer"></div>
 </body>
 

@@ -11,7 +11,7 @@
 <header id="top" class="header">
     <div class="text-vertical-center">
         <div class="container">
-            <form class="well form-horizontal" th:action="@{/signUpConfirm}" th:object="${newUser}" method="">
+            <form class="well form-horizontal" th:action="@{/editSignUp}" th:object="${newUser}" method="">
 
                 <fieldset>
                     <!-- Form Name -->
@@ -38,16 +38,16 @@
                     </div>
                     <!-- Text input-->
                     <div class="form-group">
-                        <label class="col-md-4 control-label">E-Mail</label>
-                        <div class="col-md-4 inputGroupContainer">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                                <p th:text="${newUser.email}" />
-                            </div>
+                    <label class="col-md-4 control-label">E-Mail</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                            <p th:text="${newUser.email}" />
                         </div>
                     </div>
+                </div>
                     <!-- Button -->
-
+                      <a th:href="@{/updateUserInfo/{id}(id=${newUser.id})}">Update</a>
                 </fieldset>
             </form>
         </div>

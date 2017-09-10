@@ -31,8 +31,7 @@
                                             <td th:text="${eduList.uniName}" ></td>
                                             <td th:text="${{eduList.grdYear}}"></td>
                                             <td>
-                                                <a th:href="@{/updateEduInfo/{id}(id=${eduList.id})}" class="btn btn-primary">Update</a>-
-                                                <!--<a th:href="@{/deleteEduInfo/{id}(id=${eduList.id})}" class="btn btn-danger">Delete</a>-->
+                                                <a th:href="@{/updateEduInfo/{id}(id=${eduList.id})}" class="btn btn-primary">Update</a>
 
                                             </td>
                                         </tr>
@@ -40,11 +39,6 @@
 
                                     </table>
 
-                                </div>
-                                <div class="form-group"align="center">
-                                    <div class="col-md-4" align="center">
-                                        <p><a href="addEduInfo"><strong>More Education Achievement Info</strong></a></p>
-                                    </div>
                                 </div>
                             </div>
                         </div>

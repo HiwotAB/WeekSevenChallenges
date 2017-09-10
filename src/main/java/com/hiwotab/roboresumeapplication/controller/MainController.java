@@ -17,6 +17,8 @@ import javax.validation.Valid;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 @Controller
 public class MainController {
@@ -43,9 +45,6 @@ public class MainController {
     public String showHomePages(Model model) {
 
        if(userRoleRepo.count()==0){
-           UserRole userRole=new UserRole();
-           userRole.setUrole("ADMIN");
-           userRoleRepo.save(userRole);
            UserRole userRoleR=new UserRole();
            userRoleR.setUrole("RECRUITERS");
            userRoleRepo.save(userRoleR);
@@ -374,7 +373,7 @@ public class MainController {
     }
 
     /*******************************************************************************************/
-    @GetMapping("/SummerizedResume/{id}")
+    @GetMapping("/SummerizedResume")
     public String summary(Principal principal,Model model) {
         Resume resumeR=resumeRepostory.findByUsername(principal.getName());
         model.addAttribute("resumeR", resumeR);
@@ -440,6 +439,33 @@ public class MainController {
         return "dispEmpJobDetail";
     }
 
-
+//    @GetMapping("/skillNotifications")
+//    public String jobMatchs(Principal principal, Model model) {
+//        Iterable<Job> jobList = jobRepository.findAll();
+//        Resume p = resumeRepostory.findByUsername(principal.getName());
+//        Set<Job> test=new HashSet<Job>();
+//
+//        for (Job jb : jobList) {
+//            for (Skills nsk : jb.getJobskill()) {
+//                for (Skills sk : p.getSkillsSet()) {
+////                    if (nsk.getSkillname().equals(sk.getSkillname())) {
+//                        System.out.println("Job matching your skills found");
+//                        System.out.println("Job found is: " + jb.getTitle());
+////                        test.add(jb);
+//                    test.retainAll();
+//                        model.addAttribute("matchFound", test);
+////                            stopper = true;
+//                        return "jobmessage";
+//                    }
+//                    else {
+//                        System.out.println("no Job found");
+//                    }
+//
+//                }
+////                }
+//            }
+//        }
+//        return "jobmessage";
+//    }
 
 }
