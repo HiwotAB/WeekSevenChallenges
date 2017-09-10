@@ -9,8 +9,8 @@
         <link href="/css/style.css" rel="stylesheet">
     </head>
     <body>
-    <section class="hero">
-        <div class="container text-center">
+    <header id="top" class="header">
+        <div class="text-vertical-center">
        <div th:if="${param.error}" class="well alert alert-danger" role="alert">
             Invalid Username and Password!
         </div>
@@ -26,7 +26,7 @@
         </div>
         <div class="shadow"></div>
         </div>
-    </section>
+    </header>
     </body>
 </html>
 

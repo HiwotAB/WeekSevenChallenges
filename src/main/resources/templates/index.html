@@ -5,12 +5,17 @@
     <title>Home Page</title>
 </head>
 <body>
-<section class="hero">
-    <div class="container text-center">
+
+<!-- Header -->
+<div th:replace="base :: navlinks"></div>
+<header id="top" class="header">
+    <div class="text-vertical-center">
+        <div class="container">
         <h1>Welcome to Robo Resume Application</h1>
         <br>
         </div>
-</section>
+    </div>
+</header>
 <div th:replace="base :: javaScript"></div>
 <div th:replace="base :: footer"></div>
 </body>

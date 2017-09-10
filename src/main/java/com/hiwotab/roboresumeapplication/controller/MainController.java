@@ -383,74 +383,63 @@ public class MainController {
         model.addAttribute("listExps",workExperiencesRepostory.findByResume(resumeR));
         return "SummerizedResume";
     }
-
-
-    @GetMapping("/searchpeople")
+    @GetMapping("/searchPeople")
     public String searchPeople(Model model) {
-
         model.addAttribute("user",new Resume());
-
-        return "searchpeople";
+        return "searchPeople";
     }
-
-    @PostMapping("/searchpeople")
-    public String searchPeople(@ModelAttribute("user") Resume resumes,
-                             Model model) {
-
+    @PostMapping("/searchPeople")
+    public String searchPeople(@ModelAttribute("user") Resume resumes,Model model) {
         Iterable<Resume>resumeIterable=resumeRepostory.findByFirstname(resumes.getFirstname());
-        model.addAttribute("person",resumeIterable);
-
-        return "dispPeople";
+        model.addAttribute("dipUser",resumeIterable);
+        return "dispPeopleInfo";
     }
-    @GetMapping("/searchschool")
+    @GetMapping("/searchSchool")
     public String searchSchool(Model model) {
-
         model.addAttribute("newEduu",new EduAchievements());
-
-        return "searchschool";
+        return "searchSchool";
     }
-
-    @PostMapping("/searchschool")
-    public String searchSchool(@ModelAttribute("newEduu") EduAchievements eduAchievements,
-                             Model model) {
-
+    @PostMapping("/searchSchool")
+    public String searchSchool(@ModelAttribute("newEduu") EduAchievements eduAchievements,Model model) {
         Iterable<EduAchievements>listedu=eduAchievementsRepostory.findByUniName(eduAchievements.getUniName());
         model.addAttribute("eduList",listedu);
-
-        return "dispSchool";
+        return "dispSchoolInfo";
     }
-    @GetMapping("/searchcompany")
+    @GetMapping("/searchCompany")
     public String searchCompany(Model model) {
-
         model.addAttribute("newExps",new WorkExperiences());
-
-        return "searchcompany";
+        return "searchCompany";
     }
-
-    @PostMapping("/searchcompany")
-    public String searchCompany(@ModelAttribute("newExps") WorkExperiences workExperiences,
-                               Model model) {
-
+    @PostMapping("/searchCompany")
+    public String searchCompany(@ModelAttribute("newExps") WorkExperiences workExperiences,Model model) {
         Iterable<WorkExperiences>listorg=workExperiencesRepostory.findByOrgName(workExperiences.getOrgName());
         model.addAttribute("workList",listorg);
-
-        return "dispCompany";
+        return "dispCompanyInfo";
+    }
+//To see for the particular job title deatils
+    @GetMapping("/listJobs")
+    public String listJobs(Model model)    {
+        model.addAttribute("listjob",jobRepository.findAll());
+        return"listJobs";
+    }
+    @GetMapping("/jobDetailInfo/{id}")
+    public String jobDetail(Model model)    {
+        model.addAttribute("listjob",jobRepository.findAll());
+        return"jobDetailInfo";
+    }
+    //To see for the particular job title details of employer information
+    @GetMapping("/searchJobs")
+    public String searchEmployer(Model model) {
+        model.addAttribute("listJob", new Job());
+        return "searchJobs";
+    }
+    @PostMapping("/searchJobs")
+    public String searchEmployer(@ModelAttribute("listJob") Job jobs,Model model){
+        Iterable<Job>jobIterable=jobRepository.findByEmployer(jobs.getEmployer());
+        model.addAttribute("listJob",jobIterable);
+        return "dispEmpJobDetail";
     }
 
-    @GetMapping("/listjobs")
-    public String jobsListed(Model model)
-    {
-        model.addAttribute("joblist",jobRepository.findAll());
-
-        return"joblist";
-    }
-    @GetMapping("/jobdetail/{id}")
-    public String jobdetail(Model model)
-    {
-        model.addAttribute("joblist",jobRepository.findAll());
-
-        return"jobdetail";
-    }
 
 
 }

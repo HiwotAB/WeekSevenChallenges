@@ -2,35 +2,75 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="base :: header">
-    <title>Add Skills to Job Info</title>
+    <title>Add Job Info</title>
 
 </head>
 <body>
 
 <!-- Header -->
-<section class="hero">
-    <div class="container text-center">
+<div th:replace="base :: navlinks"></div>
+<header id="top" class="header">
+    <div class="text-vertical-center">
         <div class="container">
-            <form th:action="@{/addskilltojob/{jobid}(jobid=${job.id})}" th:object="${aSkill}" method="post">
-                <input type="number" th:value="${job.id}">
-                <label th:inline="text">Adding a skill for [[${job.title}]]</label>
+            <div class="row">
+                <div class="col-sm-7">
+                    <div class="header-content">
+                        <div class="header-content-inner">
+                            <div class="container">
+                                <form th:action="@{/addskilltojob/{jobid}(jobid=${job.id})}" th:object="${aSkill}" method="post">
+                                    <fieldset>
 
-                <!--<select name="movies">-->
-                <!--<option th:each="aMovie:${movieList}" th:value="${aMovie.id}" th:text="${aMovie.title}"></option>-->
-                <!--</select>-->
+                                        <!-- Form Name -->
+                                        <legend align="Center">Your Skill </legend>
 
-                <select name="job">
-                    <option th:each="aSkill:${skilllist}" th:value="${aSkill.id}" th:text="${aSkill.skill}"></option>
-                </select>
-                <input type="submit" value="Add a skill!">
 
-                <!--<a class="nav-link js-scroll-trigger" href="/addskills">Add New Skills</a>-->
-            </form>
+                                            <input type="hidden" th:value="${job.id}">
+                                            <div class="form-group">
+                                                <label th:inline="text" class="col-md-4 control-label">Adding a skill for [[${job.title}]]</label>
+                                            </div>
+
+                                            <div  th:if="${#fields.hasErrors('skill')}" th:errors="*{skill}" class="well alert alert-danger" role="alert"></div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Skill</label>
+                                                <div class="col-md-4 inputGroupContainer">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="glyphicon glyphicon-education"></i></span>
+                                                        <select name="job">
+                                                            <option th:each="aSkill:${skilllist}" th:value="${aSkill.id}" th:text="${aSkill.skill}"></option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label"></label>
+                                                <div class="col-md-4">
+                                                    <button type="submit" class="btn btn-success" >Add Skill</button>
+                                                    <button type="reset" class="btn btn-warning">Reset</button>
+                                                </div>
+                                            </div>
+                                            <div class="form-group"align="center">
+                                                <div class="col-md-4" align="center">
+                                                     <p><a href="addSkillInfo"><strong>Add New Skill Information</strong></a></p>
+                                            <!--<a class="nav-link js-scroll-trigger" href="/addskills">Add New Skills</a>-->
+                                                </div>
+                                            </div>
+
+                                    </fieldset>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
+
     </div>
-</section>
-<div th:replace="base :: javaScript"></div>
+</header>
+<!--<div th:replace="base :: javaScript"></div>-->
 <div th:replace="base :: footer"></div>
 </body>
 
 </html>
+

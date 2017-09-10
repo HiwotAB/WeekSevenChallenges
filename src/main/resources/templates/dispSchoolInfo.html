@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="base :: header">
+    <title>Display User Info</title>
+</head>
+<body>
+<!-- Header -->
+<div th:replace="base :: navlinks"></div>
+<header id="top" class="header">
+    <div class="text-vertical-center">
+
+        <!-- Text input-->
+        <div class="panel panel-default active">
+            <div class="panel-heading">
+                <h2 th:text="${resumeR.firstname + ' ' + resumeR.lastname}"></h2>
+                <h6 th:text="${resumeR.email}"></h6>
+            </div>
+        </div>
+
+        <div class="panel panel-default active">
+            <div class="panel-heading">
+                <caption> <h4><b>Education Achievement</b></h4></caption>
+            </div>
+            <hr/>
+            <th:block th:each="edu : ${listEdu}">
+                <p th:text="${edu.eduType}"></p>
+                <p th:text="${edu.uniName} +', ' + ${{edu.grdYear}}"></p>
+                <br/>
+            </th:block>
+
+        </div>
+    </div>
+    </div>
+</header>
+<!--<div th:replace="base :: javaScript"></div>-->
+<div th:replace="base :: footer"></div>
+</body>
+</html>

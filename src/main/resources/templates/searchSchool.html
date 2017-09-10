@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="base :: header">
+    <title>Search Institiution Info</title>
+
+</head>
+<body>
+
+<!-- Header -->
+<div th:replace="base :: navlinks"></div>
+<header id="top" class="header">
+    <div class="text-vertical-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-7">
+                    <div class="header-content">
+                        <div class="header-content-inner">
+                            <div class="container">
+
+                                <form action="#" th:action="@{/searchSchool}" th:object="${newEduu}" method="post">
+
+                                    <div  th:if="${#fields.hasErrors('uniName')}" th:errors="*{uniName}" class="well alert alert-danger" role="alert"></div>
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label">Univ/College Name</label>
+                                        <div class="col-md-4 inputGroupContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="glyphicon glyphicon-certificate"></i></span>
+                                                <input  th:field="*{uniName}" name="uniName" placeholder="Enter University/College Name" class="form-control"  type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label"></label>
+                                        <div class="col-md-4">
+
+                                            <button type="submit" class="btn btn-success" >Search</button>
+                                            <button type="reset" class="btn btn-warning">Reset</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</header>
+<!--<div th:replace="base :: javaScript"></div>-->
+<div th:replace="base :: footer"></div>
+</body>
+
+</html>

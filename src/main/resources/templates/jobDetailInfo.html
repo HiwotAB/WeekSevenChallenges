@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="base :: header">
+    <title>Display Job DetailsInfo</title>
+</head>
+<body>
+<!-- Header -->
+<div th:replace="base :: navlinks"></div>
+<header id="top" class="header">
+    <div class="text-vertical-center">        <!-- Text input-->
+        <div class="panel panel-default active">
+                <div class="panel-body">
+                    <div th:each="list:${listjob}">
+                        <p th:text="${list.title}" />
+                        <p th:text="${list.employer}" />
+                        <p th:text="${list.salary}" />
+                        <h4 class="panel-title">
+                            <i class="fa fa-caret-right"></i> Description
+                            </a>
+                        </h4>
+                        <p th:text="${list.description}" />
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <i class="fa fa-caret-right"></i> Skills
+                    </a>
+                </h4>
+            </div>
+                <div th:each="skillJ:${listjob}">
+                        <div th:each="jobs:${skillJ.jobskill}">
+                            <p  th:text=" ${jobs.skillname} +', '+ ${jobs.rating}" />
+
+                        </div>
+                    </div>
+                </div>
+
+             </div>
+    </div>
+</header>
+<!--<div th:replace="base :: javaScript"></div>-->
+<div th:replace="base :: footer"></div>
+</body>
+</html>
+
+
+

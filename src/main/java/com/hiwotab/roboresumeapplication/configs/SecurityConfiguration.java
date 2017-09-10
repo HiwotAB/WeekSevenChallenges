@@ -35,7 +35,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/","/signUpForm","signUpConfirm","/css/**","/js/**","/img/**","/font-awesome/**","lib/**", "/homePage").permitAll()
-                .antMatchers("/","/signUpForm","signUpConfirm","/css/**","/js/**","/img/**","/font-awesome/**","lib/**", "/homePage","/addEduInfo","dispEduInfo","/updateEduInfo/{id}",
+                .antMatchers("/","/signUpForm","signUpConfirm","/css/**","/js/**","/img/**","/fonts/**","/font-awesome/**","lib/**", "/homePage","/addEduInfo","dispEduInfo","/updateEduInfo/{id}",
                         "/listEduInfo","/addWorkExpInfo","dispWorkExpInfo","/updateExpInfo/**","/listExpInfo","/addSkillInfo","dispSkillsInfo","/updateSkillInfo/**",
                         "/listSkillInfo","/EditResumedetail/**","/SummerizedResume/**","/addSkillToJobInfo/**","/listJobInfo","/addJobInfo").permitAll()
                 .antMatchers("/listUserInfo","/searchUser/updateUserInfo/**","/addEduInfo","dispEduInfo").access("hasAuthority('ADMIN')")

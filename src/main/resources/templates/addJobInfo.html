@@ -8,59 +8,93 @@
 <body>
 
 <!-- Header -->
-<section class="hero">
-    <div class="container text-center">
+<div th:replace="base :: navlinks"></div>
+<header id="top" class="header">
+    <div class="text-vertical-center">
         <div class="container">
+            <div class="row">
+                <div class="col-sm-7">
+                    <div class="header-content">
+                        <div class="header-content-inner">
+                            <div class="container">
 
-                <form class="well form-horizontal" th:action="@{/addJobInfo}" th:object="${job}" method="post">
-                <fieldset>
-                    <!-- Form Name -->
-                    <legend align="Center">Please Enter Your Job Information</legend>
-                    <!--<input type="hidden" th:field="*{newJob.id}" />-->
-                    <input type="hidden" th:field="*{id}" />
-                    <!-- Text input-->
-                    <!--<label th:inline="text">Adding Skills for [[${newJob.jobskill.skill}]]</label>-->
-                    <!-- Text input-->
-                    <div class="form-group">
-                        <div class="col-sm-10">
-                            <div  th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="well alert alert-danger" role="alert"></div>
-                            <input  th:field="*{title}" name="title" placeholder="Enter Title" class="form-control"  type="text">
+                                    <form class="well form-horizontal" th:action="@{/addJobInfo}" th:object="${job}" method="post">
+                                    <fieldset>
+                                        <!-- Form Name -->
+                                        <legend align="Center">Please Enter Your Job Information</legend>
+                                        <!--<input type="hidden" th:field="*{newJob.id}" />-->
+                                        <input type="hidden" th:field="*{id}" />
+                                        <!-- Text input-->
+                                        <!--<label th:inline="text">Adding Skills for [[${newJob.jobskill.skill}]]</label>-->
+                                        <!-- Text input-->
+
+                                        <div  th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="well alert alert-danger" role="alert"></div>
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label">Title</label>
+                                            <div class="col-md-4 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-education"></i></span>
+                                                    <input  th:field="*{title}" name="title" placeholder="Enter Title" class="form-control"  type="text">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Text input-->
+                                        <div  th:if="${#fields.hasErrors('employer')}" th:errors="*{employer}" class="well alert alert-danger" role="alert"></div>
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label">Employer</label>
+                                            <div class="col-md-4 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-education"></i></span>
+                                                    <input  th:field="*{employer}" name="employer" placeholder="Enter Employer" class="form-control"  type="text">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Text input-->
+                                        <div  th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="well alert alert-danger" role="alert"></div>
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label">Description</label>
+                                            <div class="col-md-4 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-education"></i></span>
+                                                    <input  th:field="*{description}" name="description" placeholder="Enter Description" class="form-control" type="text">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div  th:if="${#fields.hasErrors('salary')}" th:errors="*{salary}" class="well alert alert-danger" role="alert"></div>
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label">Salary</label>
+                                            <div class="col-md-4 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-education"></i></span>
+                                                    <input  th:field="*{salary}" name="salary" placeholder="Enter Salary" class="form-control" type="text">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Button -->
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label"></label>
+                                            <div class="col-md-4">
+                                                <!--<input th:disabled="${disSubmit}" class="btn btn-success"  type="submit" value="Submit">-->
+                                                <button type="submit" class="btn btn-success" >Submit</button>
+                                                <button type="reset" class="btn btn-warning">Reset</button>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </form>
+                            </div>
+
                         </div>
                     </div>
-                    <!-- Text input-->
-                    <div class="form-group">
-                        <div class="col-sm-10">
-                            <div  th:if="${#fields.hasErrors('employer')}" th:errors="*{employer}" class="well alert alert-danger" role="alert"></div>
-                            <input  th:field="*{employer}" name="employer" placeholder="Enter Employer" class="form-control"  type="text">
-                        </div>
-                    </div>
-                    <!-- Text input-->
-                    <div class="form-group">
-                        <div class="col-sm-10">
-                            <div  th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="well alert alert-danger" role="alert"></div>
-                            <input  th:field="*{description}" name="description" placeholder="Enter Description" class="form-control" type="text">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-10">
-                            <div  th:if="${#fields.hasErrors('salary')}" th:errors="*{salary}" class="well alert alert-danger" role="alert"></div>
-                            <input  th:field="*{salary}" name="salary" placeholder="Enter Salary" class="form-control" type="text">
-                        </div>
-                    </div>
-                    <!-- Button -->
-                    <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
-                            <!--<input th:disabled="${disSubmit}" class="btn btn-success"  type="submit" value="Submit">-->
-                            <button type="submit" class="btn btn-success" >Submit</button>
-                            <button type="reset" class="btn btn-warning">Reset</button>
-                        </div>
-                    </div>
-                </fieldset>
-            </form>
+                </div>
+
+            </div>
         </div>
+
     </div>
-</section>
-<div th:replace="base :: javaScript"></div>
+</header>
+<!--<div th:replace="base :: javaScript"></div>-->
 <div th:replace="base :: footer"></div>
 </body>
 

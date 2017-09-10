@@ -8,135 +8,161 @@
 </head>
 <body>
 <!-- Header -->
-<section class="hero">
-    <div class="container text-center">
+<div th:replace="base :: navlinks"></div>
+<header id="top" class="header">
+    <div class="text-vertical-center">
         <div class="container">
-            <form class="well form-horizontal" th:action="@{/EditResumedetail/{id}}" th:object="${resumeR}" method="">
-                         <fieldset>
-                    <!-- Form Name -->
-                            <legend align="Center"><h3><strong>Your Resume Application </strong></h3></legend>
-                    <!-- Person Info-->
-                                <div class="form-group">
-                                    <div class="col-sm-10">
-                                        <p th:text="${resumeR.firstname}" />
+            <div class="row">
+                <div class="col-sm-7">
+                    <div class="header-content">
+                        <div class="header-content-inner">
+                            <div class="container">
+                                <form class="well form-horizontal" th:action="@{/EditResumedetail/{id}}" th:object="${resumeR}" method="">
+                                             <fieldset>
+                                        <!-- Form Name -->
+                                                <legend align="Center"><h3><strong>Your Resume Application </strong></h3></legend>
+                                        <!-- Person Info-->
+                                                 <div class="form-group">
+                                                     <label class="col-md-4 control-label">First Name</label>
+                                                     <div class="col-md-4 inputGroupContainer">
+                                                         <div class="input-group">
+                                                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                                             <p th:text="${resumeR.firstname}" />
+                                                         </div>
+                                                     </div>
+                                                 </div>
+                                                 <div class="form-group">
+                                                     <label class="col-md-4 control-label">Last Name</label>
+                                                     <div class="col-md-4 inputGroupContainer">
+                                                         <div class="input-group">
+                                                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                                             <p th:text="${resumeR.lastname}" />
+                                                         </div>
+                                                     </div>
+                                                 </div>
+                                                 <!-- Text input-->
+                                                 <div class="form-group">
+                                                     <label class="col-md-4 control-label">E-Mail</label>
+                                                     <div class="col-md-4 inputGroupContainer">
+                                                         <div class="input-group">
+                                                             <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                                                             <p th:text="${resumeR.email}" />
+                                                         </div>
+                                                     </div>
+                                                 </div>
+
+
+                                                    <a th:href="@{/updateUserInfo/{id}(id=${resumeR.id})}">Update</a>
+                                            </fieldset>
+                                </form>
+
+                                    <!--Education Achievement Info-->
+                                     <div class="container">
+                                        <div class="bs-callout bs-callout-success">
+                                            <table id="autoGenerateID" role="grid" class="table table-striped table-bordered">
+                                                <caption class="sr-only">Your Education Achievement Information.</caption>
+                                                <thead>
+                                                <tr>
+                                                    <th id="edu_filed" role="gridcell">Education Filed</th>
+                                                    <th id="uni_name" role="gridcell">Univ/College Name</th>
+                                                    <th id="year" role="gridcell">Year Graduate</th>
+                                                    <th id="user_actions" role="gridcell">Actions</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr th:each="edu : ${listEdu}">
+                                                    <td th:text="${edu.eduType}"></td>
+                                                    <td th:text="${edu.uniName}" ></td>
+                                                    <td th:text="${{edu.grdYear}}"></td>
+                                                    <td>
+                                                        <a th:href="@{/updateEduInfo/{id}(id=${edu.id})}" class="btn btn-primary">Update</a>
+
+
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+
+                                            </table>
+                                        </div>
+                                     </div>
+
+                                    <!--Skills Info-->
+                                      <div class="container">
+                                        <div class="bs-callout bs-callout-success">
+                                            <table id="autoGeneratedID" role="grid" class="table table-striped table-bordered">
+                                                <caption class="sr-only">Your Skills Information</caption>
+                                                <thead>
+                                                <tr>
+
+                                                    <th id="skill" role="gridcell">Skill</th>
+                                                    <th id="rate" role="gridcell">Rate</th>
+                                                    <th id="user_action" role="gridcell">Actions</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr th:each="skill : ${listSkill}">
+                                                    <td th:text="${skill.skill}"></td>
+                                                    <td th:text="${skill.rate}"></td>
+                                                    <td>
+                                                        <a th:href="@{/updateSkillInfo/{id}(id=${skill.id})}" class="btn btn-primary">Update</a>
+
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+
+                                            </table>
+                                        </div>
+                                      </div>
+
+                                    <!--Work Experience Info-->
+                                    <div class="container">
+                                        <div class="bs-callout bs-callout-success">
+                                            <table id="autogenID" role="grid" class="table table-striped table-bordered">
+                                                <caption class="sr-only">Your Work Experience Information</caption>
+                                                <thead>
+                                                <tr>
+
+                                                    <th id="prof_Name" role="gridcell">Professional Name</th>
+                                                    <th id="prof_level" role="gridcell">Professional Level</th>
+                                                    <th id="org_Name" role="gridcell">Organization Name</th>
+                                                    <th id="duty" role="gridcell">Duty</th>
+                                                    <th id="sdate" role="gridcell">Start Date</th>
+                                                    <th id="edate" role="gridcell">End Date</th>
+                                                    <th id="userAc" role="gridcell">Actions</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr th:each="expl : ${listExps}">
+                                                    <td th:text="${expl.profName}"></td>
+                                                    <td th:text="${expl.ProfLevel}" ></td>
+                                                    <td th:text="${expl.orgName}"></td>
+                                                    <td th:text="${expl.duty}"></td>
+                                                    <td th:text="${{expl.startDate}}"></td>
+                                                    <td th:text="${{expl.endDate}}"></td>
+                                                    <td>
+                                                        <a th:href="@{/updateExpInfo/{id}(id=${expl.id})}" class="btn btn-primary">Update</a>
+
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-10">
-                                        <p th:text="${resumeR.lastname}" />
+
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <p><a th:href="@{/SummerizedResume/{id}(id=${resumeR.id})}"><strong>View Resume </strong></a></p>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-10">
-                                        <p th:text="${resumeR.email}" />
-                                    </div>
-                                </div>
-
-                                <a th:href="@{/updateUserInfo/{id}(id=${resumeR.id})}">Update</a>
-                        </fieldset>
-            </form>
-
-            <!--Education Achievement Info-->
-
-                <div class="bs-callout bs-callout-success">
-                    <table id="autoGenerateID" role="grid" class="table table-striped table-bordered">
-                        <caption class="sr-only">Your Education Achievement Information.</caption>
-                        <thead>
-                        <tr>
-                            <th id="name_efiled" role="gridcell">Full Name</th>
-                            <th id="edu_filed" role="gridcell">Education Filed</th>
-                            <th id="uni_name" role="gridcell">Univ/College Name</th>
-                            <th id="year" role="gridcell">Year Graduate</th>
-                            <th id="user_actions" role="gridcell">Actions</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr th:each="edu : ${listEdu}">
-                            <td th:text="${edu.eduType}"></td>
-                            <td th:text="${edu.uniName}" ></td>
-                            <td th:text="${{edu.grdYear}}"></td>
-                            <td>
-                                <a th:href="@{/updateEduInfo/{id}(id=${edu.id})}" class="btn btn-primary">Update</a>
-
-
-                            </td>
-                        </tr>
-                        </tbody>
-
-                    </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
-            <!--Skills Info-->
-
-                <div class="bs-callout bs-callout-success">
-                    <table id="autoGeneratedID" role="grid" class="table table-striped table-bordered">
-                        <caption class="sr-only">Your Skills Information</caption>
-                        <thead>
-                        <tr>
-
-                            <th id="skill" role="gridcell">Skill</th>
-                            <th id="rate" role="gridcell">Rate</th>
-                            <th id="user_action" role="gridcell">Actions</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr th:each="skill : ${listSkill}">
-                            <td th:text="${skill.skill}"></td>
-                            <td th:text="${skill.rate}"></td>
-                            <td>
-                                <a th:href="@{/updateSkillInfo/{id}(id=${skill.id})}" class="btn btn-primary">Update</a>
-
-                            </td>
-                        </tr>
-                        </tbody>
-
-                    </table>
-                </div>
-
-            <!--Work Experience Info-->
-
-                <div class="bs-callout bs-callout-success">
-                    <table id="autogenID" role="grid" class="table table-striped table-bordered">
-                        <caption class="sr-only">Your Work Experience Information</caption>
-                        <thead>
-                        <tr>
-
-                            <th id="prof_Name" role="gridcell">Professional Name</th>
-                            <th id="prof_level" role="gridcell">Professional Level</th>
-                            <th id="org_Name" role="gridcell">Organization Name</th>
-                            <th id="duty" role="gridcell">Duty</th>
-                            <th id="sdate" role="gridcell">Start Date</th>
-                            <th id="edate" role="gridcell">End Date</th>
-                            <th id="userAc" role="gridcell">Actions</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr th:each="expl : ${listExps}">
-                            <td th:text="${expl.profName}"></td>
-                            <td th:text="${expl.ProfLevel}" ></td>
-                            <td th:text="${expl.orgName}"></td>
-                            <td th:text="${expl.duty}"></td>
-                            <td th:text="${{expl.startDate}}"></td>
-                            <td th:text="${{expl.endDate}}"></td>
-                            <td>
-                                <a th:href="@{/updateExpInfo/{id}(id=${expl.id})}" class="btn btn-primary">Update</a>
-
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <p><a th:href="@{/SummerizedResume/{id}(id=${resumeR.id})}"><strong>View Resume </strong></a></p>
             </div>
         </div>
     </div>
-
-</section>
-<div th:replace="base :: javaScript"></div>
+</header>
+<!--<div th:replace="base :: javaScript"></div>-->
 <div th:replace="base :: footer"></div>
 </body>
 </html>
