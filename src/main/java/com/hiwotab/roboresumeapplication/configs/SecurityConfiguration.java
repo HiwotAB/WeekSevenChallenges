@@ -37,8 +37,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/","/signUpForm","/editSignUp","/index","/css/**","/js/**","/img/**","/font-awesome/**","/fonts/**","lib/**", "/homePage").permitAll()
                 .antMatchers("/addEduInfo","/listEduInfo","/updateEduInfo/**","/addSkillInfo","/listSkillInfo",
                         "/updateSkillInfo/**","/addWorkExpInfo","/listExpInfo","/updateExpInfo/**","/searchPeople",
-                        "/searchSchool","/searchCompany","/searchJobs","/listJobs","/EditResumedetail","/SummerizedResume").access("hasAuthority('JOB SEEKERS')")
-                .antMatchers("/addJobInfo","/addSkillToJobInfo","/listJobInfo","/listJobs","/updateJobInfo/**").access("hasAuthority('RECRUITERS')")
+                        "/searchSchool","/searchJobsByComp","/searchJobsByTitle","/listJobs","/EditResumedetail","/SummerizedResume").access("hasAuthority('JOB SEEKERS')")
+                .antMatchers("/addJobInfo","/addSkillToJobInfo","/listJobInfo","/listJobs","/updateJobInfo/**","/searchJobsByTitle","/searchPeoples").access("hasAuthority('RECRUITERS')")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/login").permitAll()

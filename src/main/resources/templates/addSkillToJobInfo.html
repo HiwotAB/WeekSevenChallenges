@@ -31,6 +31,7 @@
                                             <div class="form-group">
                                                 <div class="col-md-4 inputGroupContainer">
                                                     <div class="input-group">
+                                                        <label th:inline="text">List Of Skills</label>
                                                         <select name="job">
                                                             <option th:each="aSkill:${skilllist}" th:value="${aSkill.id}" th:text="${aSkill.skill}"></option>
                                                         </select>
@@ -40,8 +41,8 @@
                                             <div class="form-group">
                                                 <label class="col-md-4 control-label"></label>
                                                 <div class="col-md-4">
-                                                    <button type="submit" class="btn btn-success" >Add Skill</button>
-                                                    <button type="reset" class="btn btn-warning">Reset</button>
+                                                    <div><button type="submit" class="btn btn-success" >Add Skill</button>
+                                                        <button type="reset" class="btn btn-warning">Reset</button></div>
                                                 </div>
                                             </div>
 

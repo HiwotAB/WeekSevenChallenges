@@ -1,6 +1,5 @@
-
 <!DOCTYPE html>
-<html lang="en" xmlns:th="www.thymeleaf.org">
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
     <title>Title</title>
@@ -16,8 +15,6 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
-
-
     <!-- Custom CSS -->
     <link href="/css/stylish-portfolio.css" rel="stylesheet">
     <link href="/css/forms.css" rel="stylesheet">
@@ -28,7 +25,7 @@
     <!-- Custom Fonts -->
     <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
 </div>
 
 <div class="container" th:fragment="navlinks">
@@ -40,36 +37,42 @@
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Education
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu">
+                        <div sec:authorize="hasAuthority('JOB SEEKERS')">
                         <li><a href="/addEduInfo">Add New Education</a></li>
                         <li><a href="/listEduInfo">View Education</a></li>
-
+                        </div>
                     </ul>
                 </li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Skills
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu">
+                        <div sec:authorize="hasAuthority('JOB SEEKERS')">
                         <li><a href="/addSkillInfo">Add New Skill</a></li>
                         <li><a href="/listSkillInfo">View Skills</a></li>
-
+                        </div>
                     </ul>
                 </li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Work Exp.
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu">
+                        <div sec:authorize="hasAuthority('JOB SEEKERS')">
                         <li><a href="/addWorkExpInfo">Add New Work Exp.</a></li>
                         <li><a href="/listExpInfo">View Work Exp.</a></li>
-
+                        </div>
                     </ul>
                 </li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Jobs
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu">
+                        <div sec:authorize="hasAuthority('RECRUITERS')">
                         <li><a href="/addJobInfo">Add New Job</a></li>
                         <li><a href="/listJobInfo">View Jobs</a></li>
-                        <li><a href="/listJobs">Search By Jobs</a></li>
+                        <li><a href="/searchJobsByTitle">Search By Jobs</a></li>
+                        <li><a href="/searchPeoples">Search By User</a></li>
+                        </div>
 
                     </ul>
                 </li>
@@ -77,18 +80,21 @@
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Search
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu">
+                        <div sec:authorize="hasAuthority('JOB SEEKERS')">
                         <li><a href="/searchPeoples">Search By User</a></li>
                         <li><a href="/searchSchool">Search By School</a></li>
                         <li><a href="/searchCompany">Search By Organization</a></li>
-                        <li><a href="/searchJobs">Search By Employer</a></li>
-                        <li><a href="/listJobs">Search By Jobs</a></li>
+                        <li><a href="/searchJobsByComp">Search By Employer</a></li>
+                        <li><a href="/searchJobsByTitle">Search By Jobs</a></li>
+                        <li><a href="/EditResumedetail">Edit Resume</a></li>
+                        <li><a href="/SummerizedResume">View Resume</a></li>
+                        <li><a href="/skillNotifications">Notification</a></li>
+                        </div>
                     </ul>
                 </li>
-                <li><a href="/EditResumedetail">Edit Resume</a></li>
-                <li><a href="/SummerizedResume">View Resume</a></li>
                 <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span>Sign In</a></li>
                 <li><a href="/signUpForm"><span class="glyphicon glyphicon-user"></span>Sign Up</a></li>
-                <li><a href="/editSignUp"><span class="glyphicon glyphicon-user"></span>Edit SignUp</a></li>
+                <!--<li><a href="/editSignUp"><span class="glyphicon glyphicon-user"></span>Edit SignUp</a></li>-->
                 <li><a href="/logout">LogOut</a></li>
 
             </ul>

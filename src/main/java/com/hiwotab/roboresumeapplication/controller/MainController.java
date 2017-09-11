@@ -125,7 +125,7 @@ public class MainController {
             model.addAttribute("message","Admin Account Successfully Created");
         }
 
-        return "redirect:/login";
+        return "editSignUp";
     }
 
 
@@ -506,7 +506,6 @@ public class MainController {
                 for (Skills jobSkill : jobs.getJobskill()) {
                     for (Skills resumeSkill : resume.getSkillsSet()) {
                         if (jobSkill.getSkill().equals(resumeSkill.getSkill())) {
-
                             jobSet.add(jobs);
                         } else {
                             System.out.println("no Job found");

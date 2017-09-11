@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3" xmlns="http://www.w3.org/1999/html">
 <head th:replace="base :: header">
     <title>Display User Resume Info</title>
 </head>
@@ -47,7 +47,8 @@
                     </div>
                 </div>
                     <!-- Button -->
-                      <a th:href="@{/updateUserInfo/{id}(id=${newUser.id})}">Update</a>
+                    <div><a th:href="@{/updateUserInfo/{id}(id=${newUser.id})}" class="btn btn-primary">Update</a></div>
+                    <div><a href="/login"><span class="glyphicon glyphicon-log-in" class="btn btn-primary"></span>Sign In</a></div>
                 </fieldset>
             </form>
         </div>
