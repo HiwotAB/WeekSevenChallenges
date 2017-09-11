@@ -14,10 +14,6 @@
                         <p th:text="${list.title}" />
                         <p th:text="${list.employer}" />
                         <p th:text="${list.salary}" />
-                        <h4 class="panel-title">
-                            <i class="fa fa-caret-right"></i> Description
-                            </a>
-                        </h4>
                         <p th:text="${list.description}" />
                     </div>
                 </div>
@@ -40,7 +36,7 @@
              </div>
     </div>
 </header>
-<!--<div th:replace="base :: javaScript"></div>-->
+<div th:replace="base :: javaScript"></div>
 <div th:replace="base :: footer"></div>
 </body>
 </html>
