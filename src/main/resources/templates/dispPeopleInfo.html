@@ -12,8 +12,11 @@
         <!-- Text input-->
         <div class="panel panel-default active">
             <div class="panel-heading">
-                <h2 th:text="${resumeR.firstname + ' ' + resumeR.lastname}"></h2>
-                <h6 th:text="${resumeR.email}"></h6>
+                <div th:each="users:${dipUser}">
+                    <p th:text="${users.firstname} +' '+${users.lastname}" />
+                    <p th:text="${users.email}" />
+                </div>
+
             </div>
         </div>
 
@@ -22,10 +25,12 @@
                 <caption> <h4><b>Education Achievement</b></h4></caption>
             </div>
             <hr/>
-            <th:block th:each="edu : ${listEdu}">
-                <p th:text="${edu.eduType}"></p>
-                <p th:text="${edu.uniName} +', ' + ${{edu.grdYear}}"></p>
-                <br/>
+            <th:block th:each="user:${dipUser}">
+                <th:block th:each="edu : ${user.eduAchievementsSet}">
+                    <p th:text="${edu.eduType}"></p>
+                    <p th:text="${edu.uniName} +', ' + ${{edu.grdYear}}"></p>
+                    <br/>
+                </th:block>
             </th:block>
 
         </div>
@@ -35,11 +40,13 @@
 
             </div>
             <hr/>
-            <th:block th:each="expl : ${listExps}">
+            <th:block th:each="user:${dipUser}">
+            <th:block th:each="expl : ${user.workExperiencesSet}">
                 <p  th:text="${expl.profName}+ ' ' + ${expl.ProfLevel}"></p>
                 <p th:text="${expl.orgName} + ', ' + ${{expl.startDate}} + ' to ' + ${{expl.endDate}}"></p>
                 <p th:text="${expl.duty}"></p>
                 <br/>
+            </th:block>
             </th:block>
             <br/>
 
@@ -49,9 +56,11 @@
                 </i> <caption> <h4><b>Skills</b></h4></caption>
             </div>
             <hr/>
-            <th:block th:each="skill : ${listSkill}">
+            <th:block th:each="user:${dipUser}">
+            <th:block th:each="skill : ${user.skillsSet}">
                 <p th:text="${skill.skill} + ', ' + ${skill.rate}"></p>
                 <br/>
+            </th:block>
             </th:block>
             <br/>
         </div>

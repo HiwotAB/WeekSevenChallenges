@@ -22,8 +22,25 @@
                                 <!-- Text input-->
                                 <div class="panel panel-default">
                                     <div class="panel-body">
-                                        <div th:each="skill:${matchFound}">
-                                            <p th:text="${skill.title}" />
+                                        <table>
+                                            <athead>
+                                                <tr>
+                                                    <th>Job Title</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </athead>
+                                            <tbody>
+                                            <th:block th:each="item:${joblist}">
+                                                <tr>
+                                                    <td><p th:text="${item.title}" /></td>
+                                                    <td>
+                                                        <a th:href="@{/jobdetail/{id}(id=${item.id})}"
+                                                           class="active"><small>Detail</small></a>
+                                                    </td>
+                                                </tr>
+                                            </th:block>
+                                            </tbody>
+                                        </table>>
                                         </div>
                                     </div>
                                 </div>

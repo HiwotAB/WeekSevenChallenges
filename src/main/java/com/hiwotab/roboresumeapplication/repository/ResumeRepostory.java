@@ -9,6 +9,6 @@ public interface ResumeRepostory extends CrudRepository<Resume,Long> {
     Resume findByEmail(String email);
     Long countByEmail(String email);
     Long countByUsername(String username);
-    Iterable<Resume>findByFirstname(String partialString);
+    Iterable<Resume>findAllByFirstname(String partialString);
 }
 

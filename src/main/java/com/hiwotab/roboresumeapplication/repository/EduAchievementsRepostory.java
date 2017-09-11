@@ -14,5 +14,4 @@ public interface EduAchievementsRepostory extends CrudRepository<EduAchievements
     Set<EduAchievements> findByResume(Resume resume);
     ArrayList<EduAchievements> findByUniName(String string);
 
-
 }

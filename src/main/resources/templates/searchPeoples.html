@@ -18,7 +18,7 @@
                         <div class="header-content-inner">
                             <div class="container">
 
-                                <form autocomplete="off" class="well form-horizontal" th:action="@{/searchPeoples}" th:object="${listUser}" method="post">
+                                <form autocomplete="off" class="well form-horizontal" th:action="@{/searchPeoples}" th:object="${newuser}" method="post">
                                 <fieldset>
                                     <!-- Form Name -->
                                     <legend align="Center">Search for User Information</legend>
@@ -28,10 +28,10 @@
                                     <!-- Text input-->
                                     <div  th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}" class="well alert alert-danger" role="alert"></div>
                                     <div class="form-group">
-                                        <label class="col-md-4 control-label">Education Filed</label>
+                                        <label class="col-md-4 control-label">First Name</label>
                                         <div class="col-md-4 inputGroupContainer">
                                             <div class="input-group">
-                                                <span class="input-group-addon"><i class="glyphicon glyphicon-education"></i></span>
+                                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                                                 <input  th:field="*{firstname}" name="firstname" placeholder="Enter First Name" class="form-control"  type="text">
                                             </div>
                                         </div>

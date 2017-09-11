@@ -63,6 +63,22 @@ public class MainController {
         model.addAttribute("searchEdu", eduAchievementsRepostory.findAll());
         model.addAttribute("searchExp", workExperiencesRepostory.findAll());
         model.addAttribute("searchSkill", skillsRepostory.findAll());
+        if(skillsRepostory.count()==0){
+            Skills skills=new Skills();
+            skills.setSkill("Java");
+            skills.setRate("Senior");
+            skillsRepostory.save(skills);
+            Skills skill2=new Skills();
+            skill2.setSkill("C++");
+            skill2.setRate("Junior");
+            skillsRepostory.save(skill2);
+            Skills skill3=new Skills();
+            skill3.setSkill("C#");
+            skill3.setRate("Mid");
+            skillsRepostory.save(skill3);
+        }
+
+
         return "homePage";
     }
 
@@ -291,31 +307,53 @@ public class MainController {
     @PostMapping("/addJobInfo")
     public  String processJob(@Valid @ModelAttribute("job") Job job,
                               BindingResult bindingResult, Model model) {
+
         jobRepository.save(job);
 
         return "redirect:/addskilltojob/" + job.getId();
+
     }
 
     @GetMapping("/addskilltojob/{id}")
     public String addSkillToJob(@PathVariable("id") long jobID, Model model)
     {
 
-        model.addAttribute("job", jobRepository.findOne(new Long(jobID)));
-        model.addAttribute("skilllist",skillsRepostory.findAll());
 
-        return "addSkillToJobInfo";
+            model.addAttribute("job", jobRepository.findOne(new Long(jobID)));
+            model.addAttribute("skilllist", skillsRepostory.findAll());
+            return "addSkillToJobInfo";
+
     }
+
     @PostMapping("/addskilltojob/{jobid}")
     public String Skilltojob(@PathVariable ("jobid") long id,
                              @RequestParam("job") String jobID,
-                             @ModelAttribute("aSkill")Resume p,
+                             @ModelAttribute("aSkill")Skills skills,
                              Model model)
     {
-        Job njob=jobRepository.findOne(new Long(id));
-        njob.addSkill(skillsRepostory.findOne(new Long(jobID)));
-        jobRepository.save(njob);
+        skills=new Skills();
+        Job jobs=jobRepository.findOne(new Long(id));
+        jobs.addSkill(skillsRepostory.findOne(new Long(jobID)));
+        jobRepository.save(jobs);
         return "redirect:/addskilltojob/" + id;
     }
+
+//    @GetMapping("/addSkillForJob")
+//    public String addSkilsInfoJob( Skills skills,Model model) {
+//        model.addAttribute("newSkill", skills);
+//        return " addSkillForJob";
+//    }
+//
+//    @PostMapping("/addSkillForJob")
+//    public String addSkilsInfoJob(@Valid @ModelAttribute("newSkill") Skills skills,BindingResult bindingResult,Model model) {
+//
+//        if (bindingResult.hasErrors()) {
+//            return "addSkillInfo";
+//        }
+//
+//        skillsRepostory.save(skills);
+//        return "redirect:/addJobInfo";
+//    }
     /*This method is used to modify the existing in forms then update data bas tables according to there modify fields */
     @RequestMapping("/updateJobInfo/{id}")
     public String updateJobInfo(@PathVariable("id") long id, Model model){
@@ -382,24 +420,25 @@ public class MainController {
         model.addAttribute("listExps",workExperiencesRepostory.findByResume(resumeR));
         return "SummerizedResume";
     }
-    @GetMapping("/searchPeople")
-    public String searchPeople(Model model) {
-        model.addAttribute("user",new Resume());
-        return "searchPeople";
+    //Search a particular person and display the resume
+    @GetMapping("/searchPeoples")
+    public String searchPeople(Principal principal,Model model) {
+        model.addAttribute("newuser",new Resume());
+        return "searchPeoples";
     }
-    @PostMapping("/searchPeople")
-    public String searchPeople(@ModelAttribute("user") Resume resumes,Model model) {
-        Iterable<Resume>resumeIterable=resumeRepostory.findByFirstname(resumes.getFirstname());
+    @PostMapping("/searchPeoples")
+    public String searchPeople(@ModelAttribute("newuser") Resume resumes,Model model) {
+        Iterable<Resume>resumeIterable=resumeRepostory.findAllByFirstname(resumes.getFirstname());
         model.addAttribute("dipUser",resumeIterable);
         return "dispPeopleInfo";
     }
     @GetMapping("/searchSchool")
     public String searchSchool(Model model) {
-        model.addAttribute("newEduu",new EduAchievements());
+        model.addAttribute("newEdu",new EduAchievements());
         return "searchSchool";
     }
     @PostMapping("/searchSchool")
-    public String searchSchool(@ModelAttribute("newEduu") EduAchievements eduAchievements,Model model) {
+    public String searchSchool(@ModelAttribute("newEdu") EduAchievements eduAchievements,Model model) {
         Iterable<EduAchievements>listedu=eduAchievementsRepostory.findByUniName(eduAchievements.getUniName());
         model.addAttribute("eduList",listedu);
         return "dispSchoolInfo";
@@ -419,7 +458,7 @@ public class MainController {
     @GetMapping("/listJobs")
     public String listJobs(Model model)    {
         model.addAttribute("listjob",jobRepository.findAll());
-        return"listJobs";
+        return"listJobInfo";
     }
     @GetMapping("/jobDetailInfo/{id}")
     public String jobDetail(Model model)    {
@@ -439,33 +478,35 @@ public class MainController {
         return "dispEmpJobDetail";
     }
 
-//    @GetMapping("/skillNotifications")
-//    public String jobMatchs(Principal principal, Model model) {
-//        Iterable<Job> jobList = jobRepository.findAll();
-//        Resume p = resumeRepostory.findByUsername(principal.getName());
-//        Set<Job> test=new HashSet<Job>();
-//
-//        for (Job jb : jobList) {
-//            for (Skills nsk : jb.getJobskill()) {
-//                for (Skills sk : p.getSkillsSet()) {
-////                    if (nsk.getSkillname().equals(sk.getSkillname())) {
-//                        System.out.println("Job matching your skills found");
-//                        System.out.println("Job found is: " + jb.getTitle());
-////                        test.add(jb);
-//                    test.retainAll();
-//                        model.addAttribute("matchFound", test);
-////                            stopper = true;
-//                        return "jobmessage";
-//                    }
-//                    else {
-//                        System.out.println("no Job found");
-//                    }
-//
-//                }
-////                }
-//            }
-//        }
-//        return "jobmessage";
-//    }
+    @GetMapping("/skillNotifications")
+    public String skillMatching(Principal principal, Model model) {
+        Resume resume= resumeRepostory.findByUsername(principal.getName());
+        Iterable<Job> jobList = jobRepository.findAll();
+        Set<Job> jobSet=new HashSet<>();
+        if (resume.getSkillsSet().isEmpty())
+        {
+            model.addAttribute("message", "Enter your skills!");
+            return "message";
+        }
 
+        else {
+
+            for (Job jobs : jobList) {
+                for (Skills jobSkill : jobs.getJobskill()) {
+                    for (Skills resumeSkill : resume.getSkillsSet()) {
+                        if (jobSkill.getSkill().equals(resumeSkill.getSkill())) {
+
+                            jobSet.add(jobs);
+                        } else {
+                            System.out.println("no Job found");
+                        }
+
+                    }
+                }
+            }
+        }
+        model.addAttribute("message", "Some jobs are match your skill");
+        model.addAttribute("joblist", jobSet);
+        return "skillNotifications";
+    }
 }

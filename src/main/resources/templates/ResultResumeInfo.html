@@ -17,7 +17,7 @@
                     <div class="header-content">
                         <div class="header-content-inner">
                             <div class="container">
-                                <form class="well form-horizontal" th:action="@{/EditResumedetail/{id}}" th:object="${resumeR}" method="">
+                                <form class="well form-horizontal" th:action="@{/EditResumedetail" th:object="${resumeR}" method="">
                                              <fieldset>
                                         <!-- Form Name -->
                                                 <legend align="Center"><h3><strong>Your Resume Application </strong></h3></legend>
@@ -151,7 +151,7 @@
 
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
-                                            <p><a th:href="@{/SummerizedResume/{id}(id=${resumeR.id})}"><strong>View Resume </strong></a></p>
+                                            <p><a th:href="/SummerizedResume"><strong>View Resume </strong></a></p>
                                         </div>
                                     </div>
                             </div>
@@ -162,7 +162,7 @@
         </div>
     </div>
 </header>
-<!--<div th:replace="base :: javaScript"></div>-->
+<div th:replace="base :: javaScript"></div>
 <div th:replace="base :: footer"></div>
 </body>
 </html>
