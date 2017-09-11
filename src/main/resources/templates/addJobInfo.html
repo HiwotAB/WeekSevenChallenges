@@ -74,8 +74,8 @@
                                             <label class="col-md-4 control-label"></label>
                                             <div class="col-md-4">
                                                 <!--<input th:disabled="${disSubmit}" class="btn btn-success"  type="submit" value="Submit">-->
-                                                <button type="submit" class="btn btn-success" >Submit</button>
-                                                <button type="reset" class="btn btn-warning">Reset</button>
+                                                <div><button type="submit" class="btn btn-success" >Submit</button></div>
+                                                <div><button type="reset" class="btn btn-warning">Reset</button></div>
                                             </div>
                                         </div>
                                     </fieldset>
@@ -91,7 +91,7 @@
 
     </div>
 </header>
-<!--<div th:replace="base :: javaScript"></div>-->
+<div th:replace="base :: javaScript"></div>
 <div th:replace="base :: footer"></div>
 </body>
 

@@ -31,15 +31,18 @@ public class Resume {
     @Column(name="email",nullable = false)
     private String email;
 
+    @NotEmpty
     @Column(name="password")
     private String password;
 
     @Column(name="enabled")
     private boolean enabled;
 
+    @NotEmpty
     @Column(name="username")
     private String username;
 
+    @NotEmpty
     @Column(name="selectVal")
     private String selectVal;
 

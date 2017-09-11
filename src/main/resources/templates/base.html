@@ -31,6 +31,7 @@
 </div>
 
 <div class="container" th:fragment="navlinks">
+    <div class="container">
     <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <ul class="nav navbar-nav">
@@ -68,7 +69,7 @@
                         <ul class="dropdown-menu">
                             <li><a href="/addJobInfo">Add New Job</a></li>
                             <li><a href="/listJobInfo">View Jobs</a></li>
-                            <li><a href="/listJobs">Search By Jobs</a></li>
+                            <li><a href="/searchJobsByTitle">Search By Jobs</a></li>
 
                         </ul>
                     </li>
@@ -79,15 +80,14 @@
                             <li><a href="/searchPeoples">Search By User</a></li>
                             <li><a href="/searchSchool">Search By School</a></li>
                             <li><a href="/searchCompany">Search By Organization</a></li>
-                            <li><a href="/searchJobs">Search By Employer</a></li>
-                            <li><a href="/listJobs">Search By Jobs</a></li>
+                            <li><a href="/searchJobsByComp">Search By Employer</a></li>
+                            <li><a href="/searchJobsByTitle">Search By Jobs</a></li>
                         </ul>
                     </li>
                     <li><a href="/EditResumedetail">Edit Resume</a></li>
                     <li><a href="/SummerizedResume">View Resume</a></li>
                     <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span>Sign In</a></li>
                     <li><a href="/signUpForm"><span class="glyphicon glyphicon-user"></span>Sign Up</a></li>
-                    <li><a href="/editSignUp"><span class="glyphicon glyphicon-user"></span>Edit SignUp</a></li>
                     <li><a href="/logout">LogOut</a></li>
 
                 </ul>
@@ -103,7 +103,7 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <!--<script src="/js/bootstrap.js"></script>-->
 </div>
-
+</div>
 <div th:fragment="footer">Robo Resume Application @ copyright 2017</div>
 
 </body>

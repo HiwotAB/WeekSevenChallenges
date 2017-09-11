@@ -466,14 +466,25 @@ public class MainController {
         return"jobDetailInfo";
     }
     //To see for the particular job title details of employer information
-    @GetMapping("/searchJobs")
+    @GetMapping("/searchJobsByComp")
     public String searchEmployer(Model model) {
         model.addAttribute("listJob", new Job());
-        return "searchJobs";
+        return "searchJobsByComp";
     }
-    @PostMapping("/searchJobs")
+    @PostMapping("/searchJobsByComp")
     public String searchEmployer(@ModelAttribute("listJob") Job jobs,Model model){
         Iterable<Job>jobIterable=jobRepository.findByEmployer(jobs.getEmployer());
+        model.addAttribute("listJob",jobIterable);
+        return "dispEmpJobDetail";
+    }
+    @GetMapping("/searchJobsByTitle")
+    public String searchJobs(Model model) {
+        model.addAttribute("listJob", new Job());
+        return "searchJobsByTitle";
+    }
+    @PostMapping("/searchJobsByTitle")
+    public String searchJobs(@ModelAttribute("listJob") Job jobs,Model model){
+        Iterable<Job>jobIterable=jobRepository.findByTitle(jobs.getTitle());
         model.addAttribute("listJob",jobIterable);
         return "dispEmpJobDetail";
     }

@@ -13,19 +13,18 @@ public class Job {
     private long id;
 
     @NotEmpty
-    @Size(min=2,max=100)
+
     private String title;
 
     @NotEmpty
-    @Size(min=2,max=500)
+
     private String employer;
 
     @NotEmpty
-    @Size(min=2,max=500)
+
     private String description;
 
-    @NotEmpty
-    @Size(min=2,max=50)
+
     private String salary;
 
     @ManyToMany(fetch = FetchType.EAGER)
