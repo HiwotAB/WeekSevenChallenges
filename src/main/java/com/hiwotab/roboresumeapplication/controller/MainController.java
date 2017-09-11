@@ -407,7 +407,7 @@ public class MainController {
         model.addAttribute("listEdu",eduAchievementsRepostory.findByResume(resumeR));
         model.addAttribute("listSkill",skillsRepostory.findByResume(resumeR));
         model.addAttribute("listExps",workExperiencesRepostory.findByResume(resumeR));
-        return "ResultResumeInfo";
+        return "EditResumedetail";
     }
 
     /*******************************************************************************************/
